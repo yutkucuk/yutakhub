@@ -26,6 +26,11 @@ func pickFolderDialog() string       { return os.Getenv("YUTAKHUB_PICK") }
 func systemLang() string             { return "en" }
 func startDetached(exe string) error { return exec.Command(exe).Start() }
 func createShortcut() error          { return nil }
+func setupInfo() map[string]any      { return map[string]any{"dir": "/opt/yutakhub", "installed": ""} }
+func setupInstall(desktop bool, progress func(string, int)) error {
+	progress("install", 100)
+	return nil
+}
 
 func main() {
 	if len(os.Args) > 1 && os.Args[1] == "mkpatch" {
@@ -35,9 +40,21 @@ func main() {
 		}
 		return
 	}
+	for _, a := range os.Args[1:] {
+		if a == "--publisher" {
+			publisherFlag = true
+		}
+		if a == "--setup" {
+			appMode = "setup"
+		}
+	}
 	app := newApp()
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		if appMode == "setup" {
+			io.WriteString(w, setupHTML)
+			return
+		}
 		io.WriteString(w, uiHTML)
 	})
 	http.HandleFunc("/api/", func(w http.ResponseWriter, r *http.Request) {

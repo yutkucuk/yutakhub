@@ -124,20 +124,6 @@ func startDetached(exe string) error {
 	return exec.Command(exe, "--updated").Start()
 }
 
-// createShortcut puts a yutakhub shortcut on the desktop.
-func createShortcut() error {
-	exe, err := os.Executable()
-	if err != nil {
-		return err
-	}
-	script := `$s=(New-Object -ComObject WScript.Shell).CreateShortcut([IO.Path]::Combine([Environment]::GetFolderPath('Desktop'),'yutakhub.lnk'));` +
-		`$s.TargetPath=$env:YH_EXE;$s.WorkingDirectory=[IO.Path]::GetDirectoryName($env:YH_EXE);$s.Description='yutakhub';$s.Save()`
-	cmd := exec.Command("powershell", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", script)
-	cmd.Env = append(os.Environ(), "YH_EXE="+exe)
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true, CreationFlags: 0x08000000}
-	return cmd.Run()
-}
-
 // alreadyRunning makes yutakhub single-instance: a second start just brings the open window forward.
 func alreadyRunning() bool {
 	name, _ := windows.UTF16PtrFromString("Local\\yutakhub-single-instance")
@@ -164,10 +150,13 @@ func alreadyRunning() bool {
 	return true
 }
 
-func messageBox(text string) {
+func messageBox(text string) { messageBoxFlags(text, 0x40) }
+
+func messageBoxFlags(text string, flags uintptr) uintptr {
 	t, _ := windows.UTF16PtrFromString(text)
 	c, _ := windows.UTF16PtrFromString("yutakhub")
-	procMessageBox.Call(0, uintptr(unsafe.Pointer(t)), uintptr(unsafe.Pointer(c)), 0x40)
+	r, _, _ := procMessageBox.Call(0, uintptr(unsafe.Pointer(t)), uintptr(unsafe.Pointer(c)), flags)
+	return r
 }
 
 func webview2Installed() bool {
@@ -201,11 +190,31 @@ func main() {
 		}
 		return
 	}
-	if alreadyRunning() {
+	flags := map[string]bool{}
+	for _, a := range os.Args[1:] {
+		flags[a] = true
+	}
+	if flags["--uninstall"] {
+		runUninstall()
+		return
+	}
+	publisherFlag = flags["--publisher"]
+	// Anywhere but its install folder, the released exe is the installer.
+	if flags["--setup"] || (repo != "" && !isInstalledCopy() && !flags["--portable"]) {
+		appMode = "setup"
+	}
+	if appMode == "app" && alreadyRunning() {
 		return
 	}
 	runtime.LockOSThread()
 	app := newApp()
+	if appMode == "app" && isInstalledCopy() {
+		registerUninstall() // keeps the version shown in Windows' app list right after a self-update
+	}
+	title, width, height, page := "yutakhub", uint(1120), uint(780), uiHTML
+	if appMode == "setup" {
+		title, width, height, page = "yutakhub Setup", 640, 500, setupHTML
+	}
 
 	if !webview2Installed() {
 		messageBox("yutakhub needs Microsoft Edge WebView2, which is missing on this PC.\nThe download page will open now. Install it, then start yutakhub again.\n\n" +
@@ -218,7 +227,7 @@ func main() {
 		AutoFocus: true,
 		DataPath:  filepath.Join(app.dataDir, "webview"),
 		WindowOptions: webview2.WindowOptions{
-			Title: "yutakhub", Width: 1120, Height: 780, IconId: 2, Center: true,
+			Title: title, Width: width, Height: height, IconId: 2, Center: true,
 		},
 	})
 	if w == nil {
@@ -227,7 +236,9 @@ func main() {
 	}
 	defer w.Destroy()
 	mainWindow = uintptr(w.Window())
-	w.SetSize(860, 600, webview2.HintMin)
+	if appMode == "app" {
+		w.SetSize(900, 620, webview2.HintMin)
+	}
 	app.onQuit = func() { w.Dispatch(func() { w.Terminate() }) }
 
 	w.Bind("yhCall", func(name, args string) (string, error) {
@@ -238,6 +249,6 @@ func main() {
 		b, err := json.Marshal(res)
 		return string(b), err
 	})
-	w.SetHtml(uiHTML)
+	w.SetHtml(page)
 	w.Run()
 }

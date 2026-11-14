@@ -26,6 +26,9 @@ var versionRaw string
 //go:embed ui/index.html
 var uiHTML string
 
+//go:embed ui/setup.html
+var setupHTML string
+
 // repo is "owner/name" on GitHub and branch its default branch. The release build sets both
 // with -X main.repo=... -X main.branch=... A build without a repo is a test build: it reads
 // catalog.json and the mods folder that sit next to the exe and never updates itself.
@@ -33,6 +36,12 @@ var (
 	repo   = ""
 	branch = "main"
 )
+
+// appMode is "app" normally and "setup" when the exe is running as the installer.
+var appMode = "app"
+
+// publisherFlag is set by --publisher and shows the developer's Publish tab.
+var publisherFlag = false
 
 func appVersion() string { return strings.TrimSpace(versionRaw) }
 
@@ -53,19 +62,23 @@ type Mod struct {
 	Summary LStr   `json:"summary"`
 	Notes   LStr   `json:"notes"`
 	Type    string `json:"type"` // "extract" or "patch"
-	Detect  string `json:"detect"`
+	Detect  string `json:"detect,omitempty"`
 
 	// extract
-	URL    string   `json:"url"`
-	SHA256 string   `json:"sha256"`
-	Keep   []string `json:"keep"`
-	Remove []string `json:"remove"`
+	URL     string   `json:"url,omitempty"`
+	SHA256  string   `json:"sha256,omitempty"`
+	Content string   `json:"content,omitempty"` // fingerprint of the packaged files, written by the publisher
+	Keep    []string `json:"keep,omitempty"`
+	Remove  []string `json:"remove,omitempty"`
 
 	// patch
-	Target      string   `json:"target"`
-	Backup      string   `json:"backup"`
-	Patches     []Patch  `json:"patches"`
-	KnownModded []string `json:"knownModded"`
+	Target      string   `json:"target,omitempty"`
+	Backup      string   `json:"backup,omitempty"`
+	Patches     []Patch  `json:"patches,omitempty"`
+	KnownModded []string `json:"knownModded,omitempty"`
+
+	// how the publisher collects this mod from the developer's own game folder
+	Publish *Publish `json:"publish,omitempty"`
 }
 
 type Game struct {
@@ -73,7 +86,7 @@ type Game struct {
 	Name       string `json:"name"`
 	SteamAppID int    `json:"steamAppId"`
 	Exe        string `json:"exe"`
-	Image      string `json:"image"`
+	Image      string `json:"image,omitempty"`
 	Mod        Mod    `json:"mod"`
 }
 
@@ -903,6 +916,8 @@ type fullState struct {
 	Settings     Settings   `json:"settings"`
 	LastCheck    int64      `json:"lastCheck"`
 	DataDir      string     `json:"dataDir"`
+	Publisher    bool       `json:"publisher"`
+	Mode         string     `json:"mode"`
 }
 
 func (a *App) snapshot() fullState {
@@ -910,7 +925,8 @@ func (a *App) snapshot() fullState {
 	defer a.mu.Unlock()
 	s := fullState{AppVersion: appVersion(), Lang: a.state.Lang, Repo: repo, CatalogError: a.catalogErr,
 		Op: a.op, Update: a.updVersion, UpdChecked: a.updChecked, Games: []GameView{},
-		Settings: a.state.Settings, LastCheck: a.lastCheck, DataDir: a.dataDir}
+		Settings: a.state.Settings, LastCheck: a.lastCheck, DataDir: a.dataDir,
+		Publisher: a.publisherOn(), Mode: appMode}
 	if a.catalog != nil {
 		for i := range a.catalog.Games {
 			s.Games = append(s.Games, a.view(&a.catalog.Games[i]))
@@ -926,10 +942,17 @@ func (a *App) snapshot() fullState {
 // Call is the single entry point the UI uses.
 func (a *App) Call(name, argsJSON string) (any, error) {
 	var args struct {
-		ID    string `json:"id"`
-		Lang  string `json:"lang"`
-		Key   string `json:"key"`
-		Value bool   `json:"value"`
+		ID          string `json:"id"`
+		Lang        string `json:"lang"`
+		Key         string `json:"key"`
+		Value       bool   `json:"value"`
+		Repo        string `json:"repo"`
+		Token       string `json:"token"`
+		Version     string `json:"version"`
+		GameVersion string `json:"gameVersion"`
+		NotesTr     string `json:"notesTr"`
+		NotesEn     string `json:"notesEn"`
+		Desktop     bool   `json:"desktop"`
 	}
 	if argsJSON != "" {
 		json.Unmarshal([]byte(argsJSON), &args)
@@ -1003,6 +1026,38 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 		return nil, a.run("shortcut", "", func(func(string, int)) error {
 			if err := createShortcut(); err != nil {
 				return coded("write", err)
+			}
+			return nil
+		})
+	case "enablePublisher":
+		publisherFlag = true
+		if !exists(a.pubConfigPath()) {
+			os.WriteFile(a.pubConfigPath(), []byte("{}"), 0o600)
+		}
+		return nil, nil
+	case "pubState":
+		return a.pubState(), nil
+	case "pubSave":
+		return nil, a.pubSave(args.Repo, args.Token)
+	case "pubTest":
+		return nil, a.run("pubtest", "", func(func(string, int)) error { return a.pubTest() })
+	case "publish":
+		g, err := game()
+		if err != nil {
+			return nil, err
+		}
+		return nil, a.run("publish", g.ID, func(p func(string, int)) error {
+			return a.publish(g.ID, args.Version, args.GameVersion, args.NotesTr, args.NotesEn, p)
+		})
+	case "setupInfo":
+		return setupInfo(), nil
+	case "setupInstall":
+		return nil, a.run("setup", "", func(p func(string, int)) error {
+			if err := setupInstall(args.Desktop, p); err != nil {
+				return coded("write", err)
+			}
+			if a.onQuit != nil {
+				time.AfterFunc(900*time.Millisecond, a.onQuit)
 			}
 			return nil
 		})

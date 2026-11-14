@@ -26,6 +26,7 @@
     user-select: none; cursor: default; overflow: hidden;
     display: flex; flex-direction: column;
   }
+  input, textarea { user-select: text; cursor: text; }
   button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
   button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
   button[disabled] { cursor: default; opacity: .45; }
@@ -97,6 +98,21 @@
   table.mods td { padding: 9px 0; border-bottom: 1px solid var(--line); }
   table.mods td:last-child { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
 
+  .field { display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: var(--muted); flex: 1; min-width: 0; }
+  .field input, .field textarea {
+    font: 14px/1.4 var(--body); color: var(--text); background: var(--panel); border: 1px solid var(--line);
+    border-radius: 6px; padding: 8px 10px; user-select: text; resize: vertical; width: 100%;
+  }
+  .field input:focus, .field textarea:focus { outline: 2px solid var(--blue); outline-offset: 0; border-color: transparent; }
+  .fields { display: flex; gap: 14px; margin: 12px 0; }
+  .pub { padding: 18px 0 20px; border-bottom: 1px solid var(--line); }
+  .pub h3 { font: 600 20px/1.2 var(--display); margin: 0 0 4px; }
+  .pub .st { font-size: 14px; display: flex; gap: 8px; align-items: center; }
+  .pub .st.changed .dot { background: var(--yellow); border-color: var(--yellow); }
+  .pub .st.same .dot { background: var(--blue); border-color: var(--blue); }
+  .pub .btn { font-size: 15px; padding: 10px 18px; }
+  .help { color: var(--muted); font-size: 13.5px; max-width: 66ch; margin: 6px 0 0; user-select: text; }
+
   #modal { position: fixed; inset: 0; background: rgba(8, 9, 16, .72); display: none; place-items: center; z-index: 5; }
   #modal .box { width: 440px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 24px; }
   #modal h3 { font: 600 21px/1.2 var(--display); margin: 0 0 8px; }
@@ -163,7 +179,7 @@
   <div class="mark" aria-hidden="true"><i></i><i></i></div>
   <div class="brand">yutakhub</div>
   <nav id="nav">
-    <button data-view="mods"></button><button data-view="settings"></button><button data-view="about"></button>
+    <button data-view="mods"></button><button data-view="settings"></button><button data-view="about"></button><button data-view="publish" hidden></button>
   </nav>
   <div class="spacer"></div>
   <button class="ghost" id="refresh"></button>
@@ -173,6 +189,7 @@
   <div class="view" id="v-mods"><div class="overview" id="overview"></div><div id="list"></div></div>
   <div class="view page" id="v-settings" hidden></div>
   <div class="view page" id="v-about" hidden></div>
+  <div class="view page" id="v-publish" hidden></div>
 </main>
 <div id="modal"><div class="box"><h3 id="m-title"></h3><p id="m-body"></p>
   <div class="buttons"><button class="btn second" id="m-no"></button><button class="btn danger" id="m-yes"></button></div></div></div>
@@ -185,6 +202,22 @@ const T = {
     tagline: "Co-op modlarını tek tıkla kur ve güncel tut",
     refresh: "Yenile", refreshing: "Kontrol ediliyor…",
     nav_mods: "Modlar", nav_settings: "Ayarlar", nav_about: "Hakkında",
+    nav_publish: "Yayınla",
+    p_conn: "GitHub bağlantısı", p_repo: "Depo (kullanıcı/depo)", p_token: "Erişim anahtarı (token)", p_tokenSaved: "kayıtlı, değiştirmek için yenisini yaz",
+    p_save: "Kaydet", p_test: "Bağlantıyı sına", p_saved: "Kaydedildi.", p_testOk: "Bağlantı tamam: bu anahtar depoya yazabiliyor.",
+    p_help: "Anahtar almak için: GitHub > Settings > Developer settings > Fine-grained tokens > Generate new token. \"Only select repositories\" ile yalnızca bu depoyu seç, Repository permissions altında Contents için \"Read and write\" ver. Anahtar yalnızca bu bilgisayarda saklanır.",
+    p_mods: "Modlar", p_modsD: "Her mod, bu bilgisayardaki oyun klasöründen alınır. Yayınla'ya basınca paket ve güncel liste GitHub'a gider; herkesin yutakhub'ında birkaç dakika içinde \"Güncelle\" çıkar.",
+    p_version: "Mod sürümü", p_gameVersion: "Oyun sürümü", p_notesTr: "Bu sürümde neler var (Türkçe)", p_notesEn: "Bu sürümde neler var (English)", p_publish: "Yayınla", p_notesOnly: "Notları güncelle",
+    p_same: (g) => `Oyun klasöründeki mod yayındakiyle aynı (${g.published}).`,
+    p_changed: (g) => `Yayınlanmamış değişiklik var. Yayında ${g.published}` + (g.local ? `, klasörde ${g.local}.` : "."),
+    p_nogame: () => "Oyun bu bilgisayarda bulunamadı.", p_nomod: () => "Bu bilgisayardaki oyunda mod kurulu değil.",
+    p_nospec: () => "Listede bu mod için yayınlama ayarı (publish) yok.", p_nooriginal: () => "Mod kurulu değil ya da orijinal dosyanın yedeği yok.",
+    p_done: (n, v) => `${n} ${v} yayınlandı. Kullanıcılara birkaç dakika içinde ulaşır.`,
+    ph_pub_catalog: "Liste güncelleniyor", ph_pub_package: "Paket hazırlanıyor", ph_pub_upload: "GitHub'a yükleniyor",
+    e_pub_repo: () => "Depo adı kullanıcı/depo biçiminde olmalı, örneğin yutku/yutakhub.", e_pub_no_token: () => "Önce depo adını ve erişim anahtarını kaydet.",
+    e_pub_github: (d) => `GitHub işlemi tamamlanamadı: ${d}`, e_pub_version: () => "Sürüm numarası 1.2.3 biçiminde olmalı. Yamalı modlarda oyun sürümü de gerekli.",
+    e_pub_same_version: (d) => `Mod dosyaları değişmiş ama sürüm hâlâ ${d}. Kullanıcıların güncellemeyi görmesi için sürümü artır.`,
+    e_pub_nomod: (d) => `${d}: oyun klasöründe yayınlanacak mod dosyası bulunamadı.`, e_pub_nooriginal: (d) => `${d}: orijinal dosyanın yedeği bulunamadı.`,
     ov: (n, i, u) => `<b>${n}</b> oyundan <b>${i}</b> tanesinde mod kurulu` + (u ? `, <b>${u}</b> güncelleme var` : ""),
     ovChecked: (tm) => `Son kontrol ${tm}`, updateAll: "Hepsini güncelle",
     rmTitle: (n) => `${n} modu kaldırılsın mı?`, rmBody: "Oyunun kendisine ve kayıtlarına dokunulmaz. Modu istediğin zaman buradan yeniden kurabilirsin.", rmYes: "Modu kaldır", cancel: "Vazgeç",
@@ -232,6 +265,22 @@ const T = {
     tagline: "Install co-op mods in one click and keep them up to date",
     refresh: "Refresh", refreshing: "Checking…",
     nav_mods: "Mods", nav_settings: "Settings", nav_about: "About",
+    nav_publish: "Publish",
+    p_conn: "GitHub connection", p_repo: "Repository (owner/name)", p_token: "Access token", p_tokenSaved: "saved, type a new one to replace it",
+    p_save: "Save", p_test: "Test connection", p_saved: "Saved.", p_testOk: "Connection works: this token can write to the repository.",
+    p_help: "To get a token: GitHub > Settings > Developer settings > Fine-grained tokens > Generate new token. Choose \"Only select repositories\" and pick this repository, then under Repository permissions give Contents \"Read and write\". The token is stored on this PC only.",
+    p_mods: "Mods", p_modsD: "Each mod is taken from the game folder on this PC. Publish sends the package and the updated list to GitHub; every yutakhub shows \"Update\" within a few minutes.",
+    p_version: "Mod version", p_gameVersion: "Game version", p_notesTr: "What's in this version (Türkçe)", p_notesEn: "What's in this version (English)", p_publish: "Publish", p_notesOnly: "Update notes",
+    p_same: (g) => `The mod in the game folder is the published one (${g.published}).`,
+    p_changed: (g) => `There are unpublished changes. Published: ${g.published}` + (g.local ? `, in the folder: ${g.local}.` : "."),
+    p_nogame: () => "This game was not found on this PC.", p_nomod: () => "The mod is not installed in the game on this PC.",
+    p_nospec: () => "The list has no publish settings for this mod.", p_nooriginal: () => "The mod is not installed, or there is no backup of the original file.",
+    p_done: (n, v) => `${n} ${v} published. It reaches users within a few minutes.`,
+    ph_pub_catalog: "Updating the list", ph_pub_package: "Building the package", ph_pub_upload: "Uploading to GitHub",
+    e_pub_repo: () => "The repository must look like owner/name, for example yutku/yutakhub.", e_pub_no_token: () => "Save the repository name and access token first.",
+    e_pub_github: (d) => `GitHub did not complete the request: ${d}`, e_pub_version: () => "The version must look like 1.2.3. Patched mods also need the game version.",
+    e_pub_same_version: (d) => `The mod files changed but the version is still ${d}. Raise the version so users see the update.`,
+    e_pub_nomod: (d) => `${d}: no mod files to publish were found in the game folder.`, e_pub_nooriginal: (d) => `${d}: no backup of the original file was found.`,
     ov: (n, i, u) => `Mods installed for <b>${i}</b> of <b>${n}</b> games` + (u ? `, <b>${u}</b> ${u > 1 ? "updates" : "update"} available` : ""),
     ovChecked: (tm) => `Last checked ${tm}`, updateAll: "Update all",
     rmTitle: (n) => `Remove the ${n} mod?`, rmBody: "The game itself and your saves are not touched. You can install the mod again here at any time.", rmYes: "Remove mod", cancel: "Cancel",
@@ -377,6 +426,31 @@ function aboutHTML() {
     <div class="prose" style="margin-top:22px"><p class="dim">${L.a_thanks}</p><p class="dim">${L.a_legal}</p></div>`;
 }
 
+let P = null, pubStale = true;
+async function loadPublish() { P = await call("pubState"); pubStale = false; $("v-publish").innerHTML = publishHTML(); }
+function publishHTML() {
+  const L = t(), dis = S.op.running ? " disabled" : "";
+  const games = P.games.map((g) => {
+    const can = g.state === "same" || g.state === "changed";
+    return `<div class="pub" data-id="${esc(g.id)}"><h3>${esc(g.name)}</h3>
+      <div class="st ${g.state}"><span class="dot"></span><span>${esc(L["p_" + g.state](g))}</span></div>
+      ${can ? `<div class="fields">
+          <label class="field" style="flex:0 0 150px">${L.p_version}<input data-f="version" value="${esc(g.local || g.published)}"></label>
+          ${g.type === "patch" ? `<label class="field" style="flex:0 0 150px">${L.p_gameVersion}<input data-f="gameVersion" value="${esc(g.gameVersion)}"></label>` : ""}
+        </div>
+        <div class="fields"><label class="field">${L.p_notesTr}<textarea rows="3" data-f="notesTr">${esc(g.notesTr)}</textarea></label>
+          <label class="field">${L.p_notesEn}<textarea rows="3" data-f="notesEn">${esc(g.notesEn)}</textarea></label></div>
+        <button class="btn ${g.state === "changed" ? "primary" : "second"}" data-pub="${esc(g.id)}"${dis}>${g.state === "changed" ? L.p_publish : L.p_notesOnly}</button>` : ""}
+    </div>`;
+  }).join("");
+  return `<h2>${L.p_conn}</h2>
+    <div class="fields"><label class="field">${L.p_repo}<input id="p-repo" value="${esc(P.repo)}" placeholder="yutku/yutakhub"></label>
+      <label class="field">${L.p_token}<input id="p-token" type="password" placeholder="${P.hasToken ? L.p_tokenSaved : "github_pat_…"}"></label></div>
+    <div class="buttons" style="margin-top:0"><button class="ghost" id="p-save">${L.p_save}</button><button class="ghost" id="p-test"${dis}>${L.p_test}</button></div>
+    <p class="help">${L.p_help}</p>
+    <h2>${L.p_mods}</h2><p class="help">${L.p_modsD}</p>${games}`;
+}
+
 function fmtTime(unix) {
   return new Date(unix * 1000).toLocaleTimeString(S.lang === "tr" ? "tr-TR" : "en-GB", { hour: "2-digit", minute: "2-digit" });
 }
@@ -389,9 +463,11 @@ function render() {
   const updates = S.games.filter((g) => g.status === "update");
   document.querySelectorAll("#nav button").forEach((b) => {
     b.classList.toggle("on", b.dataset.view === view);
+    if (b.dataset.view === "publish") b.hidden = !S.publisher;
     b.innerHTML = L["nav_" + b.dataset.view] + (b.dataset.view === "mods" && updates.length ? `<span class="badge">${updates.length}</span>` : "");
   });
-  ["mods", "settings", "about"].forEach((v) => ($("v-" + v).hidden = v !== view));
+  ["mods", "settings", "about", "publish"].forEach((v) => ($("v-" + v).hidden = v !== view));
+  if (view === "publish" && pubStale && !op.running) loadPublish();
   $("refresh").style.visibility = view === "mods" ? "visible" : "hidden";
   const found = S.games.filter((g) => g.status !== "nogame"), inst = S.games.filter((g) => g.status === "installed" || g.status === "update");
   $("overview").innerHTML = S.games.length ? `<span>${L.ov(found.length, inst.length, updates.length)}</span>
@@ -426,6 +502,7 @@ function paintProgress() {
   const p = document.querySelector(".progress");
   if (p) { p.querySelector(".ptext").textContent = label; p.querySelector(".fill").style.width = op.pct + "%"; }
   const u = $("updp"); if (u) u.textContent = label;
+  if (op.running && (op.kind === "publish")) { const b = document.querySelector(`button[data-pub="${op.id}"]`); if (b) b.textContent = label; }
 }
 
 async function act(name, id) {
@@ -469,6 +546,10 @@ async function poll(force) {
         toast(errText(op.errCode, op.err));
         if (op.errCode === "self_write") call("openReleases");
       } else if (op.kind === "shortcut") { toast(t().shortDone, true);
+      } else if (op.kind === "pubtest") { toast(t().p_testOk, true);
+      } else if (op.kind === "publish") {
+        const g = S.games.find((x) => x.id === op.id); pubStale = true; render();
+        if (g) toast(t().p_done(g.name, g.latest), true);
       } else if (op.kind === "refresh" && !autoDone) {
         autoDone = true;
         if (S.settings.autoUpdateMods && S.games.some((g) => g.status === "update")) updateAll();
@@ -487,15 +568,30 @@ $("list").addEventListener("click", (e) => {
   if (a === "uninstall") { confirmRemove(S.games.find((g) => g.id === id)); return; }
   act(a, id);
 });
-$("nav").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (b) { view = b.dataset.view; render(); document.querySelector("main").scrollTop = 0; } });
+$("nav").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (b) { view = b.dataset.view; pubStale = true; render(); document.querySelector("main").scrollTop = 0; } });
 document.querySelector("main").addEventListener("click", async (e) => {
   const b = e.target.closest("button"); if (!b || b.disabled || b.closest("#list")) return;
-  if (b.dataset.lang) { await call("setLang", { lang: b.dataset.lang }); reload(); }
+  if (b.dataset.lang) { await call("setLang", { lang: b.dataset.lang }); pubStale = true; reload(); }
+  else if (b.id === "p-save" || b.id === "p-test") {
+    try { await call("pubSave", { repo: $("p-repo").value, token: $("p-token").value }); }
+    catch (e) { const c = String(e.message || e).split(":")[0]; toast(errText(T.en["e_" + c] ? c : "error", String(e.message || e))); return; }
+    if (b.id === "p-test") act("pubTest"); else { toast(t().p_saved, true); pubStale = true; reload(); }
+  } else if (b.dataset.pub) {
+    const box = b.closest(".pub"), v = (f) => { const el = box.querySelector(`[data-f=${f}]`); return el ? el.value : ""; };
+    try { await call("publish", { id: b.dataset.pub, version: v("version"), gameVersion: v("gameVersion"), notesTr: v("notesTr"), notesEn: v("notesEn") }); await poll(true); }
+    catch (e) { toast(errText("busy")); }
+  }
   else if (b.dataset.set) {
     const on = b.getAttribute("aria-checked") !== "true", key = b.dataset.set;
     await call("setSetting", { key, value: key === "noUpdateCheck" ? !on : on }); reload();
   } else if (b.dataset.do === "resetFolder") { await call("resetFolder", { id: b.dataset.id }); reload(); }
   else if (b.dataset.do) act(b.dataset.do, b.dataset.id);
+});
+// Developer door: five clicks on the version in About reveal the Publish tab.
+let devClicks = 0;
+$("v-about").addEventListener("click", async (e) => {
+  if (!e.target.closest("h1") || S.publisher) return;
+  if (++devClicks >= 5) { await call("enablePublisher"); await reload(); view = "publish"; pubStale = true; render(); }
 });
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") $("modal").style.display = "none";

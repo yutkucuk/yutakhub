@@ -14,11 +14,20 @@
         "url": "mods/20mtd/20mtd-coop-0.9.4.zip",
         "sha256": "8d4910b5f8a0509a95329568960d5629a9c4dea36968d3ac9073627eac548c2c",
         "detect": "BepInEx/plugins/MTDCoop.dll",
-        "keep": ["BepInEx/config/*"],
+        "keep": [
+          "BepInEx/config/*"
+        ],
         "remove": [
-          "BepInEx/plugins/MTDCoop.dll", "BepInEx/core", "BepInEx/cache", "BepInEx/LogOutput.log",
-          "BepInEx/config/com.mtdcoop.mod.cfg", "BepInEx/config/BepInEx.cfg",
-          "winhttp.dll", "doorstop_config.ini", ".doorstop_version", "KURULUM.txt"
+          "BepInEx/plugins/MTDCoop.dll",
+          "BepInEx/core",
+          "BepInEx/cache",
+          "BepInEx/LogOutput.log",
+          "BepInEx/config/com.mtdcoop.mod.cfg",
+          "BepInEx/config/BepInEx.cfg",
+          "winhttp.dll",
+          "doorstop_config.ini",
+          ".doorstop_version",
+          "KURULUM.txt"
         ],
         "summary": {
           "tr": "İki kişilik online co-op. Ana menüye Co-op satırı eklenir, arkadaşını Steam'den davet edersin; ek program gerekmez.",
@@ -27,6 +36,19 @@
         "notes": {
           "tr": "Co-op > Host Lobby > Invite ile arkadaşını davet et.\nİki oyuncuda da modun aynı sürümü kurulu olmalı.",
           "en": "Invite your friend with Co-op > Host Lobby > Invite.\nBoth players need the same version of the mod."
+        },
+        "content": "3b52149bb1896a2acbb29fe9718835bc513fef3e6e1f1f11da1b660690c3a7a7",
+        "publish": {
+          "include": [
+            "winhttp.dll",
+            "doorstop_config.ini",
+            ".doorstop_version",
+            "BepInEx/core/**",
+            "BepInEx/plugins/MTDCoop.dll"
+          ],
+          "versionFile": "BepInEx/plugins/MTDCoop.dll",
+          "versionRegex": "com\\.mtdcoop\\.mod[^0-9]{0,8}([0-9]+\\.[0-9]+\\.[0-9]+)",
+          "versionUtf16": true
         }
       }
     },
@@ -49,7 +71,6 @@
             "url": "mods/nac/nac-coop-1.0.0-game-1.3.2.yhp"
           }
         ],
-        "knownModded": [],
         "summary": {
           "tr": "Oyunun yerel co-op'unu internete taşır. Ana menüye Online Co-op butonu eklenir, bağlantı Steam üzerinden kurulur.",
           "en": "Takes the game's local co-op online. Adds an Online Co-op button to the main menu and connects through Steam."
@@ -57,6 +78,10 @@
         "notes": {
           "tr": "Ana menü > Online Co-op > Host Game > Invite Friend.\nKatılan oyuncu menülerde klavye ya da gamepad kullanır.\nOyun güncellenirse Steam modu siler; yeni sürüm hazır olduğunda buradan tekrar kurarsın.",
           "en": "Main menu > Online Co-op > Host Game > Invite Friend.\nThe joining player uses keyboard or gamepad in menus.\nWhen the game updates, Steam removes the mod; install it again here once the new version is ready."
+        },
+        "publish": {
+          "versionRegex": "MOD_VERSION = \"([0-9.]+)\"",
+          "gameVersionRegex": "versionString = \"([0-9.]+)\""
         }
       }
     },
@@ -72,8 +97,13 @@
         "url": "mods/hot/hot-coop-0.3.1.zip",
         "sha256": "a1af7540de2a6c957434694996cc38e3987c27ef830a6de38076b46423f02a69",
         "detect": "coop/boot.gd",
-        "keep": ["coop/config.cfg"],
-        "remove": ["override.cfg", "coop"],
+        "keep": [
+          "coop/config.cfg"
+        ],
+        "remove": [
+          "override.cfg",
+          "coop"
+        ],
         "summary": {
           "tr": "İki kişilik online co-op. Kampta CO-OP düğmesi (ya da F1) ile lobi açılır, arkadaşın Steam davetiyle katılır.",
           "en": "Two-player online co-op. Open a lobby with the CO-OP button at the camp (or F1) and your friend joins through a Steam invite."
@@ -81,6 +111,18 @@
         "notes": {
           "tr": "Kamp ateşinde sağ üstteki CO-OP düğmesine bas.\nİki oyuncuda da modun aynı sürümü kurulu olmalı.",
           "en": "Press the CO-OP button at the top right of the camp screen.\nBoth players need the same version of the mod."
+        },
+        "content": "9098315157b85e709e7f10da1038c4ae89abc9623d2f09125657ed17cb853702",
+        "publish": {
+          "include": [
+            "override.cfg",
+            "coop/**"
+          ],
+          "exclude": [
+            "coop/coop.log"
+          ],
+          "versionFile": "coop/boot.gd",
+          "versionRegex": "VERSION: String = \"([0-9.]+)\""
         }
       }
     }

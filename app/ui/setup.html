@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>yutakhub Setup</title>
+<style>
+  :root { --ink:#11131e; --panel:#1a1d2d; --panel-hi:#22263a; --line:#2e3350; --text:#ebe8de; --muted:#979bb3; --blue:#5aa9ff; --yellow:#ffd24a; --red:#ff8272;
+    --display:"Bahnschrift","DIN Alternate","Segoe UI",system-ui,sans-serif; --body:"Segoe UI Variable Text","Segoe UI",system-ui,sans-serif; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--ink); color: var(--text); font: 15px/1.5 var(--body); user-select: none; cursor: default; overflow: hidden;
+    display: flex; flex-direction: column; padding: 40px 44px 30px; }
+  .mark { width: 66px; height: 42px; position: relative; margin-bottom: 26px; }
+  .mark i { position: absolute; top: 0; width: 42px; height: 42px; border-radius: 50%; border: 6px solid; }
+  .mark i:first-child { left: 0; border-color: var(--blue); }
+  .mark i:last-child { right: 0; border-color: var(--yellow); }
+  h1 { font: 600 32px/1.1 var(--display); margin: 0 0 10px; }
+  p { margin: 0 0 8px; color: var(--muted); max-width: 52ch; }
+  .path { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; margin-top: 14px; }
+  .path b { color: var(--text); font-weight: 400; }
+  label { display: flex; align-items: center; gap: 10px; margin-top: 16px; cursor: pointer; }
+  input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--blue); }
+  .spacer { flex: 1; }
+  .foot { display: flex; align-items: center; gap: 16px; }
+  #msg { flex: 1; font-size: 14px; color: var(--muted); }
+  #msg.err { color: var(--red); user-select: text; }
+  button { font: 600 17px/1 var(--display); letter-spacing: .02em; border: 0; border-radius: 6px; padding: 13px 30px; background: var(--yellow); color: #201a05; cursor: pointer; }
+  button:hover:not([disabled]) { background: #ffdf7a; }
+  button[disabled] { opacity: .5; cursor: default; }
+  button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  .track { height: 6px; background: var(--panel-hi); border-radius: 3px; overflow: hidden; margin-bottom: 18px; visibility: hidden; }
+  .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--blue), var(--yellow)); transition: width .25s; }
+</style>
+</head>
+<body>
+<div class="mark" aria-hidden="true"><i></i><i></i></div>
+<h1 id="title"></h1>
+<p id="lead"></p>
+<p id="state"></p>
+<div class="path" id="path"></div>
+<label><input type="checkbox" id="desktop" checked><span id="dlabel"></span></label>
+<div class="spacer"></div>
+<div class="track" id="track"><div class="fill" id="fill"></div></div>
+<div class="foot"><div id="msg"></div><button id="go"></button></div>
+<script>
+const T = {
+  tr: { title: (v) => `yutakhub ${v} kurulumu`, lead: "Co-op modlarını tek tıkla kuran ve güncel tutan uygulama. Kurulum birkaç saniye sürer ve yönetici izni istemez.",
+    fresh: "", has: (v) => `Bu bilgisayarda yutakhub ${v} kurulu. Yerine bu sürüm kurulacak; ayarların ve kurduğun modlar korunur.`,
+    path: "Kurulacağı yer:", desktop: "Masaüstüne kısayol ekle", go: "Kur", goUp: "Güncelle", working: "Kuruluyor…", done: "Kuruldu. yutakhub açılıyor…", fail: (d) => `Kurulamadı: ${d}` },
+  en: { title: (v) => `Set up yutakhub ${v}`, lead: "The app that installs co-op mods in one click and keeps them up to date. Setup takes a few seconds and needs no administrator rights.",
+    fresh: "", has: (v) => `yutakhub ${v} is installed on this PC. This version replaces it; your settings and installed mods are kept.`,
+    path: "Installs to:", desktop: "Add a desktop shortcut", go: "Install", goUp: "Update", working: "Installing…", done: "Installed. Opening yutakhub…", fail: (d) => `Setup failed: ${d}` },
+};
+const call = window.yhCall
+  ? async (n, a) => { const r = await window.yhCall(n, JSON.stringify(a || {})); return r ? JSON.parse(r) : null; }
+  : async (n, a) => { const r = await fetch("/api/" + n, { method: "POST", body: JSON.stringify(a || {}) }); if (!r.ok) throw new Error(await r.text()); return r.json(); };
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+(async () => {
+  const S = await call("state"), info = await call("setupInfo"), L = T[S.lang === "tr" ? "tr" : "en"];
+  document.documentElement.lang = S.lang;
+  $("title").textContent = L.title(S.appVersion); $("lead").textContent = L.lead;
+  $("state").textContent = info.installed ? L.has(info.installed) : L.fresh;
+  $("path").innerHTML = `${L.path} <b>${esc(info.dir)}</b>`;
+  $("dlabel").textContent = L.desktop; $("go").textContent = info.installed ? L.goUp : L.go;
+  $("go").onclick = async () => {
+    $("go").disabled = true; $("desktop").disabled = true; $("msg").className = ""; $("msg").textContent = L.working; $("track").style.visibility = "visible";
+    await call("setupInstall", { desktop: $("desktop").checked });
+    const timer = setInterval(async () => {
+      const op = await call("op"); $("fill").style.width = op.pct + "%";
+      if (op.running) return;
+      clearInterval(timer);
+      if (op.errCode) { $("msg").className = "err"; $("msg").textContent = L.fail(op.err); $("go").disabled = false; $("desktop").disabled = false; }
+      else { $("fill").style.width = "100%"; $("msg").textContent = L.done; }
+    }, 200);
+  };
+  $("go").focus();
+})();
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+</script>
+</body>
+</html>

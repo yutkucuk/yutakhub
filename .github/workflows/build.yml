@@ -36,6 +36,7 @@ jobs:
             -ldflags "-H windowsgui -s -w -X main.repo=${{ github.repository }} -X main.branch=${{ github.event.repository.default_branch }}" \
             -o ../dist/yutakhub.exe .
           cd ../dist
+          cp yutakhub.exe yutakhub-setup.exe
           printf '{"version":"%s","sha256":"%s"}\n' "$VERSION" "$(sha256sum yutakhub.exe | cut -d' ' -f1)" > version.json
           cat version.json
 
@@ -52,6 +53,6 @@ jobs:
             echo "v$VERSION zaten yayında. Yeni sürüm çıkarmak için app/version.txt içindeki numarayı artır."
             exit 0
           fi
-          gh release create "v$VERSION" dist/yutakhub.exe dist/version.json \
+          gh release create "v$VERSION" dist/yutakhub-setup.exe dist/yutakhub.exe dist/version.json \
             --title "yutakhub $VERSION" \
-            --notes "yutakhub.exe dosyasını indirip çalıştır. Kurulum gerektirmez; sonraki sürümleri uygulamanın içinden güncellersin."
+            --notes "Kurmak için yutakhub-setup.exe dosyasını indirip çalıştır. Sonraki sürümleri uygulamanın içinden güncellersin. (yutakhub.exe ve version.json, uygulamanın kendini güncellemesi içindir.)"
