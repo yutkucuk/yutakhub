@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "minApp": "1.0.0",
+  "games": [
+    {
+      "id": "20mtd",
+      "name": "20 Minutes Till Dawn",
+      "steamAppId": 1966900,
+      "exe": "MinutesTillDawn.exe",
+      "mod": {
+        "name": "Co-op",
+        "version": "0.9.4",
+        "type": "extract",
+        "url": "mods/20mtd/20mtd-coop-0.9.4.zip",
+        "sha256": "8d4910b5f8a0509a95329568960d5629a9c4dea36968d3ac9073627eac548c2c",
+        "detect": "BepInEx/plugins/MTDCoop.dll",
+        "keep": ["BepInEx/config/*"],
+        "remove": [
+          "BepInEx/plugins/MTDCoop.dll", "BepInEx/core", "BepInEx/cache", "BepInEx/LogOutput.log",
+          "BepInEx/config/com.mtdcoop.mod.cfg", "BepInEx/config/BepInEx.cfg",
+          "winhttp.dll", "doorstop_config.ini", ".doorstop_version", "KURULUM.txt"
+        ],
+        "summary": {
+          "tr": "İki kişilik online co-op. Ana menüye Co-op satırı eklenir, arkadaşını Steam'den davet edersin; ek program gerekmez.",
+          "en": "Two-player online co-op. Adds a Co-op entry to the main menu and connects through a Steam invite; nothing else to install."
+        },
+        "notes": {
+          "tr": "Co-op > Host Lobby > Invite ile arkadaşını davet et.\nİki oyuncuda da modun aynı sürümü kurulu olmalı.",
+          "en": "Invite your friend with Co-op > Host Lobby > Invite.\nBoth players need the same version of the mod."
+        }
+      }
+    },
+    {
+      "id": "nac",
+      "name": "Noobs Are Coming",
+      "steamAppId": 2225960,
+      "exe": "Noobs Are Coming.exe",
+      "mod": {
+        "name": "Online Co-op",
+        "version": "1.0.0",
+        "type": "patch",
+        "target": "resources/app.asar",
+        "backup": "app.asar.vanilla-backup",
+        "patches": [
+          {
+            "gameVersion": "1.3.2",
+            "from": "d635403af14959125bffcdf8e0248420bc787453dc820b32257e455efdf2f467",
+            "to": "cf29fbe27cb21a2cdf2f534469f270c02a18bbca21efca20d0b6a599a4842b5d",
+            "url": "mods/nac/nac-coop-1.0.0-game-1.3.2.yhp"
+          }
+        ],
+        "knownModded": [],
+        "summary": {
+          "tr": "Oyunun yerel co-op'unu internete taşır. Ana menüye Online Co-op butonu eklenir, bağlantı Steam üzerinden kurulur.",
+          "en": "Takes the game's local co-op online. Adds an Online Co-op button to the main menu and connects through Steam."
+        },
+        "notes": {
+          "tr": "Ana menü > Online Co-op > Host Game > Invite Friend.\nKatılan oyuncu menülerde klavye ya da gamepad kullanır.\nOyun güncellenirse Steam modu siler; yeni sürüm hazır olduğunda buradan tekrar kurarsın.",
+          "en": "Main menu > Online Co-op > Host Game > Invite Friend.\nThe joining player uses keyboard or gamepad in menus.\nWhen the game updates, Steam removes the mod; install it again here once the new version is ready."
+        }
+      }
+    },
+    {
+      "id": "hot",
+      "name": "Halls of Torment",
+      "steamAppId": 2218750,
+      "exe": "HallsOfTorment.exe",
+      "mod": {
+        "name": "Co-op",
+        "version": "0.3.1",
+        "type": "extract",
+        "url": "mods/hot/hot-coop-0.3.1.zip",
+        "sha256": "a1af7540de2a6c957434694996cc38e3987c27ef830a6de38076b46423f02a69",
+        "detect": "coop/boot.gd",
+        "keep": ["coop/config.cfg"],
+        "remove": ["override.cfg", "coop"],
+        "summary": {
+          "tr": "İki kişilik online co-op. Kampta CO-OP düğmesi (ya da F1) ile lobi açılır, arkadaşın Steam davetiyle katılır.",
+          "en": "Two-player online co-op. Open a lobby with the CO-OP button at the camp (or F1) and your friend joins through a Steam invite."
+        },
+        "notes": {
+          "tr": "Kamp ateşinde sağ üstteki CO-OP düğmesine bas.\nİki oyuncuda da modun aynı sürümü kurulu olmalı.",
+          "en": "Press the CO-OP button at the top right of the camp screen.\nBoth players need the same version of the mod."
+        }
+      }
+    }
+  ]
+}
