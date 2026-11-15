@@ -92,20 +92,20 @@
       "exe": "HallsOfTorment.exe",
       "mod": {
         "name": "Co-op",
-        "version": "0.4.2",
+        "version": "0.4.3",
         "summary": {
           "en": "Two-player online co-op. Open a lobby with the CO-OP button at the camp (or F1) and your friend joins through a Steam invite.",
           "tr": "İki kişilik online co-op. Kampta CO-OP düğmesi (ya da F1) ile lobi açılır, arkadaşın Steam davetiyle katılır."
         },
         "notes": {
-          "en": "Press the CO-OP button at the top right of the camp screen.\nBoth players need the same version of the mod.",
+          "en": "Minor fixes.",
           "tr": "Kamp ateşinde sağ üstteki CO-OP düğmesine bas.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
         },
         "type": "extract",
         "detect": "coop/boot.gd",
-        "url": "mods/hot/hot-0.4.2.zip",
-        "sha256": "dc421fe08a238ea9d04dae447642070cd9a977f98309e81b6e0260c020fb3119",
-        "content": "549821eb8aadf8f2bace1e5451b270c498033e5caa8cab80e30612e0f1cc53c4",
+        "url": "mods/hot/hot-0.4.3.zip",
+        "sha256": "bc00abc8366f57d82a5ec44bb446a8d581aa9c86c27c27ba12543cdf4555f279",
+        "content": "1b2bfb9f15ad38311d8e6efdf258a43d4290d8c7e236a21bd0b147e66be1b4e1",
         "keep": [
           "coop/config.cfg"
         ],
