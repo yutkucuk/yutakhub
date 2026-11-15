@@ -137,20 +137,20 @@
       "exe": "WTCC.exe",
       "mod": {
         "name": "Co-op",
-        "version": "1.0.0",
+        "version": "2.0.0",
         "summary": {
-          "en": "Two-player online co-op for the demo (game version 0.9.9). Adds a CO-OP button to the main menu and connects through a Steam invite.",
-          "tr": "Demo için iki kişilik online co-op (oyun sürümü 0.9.9). Ana menüye CO-OP düğmesi eklenir, arkadaşın Steam davetiyle katılır."
+          "en": "Two-player online co-op for the demo (game version 0.9.9), plus Overtime days after day 5 and a Supply screen for extra turrets. Works solo too.",
+          "tr": "Demo için iki kişilik online co-op (oyun sürümü 0.9.9). 5. günden sonra Mesai günleri ve ek taret için İkmal ekranı da var; tek başına da çalışır."
         },
         "notes": {
-          "en": "Main menu > CO-OP > Host game (Steam invite), then Continue / New Game.\nThe host's save is played; points, upgrades and turrets are shared.\nBoth players need the same version of the mod.",
-          "tr": "Ana menü > CO-OP > Oyun kur (Steam daveti), sonra Devam Et / Yeni Oyun.\nKuranın kaydı oynanır; puanlar, yükseltmeler ve taretler ortaktır.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
+          "en": "2.0.0: each player has their own turret and wall inventory (fixes duplicated turrets), Overtime days with a different rule each day, Supply screen, tidier interface.\nMain menu > CO-OP > Host game (Steam invite), then Continue / New Game.\nBoth players need the same version of the mod.",
+          "tr": "2.0.0: her oyuncunun kendi taret ve duvar envanteri var (klonlanan taret hatası giderildi), her gün farklı kuralla gelen Mesai günleri, İkmal ekranı, daha derli toplu arayüz.\nAna menü > CO-OP > Oyun kur (Steam daveti), sonra Devam Et / Yeni Oyun.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
         },
         "type": "extract",
         "detect": "coop/boot.gd",
-        "url": "mods/wtcc/wtcc-coop-1.0.0.zip",
-        "sha256": "2001942da04dc4446b661202c9ee3792474680bf02d9cb1c4b351fecbfac69f0",
-        "content": "90a738af5e2bbd9e00ac347577a48011b00e70dd981e90a0b5153887ab0cf0c7",
+        "url": "mods/wtcc/wtcc-coop-2.0.0.zip",
+        "sha256": "ebe194a7e11d86be1128e23c260dca1660fbc5b87dd84a4ec017f904b157a998",
+        "content": "9844358e96f2164c2fbbd34c66c41c6ecd9f95f9a2f27751e4b2e716dbf43b29",
         "remove": [
           "override.cfg",
           "coop",
