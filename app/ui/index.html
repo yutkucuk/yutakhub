@@ -215,7 +215,8 @@ const T = {
     p_done: (n, v) => `${n} ${v} yayınlandı. Kullanıcılara birkaç dakika içinde ulaşır.`,
     ph_pub_catalog: "Liste güncelleniyor", ph_pub_package: "Paket hazırlanıyor", ph_pub_upload: "GitHub'a yükleniyor",
     e_pub_repo: () => "Depo adı kullanıcı/depo biçiminde olmalı, örneğin yutku/yutakhub.", e_pub_no_token: () => "Önce depo adını ve erişim anahtarını kaydet.",
-    e_pub_github: (d) => `GitHub işlemi tamamlanamadı: ${d}`, e_pub_version: () => "Sürüm numarası 1.2.3 biçiminde olmalı. Yamalı modlarda oyun sürümü de gerekli.",
+    e_pub_github: (d) => `GitHub işlemi tamamlanamadı: ${d}`,
+    e_pub_token_perm: (d) => `Erişim anahtarının ${d} deposuna yazma izni yok. GitHub'da anahtarı aç: Repository access altında bu depo seçili, Repository permissions altında Contents "Read and write" olmalı.`, e_pub_version: () => "Sürüm numarası 1.2.3 biçiminde olmalı. Yamalı modlarda oyun sürümü de gerekli.",
     e_pub_same_version: (d) => `Mod dosyaları değişmiş ama sürüm hâlâ ${d}. Kullanıcıların güncellemeyi görmesi için sürümü artır.`,
     e_pub_nomod: (d) => `${d}: oyun klasöründe yayınlanacak mod dosyası bulunamadı.`, e_pub_nooriginal: (d) => `${d}: orijinal dosyanın yedeği bulunamadı.`,
     ov: (n, i, u) => `<b>${n}</b> oyundan <b>${i}</b> tanesinde mod kurulu` + (u ? `, <b>${u}</b> güncelleme var` : ""),
@@ -278,7 +279,8 @@ const T = {
     p_done: (n, v) => `${n} ${v} published. It reaches users within a few minutes.`,
     ph_pub_catalog: "Updating the list", ph_pub_package: "Building the package", ph_pub_upload: "Uploading to GitHub",
     e_pub_repo: () => "The repository must look like owner/name, for example yutku/yutakhub.", e_pub_no_token: () => "Save the repository name and access token first.",
-    e_pub_github: (d) => `GitHub did not complete the request: ${d}`, e_pub_version: () => "The version must look like 1.2.3. Patched mods also need the game version.",
+    e_pub_github: (d) => `GitHub did not complete the request: ${d}`,
+    e_pub_token_perm: (d) => `The access token may not write to ${d}. Open the token on GitHub: this repository must be selected under Repository access, and Contents must be "Read and write" under Repository permissions.`, e_pub_version: () => "The version must look like 1.2.3. Patched mods also need the game version.",
     e_pub_same_version: (d) => `The mod files changed but the version is still ${d}. Raise the version so users see the update.`,
     e_pub_nomod: (d) => `${d}: no mod files to publish were found in the game folder.`, e_pub_nooriginal: (d) => `${d}: no backup of the original file was found.`,
     ov: (n, i, u) => `Mods installed for <b>${i}</b> of <b>${n}</b> games` + (u ? `, <b>${u}</b> ${u > 1 ? "updates" : "update"} available` : ""),
@@ -468,6 +470,7 @@ function render() {
   });
   ["mods", "settings", "about", "publish"].forEach((v) => ($("v-" + v).hidden = v !== view));
   if (view === "publish" && pubStale && !op.running) loadPublish();
+  document.querySelectorAll("#v-publish button[data-pub], #p-test").forEach((b) => (b.disabled = op.running));
   $("refresh").style.visibility = view === "mods" ? "visible" : "hidden";
   const found = S.games.filter((g) => g.status !== "nogame"), inst = S.games.filter((g) => g.status === "installed" || g.status === "update");
   $("overview").innerHTML = S.games.length ? `<span>${L.ov(found.length, inst.length, updates.length)}</span>
@@ -544,6 +547,10 @@ async function poll(force) {
     if (finished || (changed && !op.running)) {
       if (op.errCode) {
         toast(errText(op.errCode, op.err));
+        if (op.kind === "publish" && P) {
+          const b = document.querySelector(`button[data-pub="${op.id}"]`), g = P.games.find((x) => x.id === op.id);
+          if (b && g) b.textContent = g.state === "changed" ? t().p_publish : t().p_notesOnly;
+        }
         if (op.errCode === "self_write") call("openReleases");
       } else if (op.kind === "shortcut") { toast(t().shortDone, true);
       } else if (op.kind === "pubtest") { toast(t().p_testOk, true);

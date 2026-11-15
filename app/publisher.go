@@ -169,6 +169,15 @@ func (a *App) pubTest() error {
 	if !r.Permissions.Push {
 		return coded("pub_github", "this token cannot write to "+c.Repo)
 	}
+	// The answer above describes the account, not the token. Only a real write shows whether the
+	// token itself may write, so store a tiny blob that nothing refers to (it changes no file).
+	blob := map[string]string{"content": "yutakhub connection test", "encoding": "utf-8"}
+	if code, err := c.gh("POST", "/repos/"+c.Repo+"/git/blobs", blob, nil); err != nil {
+		if code == 403 || code == 404 {
+			return coded("pub_token_perm", c.Repo)
+		}
+		return coded("pub_github", err)
+	}
 	return nil
 }
 
@@ -450,16 +459,22 @@ func (a *App) publish(id, version, gameVersion, notesTr, notesEn string, progres
 	}
 	m.Notes["tr"], m.Notes["en"] = strings.TrimSpace(notesTr), strings.TrimSpace(notesEn)
 
+	ghErr := func(err error) error {
+		if strings.Contains(err.Error(), "GitHub 403") {
+			return coded("pub_token_perm", c.Repo)
+		}
+		return coded("pub_github", err)
+	}
 	if pkg != nil {
 		progress("pub_upload", 50)
 		if err := c.putFile(pkgPath, pkg, fmt.Sprintf("%s %s %s", g.Name, m.Name, version)); err != nil {
-			return coded("pub_github", err)
+			return ghErr(err)
 		}
 	}
 	progress("pub_catalog", 80)
 	out := marshalCatalog(&cat)
 	if err := c.putFile("catalog.json", out, fmt.Sprintf("catalog: %s %s %s", g.Name, m.Name, version)); err != nil {
-		return coded("pub_github", err)
+		return ghErr(err)
 	}
 	progress("pub_catalog", 100)
 	if repo == "" || strings.EqualFold(repo, c.Repo) { // show the result right away instead of waiting for GitHub's cache
