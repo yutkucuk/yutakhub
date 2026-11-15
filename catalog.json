@@ -129,6 +129,44 @@
           "versionRegex": "VERSION: String = \"([0-9.]+)\""
         }
       }
+    },
+    {
+      "id": "wtcc",
+      "name": "Wait, They Can Climb?! Demo",
+      "steamAppId": 5484870,
+      "exe": "WTCC.exe",
+      "mod": {
+        "name": "Co-op",
+        "version": "1.0.0",
+        "summary": {
+          "en": "Two-player online co-op for the demo (game version 0.9.9). Adds a CO-OP button to the main menu and connects through a Steam invite.",
+          "tr": "Demo için iki kişilik online co-op (oyun sürümü 0.9.9). Ana menüye CO-OP düğmesi eklenir, arkadaşın Steam davetiyle katılır."
+        },
+        "notes": {
+          "en": "Main menu > CO-OP > Host game (Steam invite), then Continue / New Game.\nThe host's save is played; points, upgrades and turrets are shared.\nBoth players need the same version of the mod.",
+          "tr": "Ana menü > CO-OP > Oyun kur (Steam daveti), sonra Devam Et / Yeni Oyun.\nKuranın kaydı oynanır; puanlar, yükseltmeler ve taretler ortaktır.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
+        },
+        "type": "extract",
+        "detect": "coop/boot.gd",
+        "url": "mods/wtcc/wtcc-coop-1.0.0.zip",
+        "sha256": "2001942da04dc4446b661202c9ee3792474680bf02d9cb1c4b351fecbfac69f0",
+        "content": "90a738af5e2bbd9e00ac347577a48011b00e70dd981e90a0b5153887ab0cf0c7",
+        "remove": [
+          "override.cfg",
+          "coop",
+          "coop_boot.gd",
+          "wtcc_coop.pck",
+          "kur.bat"
+        ],
+        "publish": {
+          "include": [
+            "override.cfg",
+            "coop/**"
+          ],
+          "versionFile": "coop/boot.gd",
+          "versionRegex": "VERSION: String = \"([0-9.]+)\""
+        }
+      }
     }
   ]
 }
