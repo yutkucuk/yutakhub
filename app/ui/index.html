@@ -235,7 +235,7 @@ const T = {
     a_play: "Birlikte oynayacağın herkeste modun aynı sürümü kurulu olmalı. Bağlantı Steam üzerinden kurulur; ek program, port açma ya da IP gerekmez.",
     a_legal: "Bu modlar resmi değildir. Oyunların geliştiricileri ya da yayıncılarıyla bir bağı yoktur; oyunların ve adlarının tüm hakları sahiplerine aittir. Modlar oyun dosyalarını bilgisayarında değiştirir, istediğin zaman kaldırabilirsin.",
     a_site: "GitHub sayfası", a_issue: "Sorun bildir", a_notes: "Sürüm notları", a_mods: "Bu sürümle gelen modlar", a_thanks: "20 Minutes Till Dawn modu BepInEx ile yüklenir.",
-    install: "Kur", update: "Güncelle", play: "Oyna", uninstall: "Modu kaldır", reinstall: "Yeniden kur",
+    install: "Kur", update: "Güncelle", play: "Oyna", uninstall: "Modu kaldır", uninstallGame: "Oyunu kaldır", reinstall: "Yeniden kur",
     openFolder: "Oyun klasörünü aç", pickFolder: "Klasörü seç", changeFolder: "Klasörü değiştir",
     notes: "Bu sürümde neler var", hideNotes: "Notları gizle",
     st_nogame: "Oyun bu bilgisayarda bulunamadı. Steam'den kurduysan klasörünü kendin seçebilirsin.",
@@ -299,7 +299,7 @@ const T = {
     a_play: "Everyone you play with needs the same version of the mod. The connection goes through Steam; no extra software, port forwarding or IP addresses.",
     a_legal: "These mods are unofficial. They are not affiliated with the games' developers or publishers; all rights to the games and their names belong to their owners. Mods change game files on your PC and can be removed at any time.",
     a_site: "GitHub page", a_issue: "Report a problem", a_notes: "Release notes", a_mods: "Mods in this release", a_thanks: "The 20 Minutes Till Dawn mod is loaded with BepInEx.",
-    install: "Install", update: "Update", play: "Play", uninstall: "Remove mod", reinstall: "Reinstall",
+    install: "Install", update: "Update", play: "Play", uninstall: "Remove mod", uninstallGame: "Remove game", reinstall: "Reinstall",
     openFolder: "Open game folder", pickFolder: "Choose folder", changeFolder: "Change folder",
     notes: "What's in this version", hideNotes: "Hide notes",
     st_nogame: "This game was not found on this PC. If it is installed, choose its folder yourself.",
@@ -379,7 +379,7 @@ function gameHTML(g) {
   if (notes) links.push(`<button data-a="notes">${openNotes[g.id] ? L.hideNotes : L.notes}</button>`);
   if (g.path) links.push(`<button data-a="openFolder">${L.openFolder}</button>`);
   if (g.status === "installed") links.push(`<button data-a="install"${dis}>${L.reinstall}</button>`);
-  if (g.status === "installed" || g.status === "update") links.push(`<button data-a="uninstall"${dis}>${L.uninstall}</button>`);
+  if (g.status === "installed" || g.status === "update") links.push(`<button data-a="uninstall"${dis}>${g.standalone ? L.uninstallGame : L.uninstall}</button>`);
   if (g.status === "unsupported") links.push(`<button data-a="pickFolder"${dis}>${L.changeFolder}</button>`);
   return `<section class="game ${g.status}${g.status === "nogame" ? " off" : ""}" data-id="${esc(g.id)}">
     ${coverHTML(g)}
@@ -411,7 +411,7 @@ function settingsHTML() {
     ${row(L.version(S.appVersion), updLine, S.update ? `<button class="btn primary" data-do="appUpdate"${dis}>${L.updBtn}</button>` : `<button class="ghost" data-do="checkUpdate"${dis || (S.repo ? "" : " disabled")}>${L.s_now}</button>`)}
     <h2>${L.s_folders}</h2>
     <div class="row" style="border:0;padding-bottom:0"><div class="what"><span>${L.s_foldersD}</span></div></div>
-    ${S.games.map((g) => row(esc(g.name), g.path ? esc(g.path) : L.s_notfound,
+    ${S.games.filter((g) => !g.standalone).map((g) => row(esc(g.name), g.path ? esc(g.path) : L.s_notfound,
       `${g.custom ? `<button class="ghost" data-do="resetFolder" data-id="${esc(g.id)}"${dis}>${L.s_auto2}</button>` : ""}<button class="ghost" data-do="pickFolder" data-id="${esc(g.id)}"${dis}>${L.s_change}</button>`)).join("")}
     <h2>${L.s_trouble}</h2>
     ${row(L.s_log, L.s_logD + " " + esc(S.dataDir), `<button class="ghost" data-do="openData">${L.s_logB}</button>`)}`;

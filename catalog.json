@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "minApp": "1.0.0",
+  "minApp": "1.2.0",
   "games": [
     {
       "id": "20mtd",
@@ -166,6 +166,31 @@
           "versionFile": "coop/boot.gd",
           "versionRegex": "VERSION: String = \"([0-9.]+)\""
         }
+      }
+    },
+    {
+      "id": "sonisik",
+      "name": "Son Işık",
+      "steamAppId": 0,
+      "exe": "SonIsik.exe",
+      "standalone": true,
+      "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/sonisik/header.jpg",
+      "mod": {
+        "name": "Oyun",
+        "version": "1.0.0",
+        "summary": {
+          "en": "Our own game: a night-time, pixelated 3D horde defence for one or two players. Guard the lighthouse through 20 waves with auto-firing weapons, level-up cards, items and turrets.",
+          "tr": "Kendi oyunumuz: tek ya da iki kişilik, gece geçen pikselli 3D sürü savunması. Kendiliğinden ateş eden silahlar, seviye kartları, eşyalar ve taretlerle feneri 20 dalga boyunca koru."
+        },
+        "notes": {
+          "en": "Complete game; no other game is needed.\nCo-op: both start the game with Steam running. One picks CO-OP > Host game (Steam invite), the other CO-OP > Join my friend's game (Steam). Steam shows it as \"Spacewar\"; that is expected.\nBoth players need the same version.",
+          "tr": "Oyunun tamamı; başka bir oyun gerekmez.\nCo-op: ikiniz de Steam açıkken oyunu başlatın. Biri CO-OP > Oyun kur (Steam daveti), diğeri CO-OP > Arkadaşımın oyununa katıl (Steam) der. Steam'de \"Spacewar\" olarak görünür; bu normal.\nİki oyuncuda da aynı sürüm olmalı."
+        },
+        "type": "extract",
+        "detect": "SonIsik.exe",
+        "url": "mods/sonisik/sonisik-1.0.0.zip",
+        "sha256": "a9b388f826a4ebc1f507ed147a4c125fb90e481dc56c6f0d0897c94435a8c4da",
+        "content": "e1f04b4ee767a4821cb605c040eb25bd0e1ca57fc35f49d255c03db701efa8be"
       }
     }
   ]

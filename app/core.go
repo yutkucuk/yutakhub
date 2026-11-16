@@ -87,7 +87,10 @@ type Game struct {
 	SteamAppID int    `json:"steamAppId"`
 	Exe        string `json:"exe"`
 	Image      string `json:"image,omitempty"`
-	Mod        Mod    `json:"mod"`
+	// Standalone marks a complete game that yutakhub installs into its own folder
+	// (no Steam game to find): the package is the game, and Exe is started directly.
+	Standalone bool `json:"standalone,omitempty"`
+	Mod        Mod  `json:"mod"`
 }
 
 type Catalog struct {
@@ -412,6 +415,9 @@ func exists(p string) bool {
 }
 
 func (a *App) gamePath(g *Game) string {
+	if g.Standalone {
+		return filepath.Join(a.dataDir, "games", g.ID)
+	}
 	if st := a.state.Games[g.ID]; st != nil && st.Path != "" {
 		if exists(filepath.Join(st.Path, g.Exe)) {
 			return st.Path
@@ -435,19 +441,20 @@ func (a *App) gamePath(g *Game) string {
 // ---------- status ----------
 
 type GameView struct {
-	ID        string   `json:"id"`
-	Name      string   `json:"name"`
-	Custom    bool     `json:"custom"`
-	AppID     int      `json:"appId"`
-	Image     string   `json:"image"`
-	ModName   string   `json:"modName"`
-	Summary   LStr     `json:"summary"`
-	Notes     LStr     `json:"notes"`
-	Latest    string   `json:"latest"`
-	Installed string   `json:"installed"`
-	Status    string   `json:"status"` // nogame | notinstalled | installed | update | unsupported
-	Path      string   `json:"path"`
-	Supported []string `json:"supported"`
+	ID         string   `json:"id"`
+	Name       string   `json:"name"`
+	Custom     bool     `json:"custom"`
+	AppID      int      `json:"appId"`
+	Image      string   `json:"image"`
+	ModName    string   `json:"modName"`
+	Summary    LStr     `json:"summary"`
+	Notes      LStr     `json:"notes"`
+	Latest     string   `json:"latest"`
+	Installed  string   `json:"installed"`
+	Standalone bool     `json:"standalone"`
+	Status     string   `json:"status"` // nogame | notinstalled | installed | update | unsupported
+	Path       string   `json:"path"`
+	Supported  []string `json:"supported"`
 }
 
 func (a *App) fileSha(p string) string {
@@ -509,6 +516,7 @@ func (a *App) view(g *Game) GameView {
 		return v
 	}
 	v.Path = root
+	v.Standalone = g.Standalone
 	st := a.state.Games[g.ID]
 	v.Custom = st != nil && st.Path != "" && strings.EqualFold(filepath.Clean(st.Path), filepath.Clean(root))
 	recorded := ""
@@ -1085,7 +1093,17 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 		if err != nil {
 			return nil, err
 		}
-		err = openTarget(fmt.Sprintf("steam://rungameid/%d", g.SteamAppID))
+		if g.Standalone {
+			a.mu.Lock()
+			exe := filepath.Join(a.gamePath(g), g.Exe)
+			a.mu.Unlock()
+			if !exists(exe) {
+				return nil, coded("nogame", g.Name)
+			}
+			err = openTarget(exe)
+		} else {
+			err = openTarget(fmt.Sprintf("steam://rungameid/%d", g.SteamAppID))
+		}
 		a.mu.Lock()
 		quit := a.state.Settings.CloseOnPlay && err == nil && a.onQuit != nil
 		a.mu.Unlock()
