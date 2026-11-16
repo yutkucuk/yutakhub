@@ -8,6 +8,7 @@ Co-op modlarını tek tıkla kuran ve güncel tutan bir Windows uygulaması.
 | Noobs Are Coming | Online Co-op |
 | Halls of Torment | Co-op |
 | Wait, They Can Climb?! Demo | Co-op |
+| Son Işık | Oyunun tamamı (kendi oyunumuz) |
 
 ## Kurulum
 
