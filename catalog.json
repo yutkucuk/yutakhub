@@ -177,20 +177,20 @@
       "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/sonisik/header.jpg",
       "mod": {
         "name": "Oyun",
-        "version": "1.1.0",
+        "version": "1.2.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D horde defence for one or two players. Guard the lighthouse through 20 waves with auto-firing weapons, level-up cards, items and turrets.",
           "tr": "Kendi oyunumuz: tek ya da iki kişilik, gece geçen pikselli 3D sürü savunması. Kendiliğinden ateş eden silahlar, seviye kartları, eşyalar ve taretlerle feneri 20 dalga boyunca koru."
         },
         "notes": {
-          "en": "1.1.0: destroyed turrets stay destroyed, a mortar enemy and boss slams that go for turrets, darkness and street lamps, night events and Dares, 64 items with trade-offs, rising prices, new models and sounds.\nComplete game; no other game is needed.\nCo-op: both start the game with Steam running. One picks CO-OP > Host game (Steam invite), the other CO-OP > Join my friend's game (Steam). Steam shows it as \"Spacewar\"; that is expected.\nBoth players need the same version.",
-          "tr": "1.1.0: yıkılan taretler geri gelmez, taretlere saldıran Havancı ve patron darbeleri, karanlık ve sokak lambaları, gece olayları ve Meydan Oku, artı-eksi etkili 64 eşya, artan fiyatlar, yeni modeller ve sesler.\nOyunun tamamı; başka bir oyun gerekmez.\nCo-op: ikiniz de Steam açıkken oyunu başlatın. Biri CO-OP > Oyun kur (Steam daveti), diğeri CO-OP > Arkadaşımın oyununa katıl (Steam) der. Steam'de \"Spacewar\" olarak görünür; bu normal.\nİki oyuncuda da aynı sürüm olmalı."
+          "en": "1.2.0: new Sorcerer designed by Beren (walk animation and a lantern that gives light), the other three heroes rebuilt at the same level of detail, slightly sharper image.\n1.1.0: destroyed turrets stay destroyed, a mortar enemy and boss slams that go for turrets, darkness and street lamps, night events and Dares, 64 items with trade-offs, rising prices, new models and sounds.\nComplete game; no other game is needed.\nCo-op: both start the game with Steam running. One picks CO-OP > Host game (Steam invite), the other CO-OP > Join my friend's game (Steam). Steam shows it as \"Spacewar\"; that is expected.\nBoth players need the same version.",
+          "tr": "1.2.0: Beren'in tasarladığı yeni Büyücü (yürüme animasyonu ve ışık veren fener), diğer üç karakter de aynı ayrıntıda yeniden yapıldı, görüntü bir kademe netleşti.\n1.1.0: yıkılan taretler geri gelmez, taretlere saldıran Havancı ve patron darbeleri, karanlık ve sokak lambaları, gece olayları ve Meydan Oku, artı-eksi etkili 64 eşya, artan fiyatlar, yeni modeller ve sesler.\nOyunun tamamı; başka bir oyun gerekmez.\nCo-op: ikiniz de Steam açıkken oyunu başlatın. Biri CO-OP > Oyun kur (Steam daveti), diğeri CO-OP > Arkadaşımın oyununa katıl (Steam) der. Steam'de \"Spacewar\" olarak görünür; bu normal.\nİki oyuncuda da aynı sürüm olmalı."
         },
         "type": "extract",
         "detect": "SonIsik.exe",
-        "url": "mods/sonisik/sonisik-1.1.0.zip",
-        "sha256": "b523675223abec7db8fb68ebf533513db312975a975898e00c11c9377f29e4ac",
-        "content": "ac7c95f6fde84c4614bcf792f9d8b3eaf990681ff8a48140398a228d8a37ca0c"
+        "url": "mods/sonisik/sonisik-1.2.0.zip",
+        "sha256": "c11d88d81f5911b7c12d073202a37cffbfe1705d4b74c294e9536904342f9bea",
+        "content": "6e159bcf772c43049927d55fb8e8c149f7694aeb0408fb899a4a6e72a8482f8d"
       }
     }
   ]
