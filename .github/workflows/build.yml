@@ -1,0 +1,58 @@
+name: yutakhub derle ve yayınla
+
+# app/ klasöründe bir şey değişince çalışır. app/version.txt içindeki sürüm için
+# henüz bir Release yoksa exe'yi derler ve yayınlar; kullanıcılardaki yutakhub
+# bu Release'i görüp kendini günceller.
+
+on:
+  push:
+    branches: [main, master]
+    paths: ['app/**', '.github/workflows/build.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+          cache: false
+
+      - name: Derle
+        working-directory: app
+        run: |
+          VERSION=$(tr -d ' \r\n' < version.txt)
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          go mod edit -dropreplace golang.org/x/sys
+          go mod tidy
+          go vet ./...
+          GOOS=windows GOARCH=amd64 go build -trimpath \
+            -ldflags "-H windowsgui -s -w -X main.repo=${{ github.repository }} -X main.branch=${{ github.event.repository.default_branch }}" \
+            -o ../dist/yutakhub.exe .
+          cd ../dist
+          cp yutakhub.exe yutakhub-setup.exe
+          printf '{"version":"%s","sha256":"%s"}\n' "$VERSION" "$(sha256sum yutakhub.exe | cut -d' ' -f1)" > version.json
+          cat version.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yutakhub
+          path: dist/
+
+      - name: Yayınla
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            echo "v$VERSION zaten yayında. Yeni sürüm çıkarmak için app/version.txt içindeki numarayı artır."
+            exit 0
+          fi
+          gh release create "v$VERSION" dist/yutakhub-setup.exe dist/yutakhub.exe dist/version.json \
+            --title "yutakhub $VERSION" \
+            --notes "Kurmak için yutakhub-setup.exe dosyasını indirip çalıştır. Sonraki sürümleri uygulamanın içinden güncellersin. (yutakhub.exe ve version.json, uygulamanın kendini güncellemesi içindir.)"

@@ -1,0 +1,172 @@
+{
+  "schema": 1,
+  "minApp": "1.0.0",
+  "games": [
+    {
+      "id": "20mtd",
+      "name": "20 Minutes Till Dawn",
+      "steamAppId": 1966900,
+      "exe": "MinutesTillDawn.exe",
+      "mod": {
+        "name": "Co-op",
+        "version": "0.9.4",
+        "summary": {
+          "en": "Two-player online co-op. Adds a Co-op entry to the main menu and connects through a Steam invite; nothing else to install.",
+          "tr": "İki kişilik online co-op. Ana menüye Co-op satırı eklenir, arkadaşını Steam'den davet edersin; ek program gerekmez."
+        },
+        "notes": {
+          "en": "Invite your friend with Co-op > Host Lobby > Invite.\nBoth players need the same version of the mod.",
+          "tr": "Co-op > Host Lobby > Invite ile arkadaşını davet et.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
+        },
+        "type": "extract",
+        "detect": "BepInEx/plugins/MTDCoop.dll",
+        "url": "mods/20mtd/20mtd-coop-0.9.4.zip",
+        "sha256": "8d4910b5f8a0509a95329568960d5629a9c4dea36968d3ac9073627eac548c2c",
+        "content": "3b52149bb1896a2acbb29fe9718835bc513fef3e6e1f1f11da1b660690c3a7a7",
+        "keep": [
+          "BepInEx/config/*"
+        ],
+        "remove": [
+          "BepInEx/plugins/MTDCoop.dll",
+          "BepInEx/core",
+          "BepInEx/cache",
+          "BepInEx/LogOutput.log",
+          "BepInEx/config/com.mtdcoop.mod.cfg",
+          "BepInEx/config/BepInEx.cfg",
+          "winhttp.dll",
+          "doorstop_config.ini",
+          ".doorstop_version",
+          "KURULUM.txt"
+        ],
+        "publish": {
+          "include": [
+            "winhttp.dll",
+            "doorstop_config.ini",
+            ".doorstop_version",
+            "BepInEx/core/**",
+            "BepInEx/plugins/MTDCoop.dll"
+          ],
+          "versionFile": "BepInEx/plugins/MTDCoop.dll",
+          "versionRegex": "com\\.mtdcoop\\.mod[^0-9]{0,8}([0-9]+\\.[0-9]+\\.[0-9]+)",
+          "versionUtf16": true
+        }
+      }
+    },
+    {
+      "id": "nac",
+      "name": "Noobs Are Coming",
+      "steamAppId": 2225960,
+      "exe": "Noobs Are Coming.exe",
+      "mod": {
+        "name": "Online Co-op",
+        "version": "1.1.1",
+        "summary": {
+          "en": "Takes the game's local co-op online. Adds an Online Co-op button to the main menu and connects through Steam.",
+          "tr": "Oyunun yerel co-op'unu internete taşır. Ana menüye Online Co-op butonu eklenir, bağlantı Steam üzerinden kurulur."
+        },
+        "notes": {
+          "en": "Main menu > Online Co-op > Host Game > Invite Friend.\nThe joining player uses keyboard or gamepad in menus.\nWhen the game updates, Steam removes the mod; install it again here once the new version is ready.",
+          "tr": "Ana menü > Online Co-op > Host Game > Invite Friend.\nKatılan oyuncu menülerde klavye ya da gamepad kullanır.\nOyun güncellenirse Steam modu siler; yeni sürüm hazır olduğunda buradan tekrar kurarsın."
+        },
+        "type": "patch",
+        "target": "resources/app.asar",
+        "backup": "app.asar.vanilla-backup",
+        "patches": [
+          {
+            "gameVersion": "1.3.2",
+            "from": "d635403af14959125bffcdf8e0248420bc787453dc820b32257e455efdf2f467",
+            "to": "7068ecbf63431fadeaceb52d49ce51911444e13e5db229d7ad12d865fbba2eb1",
+            "url": "mods/nac/nac-1.1.1-game-1.3.2.yhp"
+          }
+        ],
+        "knownModded": [
+          "cf29fbe27cb21a2cdf2f534469f270c02a18bbca21efca20d0b6a599a4842b5d",
+          "3bd95c1ce7920495107828c7a5066ea2a4a9b47c295855b3011f8702d6429c62"
+        ],
+        "publish": {
+          "versionRegex": "MOD_VERSION = \"([0-9.]+)\"",
+          "gameVersionRegex": "versionString = \"([0-9.]+)\""
+        }
+      }
+    },
+    {
+      "id": "hot",
+      "name": "Halls of Torment",
+      "steamAppId": 2218750,
+      "exe": "HallsOfTorment.exe",
+      "mod": {
+        "name": "Co-op",
+        "version": "0.4.3",
+        "summary": {
+          "en": "Two-player online co-op. Open a lobby with the CO-OP button at the camp (or F1) and your friend joins through a Steam invite.",
+          "tr": "İki kişilik online co-op. Kampta CO-OP düğmesi (ya da F1) ile lobi açılır, arkadaşın Steam davetiyle katılır."
+        },
+        "notes": {
+          "en": "Minor fixes.",
+          "tr": "Kamp ateşinde sağ üstteki CO-OP düğmesine bas.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
+        },
+        "type": "extract",
+        "detect": "coop/boot.gd",
+        "url": "mods/hot/hot-0.4.3.zip",
+        "sha256": "bc00abc8366f57d82a5ec44bb446a8d581aa9c86c27c27ba12543cdf4555f279",
+        "content": "1b2bfb9f15ad38311d8e6efdf258a43d4290d8c7e236a21bd0b147e66be1b4e1",
+        "keep": [
+          "coop/config.cfg"
+        ],
+        "remove": [
+          "override.cfg",
+          "coop"
+        ],
+        "publish": {
+          "include": [
+            "override.cfg",
+            "coop/**"
+          ],
+          "exclude": [
+            "coop/coop.log"
+          ],
+          "versionFile": "coop/boot.gd",
+          "versionRegex": "VERSION: String = \"([0-9.]+)\""
+        }
+      }
+    },
+    {
+      "id": "wtcc",
+      "name": "Wait, They Can Climb?! Demo",
+      "steamAppId": 5484870,
+      "exe": "WTCC.exe",
+      "mod": {
+        "name": "Co-op",
+        "version": "3.0.0",
+        "summary": {
+          "en": "Two-player online co-op for the demo (game version 0.9.9) with Overtime days, a Supply store, in-game chat and a shotgun. Works solo too.",
+          "tr": "Demo için iki kişilik online co-op (oyun sürümü 0.9.9): Mesai günleri, İkmal mağazası, oyun içi sohbet ve pompalı tüfek. Tek başına da çalışır."
+        },
+        "notes": {
+          "en": "3.0.0: each player has their own ability cooldowns, Supply moved into the upgrade screen (T), in-game chat (Enter), new shotgun, far bigger Overtime days, difficulty up to x5 (main menu > CO-OP), day-select screen removed.\nThe mod only uses what the demo already offers.\nBoth players need the same version of the mod.",
+          "tr": "3.0.0: her oyuncunun kendi yetenek bekleme süresi var, İkmal yükseltme ekranının (T) içine taşındı, oyun içi sohbet (Enter), yeni pompalı tüfek, çok daha kalabalık Mesai günleri, x5'e kadar zorluk (ana menü > CO-OP), gün seçme ekranı kaldırıldı.\nMod yalnızca demo'nun sunduklarını kullanır.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
+        },
+        "type": "extract",
+        "detect": "coop/boot.gd",
+        "url": "mods/wtcc/wtcc-coop-3.0.0.zip",
+        "sha256": "05fbb3a1d79c6a43629bd4fa52e5329aa17bcaa41cf58281523fcb7d034d2e7b",
+        "content": "c3674d10a2eb970629d76e9d7f301cbf3c8701875005039eccf1f7f837b21ca8",
+        "remove": [
+          "override.cfg",
+          "coop",
+          "coop_boot.gd",
+          "wtcc_coop.pck",
+          "kur.bat"
+        ],
+        "publish": {
+          "include": [
+            "override.cfg",
+            "coop/**"
+          ],
+          "versionFile": "coop/boot.gd",
+          "versionRegex": "VERSION: String = \"([0-9.]+)\""
+        }
+      }
+    }
+  ]
+}

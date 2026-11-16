@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>yutakhub</title>
+<style>
+  :root {
+    --ink: #11131e;
+    --panel: #1a1d2d;
+    --panel-hi: #22263a;
+    --line: #2e3350;
+    --text: #ebe8de;
+    --muted: #979bb3;
+    --blue: #5aa9ff;
+    --yellow: #ffd24a;
+    --red: #ff8272;
+    --display: "Bahnschrift", "DIN Alternate", "Segoe UI", system-ui, sans-serif;
+    --body: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: var(--ink); color: var(--text);
+    font: 15px/1.5 var(--body); -webkit-font-smoothing: antialiased;
+    user-select: none; cursor: default; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  input, textarea { user-select: text; cursor: text; }
+  button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+  button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  button[disabled] { cursor: default; opacity: .45; }
+
+  header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 28px 16px; border-bottom: 1px solid var(--line);
+  }
+  .mark { width: 44px; height: 28px; position: relative; flex: none; }
+  .mark i { position: absolute; top: 0; width: 28px; height: 28px; border-radius: 50%; border: 4px solid; }
+  .mark i:first-child { left: 0; border-color: var(--blue); }
+  .mark i:last-child { right: 0; border-color: var(--yellow); }
+  .brand { font: 600 26px/1 var(--display); letter-spacing: .01em; }
+  .spacer { flex: 1; }
+  nav { display: flex; gap: 4px; margin-left: 28px; align-self: stretch; }
+  nav button {
+    padding: 4px 14px 0; font: 600 17px/1 var(--display); letter-spacing: .02em; color: var(--muted);
+    border-bottom: 3px solid transparent; margin-bottom: -17px; padding-bottom: 14px; position: relative;
+  }
+  nav button:hover { color: var(--text); }
+  nav button.on { color: var(--text); border-bottom-color: var(--yellow); }
+  nav .badge {
+    display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: var(--yellow); color: #201a05;
+    font: 700 12px/18px var(--body); text-align: center; margin-left: 7px; padding: 0 5px; vertical-align: 1px;
+  }
+  .seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .seg button { padding: 6px 14px; font-size: 14px; color: var(--muted); }
+  .seg button.on { background: var(--panel-hi); color: var(--text); }
+  .ghost { padding: 6px 12px; border: 1px solid var(--line); border-radius: 6px; font-size: 13px; color: var(--muted); }
+  .ghost:hover:not([disabled]) { color: var(--text); border-color: var(--muted); }
+
+  .bar {
+    display: flex; align-items: center; gap: 16px;
+    padding: 12px 28px; font-size: 14px; border-bottom: 1px solid var(--line);
+  }
+  .bar.update { background: #2b2610; color: #ffe9a6; }
+  .bar.warn { background: #2c1a1c; color: #ffc4bb; }
+  .bar .spacer { flex: 1; }
+
+  main { flex: 1; overflow-y: auto; padding: 8px 28px 24px; }
+  .view[hidden] { display: none; }
+  .overview { display: flex; align-items: center; gap: 16px; padding: 14px 0 6px; font-size: 14px; color: var(--muted); }
+  .overview b { color: var(--text); font-weight: 600; }
+  .overview .btn { font-size: 14px; padding: 8px 14px; }
+
+  .page { max-width: 760px; padding-top: 10px; }
+  .page h2 { font: 600 20px/1.2 var(--display); margin: 26px 0 4px; }
+  .row { display: flex; align-items: center; gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .row .what { flex: 1; min-width: 0; }
+  .row .what strong { font-weight: 600; display: block; }
+  .row .what span { color: var(--muted); font-size: 13.5px; display: block; overflow-wrap: anywhere; }
+  .row .ctl { display: flex; gap: 8px; flex: none; align-items: center; }
+  .row .ghost { font-size: 14px; color: var(--text); padding: 7px 13px; }
+  .switch { width: 46px; height: 26px; border-radius: 13px; background: var(--panel-hi); border: 1px solid var(--line); position: relative; flex: none; }
+  .switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--muted); transition: transform .15s; }
+  .switch[aria-checked="true"] { background: #1c3a5e; border-color: var(--blue); }
+  .switch[aria-checked="true"]::after { transform: translateX(20px); background: var(--blue); }
+
+  .about-head { display: flex; align-items: center; gap: 22px; padding: 30px 0 22px; }
+  .about-head .mark { transform: scale(1.9); transform-origin: left center; margin-right: 40px; }
+  .about-head h1 { font: 600 34px/1 var(--display); margin: 0 0 6px; }
+  .about-head p { margin: 0; color: var(--muted); }
+  .prose { max-width: 62ch; color: var(--text); user-select: text; }
+  .prose p { margin: 0 0 12px; }
+  .prose .dim { color: var(--muted); font-size: 13.5px; }
+  .buttons { display: flex; gap: 10px; flex-wrap: wrap; margin: 18px 0 6px; }
+  .buttons .ghost { font-size: 14px; color: var(--text); padding: 8px 14px; }
+  table.mods { border-collapse: collapse; width: 100%; max-width: 560px; font-size: 14px; margin-top: 6px; }
+  table.mods td { padding: 9px 0; border-bottom: 1px solid var(--line); }
+  table.mods td:last-child { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .field { display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: var(--muted); flex: 1; min-width: 0; }
+  .field input, .field textarea {
+    font: 14px/1.4 var(--body); color: var(--text); background: var(--panel); border: 1px solid var(--line);
+    border-radius: 6px; padding: 8px 10px; user-select: text; resize: vertical; width: 100%;
+  }
+  .field input:focus, .field textarea:focus { outline: 2px solid var(--blue); outline-offset: 0; border-color: transparent; }
+  .fields { display: flex; gap: 14px; margin: 12px 0; }
+  .pub { padding: 18px 0 20px; border-bottom: 1px solid var(--line); }
+  .pub h3 { font: 600 20px/1.2 var(--display); margin: 0 0 4px; }
+  .pub .st { font-size: 14px; display: flex; gap: 8px; align-items: center; }
+  .pub .st.changed .dot { background: var(--yellow); border-color: var(--yellow); }
+  .pub .st.same .dot { background: var(--blue); border-color: var(--blue); }
+  .pub .btn { font-size: 15px; padding: 10px 18px; }
+  .help { color: var(--muted); font-size: 13.5px; max-width: 66ch; margin: 6px 0 0; user-select: text; }
+
+  #modal { position: fixed; inset: 0; background: rgba(8, 9, 16, .72); display: none; place-items: center; z-index: 5; }
+  #modal .box { width: 440px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 24px; }
+  #modal h3 { font: 600 21px/1.2 var(--display); margin: 0 0 8px; }
+  #modal p { margin: 0 0 22px; color: var(--muted); }
+  #modal .buttons { justify-content: flex-end; margin: 0; }
+  #modal .btn { font-size: 15px; padding: 10px 18px; }
+  .btn.danger { background: var(--red); color: #2a0b07; }
+  main::-webkit-scrollbar { width: 10px; }
+  main::-webkit-scrollbar-thumb { background: var(--line); border-radius: 5px; }
+
+  .game {
+    display: grid; grid-template-columns: 276px 1fr auto; gap: 24px; align-items: center;
+    padding: 22px 0; border-bottom: 1px solid var(--line); position: relative;
+  }
+  .cover {
+    width: 276px; aspect-ratio: 460 / 215; border-radius: 4px; overflow: hidden;
+    background: var(--panel); display: grid; place-items: center; text-align: center;
+    font: 600 20px/1.15 var(--display); color: var(--muted); padding: 0 18px;
+  }
+  .cover img { width: 276px; height: 100%; object-fit: cover; display: block; margin: 0 -18px; max-width: none; }
+  .game.off .cover img { filter: grayscale(1) brightness(.6); }
+  .name { font: 600 25px/1.15 var(--display); margin: 0 0 6px; }
+  .status { font-size: 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; border: 2px solid var(--muted); }
+  .installed .dot { background: var(--blue); border-color: var(--blue); }
+  .update .dot { background: var(--yellow); border-color: var(--yellow); }
+  .unsupported .dot { border-color: var(--red); }
+  .status b { font-weight: 600; }
+  .summary { color: var(--muted); font-size: 14px; max-width: 58ch; margin: 0; }
+  .links { display: flex; gap: 18px; margin-top: 10px; font-size: 13px; }
+  .links button { color: var(--muted); padding: 0; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+  .links button:hover:not([disabled]) { color: var(--text); }
+  .notes {
+    grid-column: 2 / 4; margin: -6px 0 0; padding: 12px 16px; background: var(--panel);
+    border-left: 3px solid var(--blue); font-size: 14px; white-space: pre-line; user-select: text;
+  }
+  .actions { display: flex; flex-direction: column; gap: 8px; width: 168px; }
+  .btn { padding: 11px 14px; border-radius: 6px; font: 600 16px/1 var(--display); letter-spacing: .02em; text-align: center; }
+  .btn.primary { background: var(--yellow); color: #201a05; }
+  .btn.primary:hover:not([disabled]) { background: #ffdf7a; }
+  .btn.play { background: var(--blue); color: #06182c; }
+  .btn.play:hover:not([disabled]) { background: #84c0ff; }
+  .btn.second { border: 1px solid var(--line); color: var(--text); }
+  .btn.second:hover:not([disabled]) { border-color: var(--muted); }
+  .progress { grid-column: 1 / 4; display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--muted); margin-top: -8px; }
+  .track { flex: 1; height: 6px; background: var(--panel-hi); border-radius: 3px; overflow: hidden; }
+  .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--blue), var(--yellow)); transition: width .2s; }
+
+  .empty { padding: 64px 0; text-align: center; color: var(--muted); }
+  .empty h2 { font: 600 22px var(--display); color: var(--text); margin: 0 0 8px; }
+
+  footer { padding: 10px 28px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); display: flex; gap: 16px; }
+  #toast {
+    position: fixed; left: 50%; bottom: 52px; transform: translateX(-50%); max-width: 640px;
+    background: #2c1a1c; color: #ffd9d3; border: 1px solid #6b3a37; border-radius: 6px;
+    padding: 12px 16px; font-size: 14px; display: none; user-select: text;
+  }
+  #toast.ok { background: #14253a; color: #d3e8ff; border-color: #2f5786; }
+  @media (prefers-reduced-motion: reduce) { .fill, .switch::after { transition: none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="mark" aria-hidden="true"><i></i><i></i></div>
+  <div class="brand">yutakhub</div>
+  <nav id="nav">
+    <button data-view="mods"></button><button data-view="settings"></button><button data-view="about"></button><button data-view="publish" hidden></button>
+  </nav>
+  <div class="spacer"></div>
+  <button class="ghost" id="refresh"></button>
+</header>
+<div id="bars"></div>
+<main>
+  <div class="view" id="v-mods"><div class="overview" id="overview"></div><div id="list"></div></div>
+  <div class="view page" id="v-settings" hidden></div>
+  <div class="view page" id="v-about" hidden></div>
+  <div class="view page" id="v-publish" hidden></div>
+</main>
+<div id="modal"><div class="box"><h3 id="m-title"></h3><p id="m-body"></p>
+  <div class="buttons"><button class="btn second" id="m-no"></button><button class="btn danger" id="m-yes"></button></div></div></div>
+<footer><span id="ver"></span><span class="spacer"></span><span id="foot"></span></footer>
+<div id="toast" role="status"></div>
+
+<script>
+const T = {
+  tr: {
+    tagline: "Co-op modlarını tek tıkla kur ve güncel tut",
+    refresh: "Yenile", refreshing: "Kontrol ediliyor…",
+    nav_mods: "Modlar", nav_settings: "Ayarlar", nav_about: "Hakkında",
+    nav_publish: "Yayınla",
+    p_conn: "GitHub bağlantısı", p_repo: "Depo (kullanıcı/depo)", p_token: "Erişim anahtarı (token)", p_tokenSaved: "kayıtlı, değiştirmek için yenisini yaz",
+    p_save: "Kaydet", p_test: "Bağlantıyı sına", p_saved: "Kaydedildi.", p_testOk: "Bağlantı tamam: bu anahtar depoya yazabiliyor.",
+    p_help: "Anahtar almak için: GitHub > Settings > Developer settings > Fine-grained tokens > Generate new token. \"Only select repositories\" ile yalnızca bu depoyu seç, Repository permissions altında Contents için \"Read and write\" ver. Anahtar yalnızca bu bilgisayarda saklanır.",
+    p_mods: "Modlar", p_modsD: "Her mod, bu bilgisayardaki oyun klasöründen alınır. Yayınla'ya basınca paket ve güncel liste GitHub'a gider; herkesin yutakhub'ında birkaç dakika içinde \"Güncelle\" çıkar.",
+    p_version: "Mod sürümü", p_gameVersion: "Oyun sürümü", p_notesTr: "Bu sürümde neler var (Türkçe)", p_notesEn: "Bu sürümde neler var (English)", p_publish: "Yayınla", p_notesOnly: "Notları güncelle",
+    p_same: (g) => `Oyun klasöründeki mod yayındakiyle aynı (${g.published}).`,
+    p_changed: (g) => `Yayınlanmamış değişiklik var. Yayında ${g.published}` + (g.local ? `, klasörde ${g.local}.` : "."),
+    p_nogame: () => "Oyun bu bilgisayarda bulunamadı.", p_nomod: () => "Bu bilgisayardaki oyunda mod kurulu değil.",
+    p_nospec: () => "Listede bu mod için yayınlama ayarı (publish) yok.", p_nooriginal: () => "Mod kurulu değil ya da orijinal dosyanın yedeği yok.",
+    p_done: (n, v) => `${n} ${v} yayınlandı. Kullanıcılara birkaç dakika içinde ulaşır.`,
+    ph_pub_catalog: "Liste güncelleniyor", ph_pub_package: "Paket hazırlanıyor", ph_pub_upload: "GitHub'a yükleniyor",
+    e_pub_repo: () => "Depo adı kullanıcı/depo biçiminde olmalı, örneğin yutku/yutakhub.", e_pub_no_token: () => "Önce depo adını ve erişim anahtarını kaydet.",
+    e_pub_github: (d) => `GitHub işlemi tamamlanamadı: ${d}`,
+    e_pub_token_perm: (d) => `Erişim anahtarının ${d} deposuna yazma izni yok. GitHub'da anahtarı aç: Repository access altında bu depo seçili, Repository permissions altında Contents "Read and write" olmalı.`, e_pub_version: () => "Sürüm numarası 1.2.3 biçiminde olmalı. Yamalı modlarda oyun sürümü de gerekli.",
+    e_pub_same_version: (d) => `Mod dosyaları değişmiş ama sürüm hâlâ ${d}. Kullanıcıların güncellemeyi görmesi için sürümü artır.`,
+    e_pub_nomod: (d) => `${d}: oyun klasöründe yayınlanacak mod dosyası bulunamadı.`, e_pub_nooriginal: (d) => `${d}: orijinal dosyanın yedeği bulunamadı.`,
+    ov: (n, i, u) => `<b>${n}</b> oyundan <b>${i}</b> tanesinde mod kurulu` + (u ? `, <b>${u}</b> güncelleme var` : ""),
+    ovChecked: (tm) => `Son kontrol ${tm}`, updateAll: "Hepsini güncelle",
+    rmTitle: (n) => `${n} modu kaldırılsın mı?`, rmBody: "Oyunun kendisine ve kayıtlarına dokunulmaz. Modu istediğin zaman buradan yeniden kurabilirsin.", rmYes: "Modu kaldır", cancel: "Vazgeç",
+    s_general: "Genel", s_lang: "Dil", s_langD: "Uygulamanın arayüz dili.",
+    s_auto: "Mod güncellemelerini kendiliğinden kur", s_autoD: "yutakhub açıldığında, kurulu modların yeni sürümü varsa sormadan kurar.",
+    s_close: "Oyna'ya basınca yutakhub'ı kapat", s_closeD: "Oyun Steam üzerinden başlatıldıktan sonra bu pencere kapanır.",
+    s_short: "Masaüstü kısayolu", s_shortD: "yutakhub'ı masaüstünden açmak için bir kısayol oluşturur.", s_shortB: "Kısayol oluştur", shortDone: "Masaüstüne kısayol oluşturuldu.",
+    s_updates: "Uygulama güncellemeleri", s_chk: "Açılışta yeni sürümü denetle", s_chkD: "Yeni bir yutakhub sürümü çıktığında üstte bir bildirim görürsün.",
+    s_now: "Şimdi denetle", s_nowD_ok: (v) => `yutakhub ${v} güncel.`, s_nowD_new: (v) => `yutakhub ${v} indirilebilir.`, s_nowD_idle: (v) => `Kurulu sürüm ${v}.`, s_nowD_test: "Test derlemeleri kendini güncellemez.",
+    s_folders: "Oyun klasörleri", s_foldersD: "Oyunlar Steam kütüphanenden kendiliğinden bulunur. Yanlış klasör bulunduysa buradan değiştir.",
+    s_notfound: "Bulunamadı", s_change: "Değiştir", s_auto2: "Otomatik bul",
+    s_trouble: "Sorun giderme", s_log: "Kayıt dosyaları", s_logD: "Bir şey ters giderse bu klasördeki yutakhub.log dosyası ne olduğunu gösterir.", s_logB: "Klasörü aç",
+    a_body: "yutakhub, tek kişilik oyunlara online co-op ekleyen modları kurmayı ve güncel tutmayı kolaylaştırır. Oyunlarını Steam kütüphanenden bulur, modu doğru yere kurar ve yeni sürüm çıktığında haber verir.",
+    a_play: "Birlikte oynayacağın herkeste modun aynı sürümü kurulu olmalı. Bağlantı Steam üzerinden kurulur; ek program, port açma ya da IP gerekmez.",
+    a_legal: "Bu modlar resmi değildir. Oyunların geliştiricileri ya da yayıncılarıyla bir bağı yoktur; oyunların ve adlarının tüm hakları sahiplerine aittir. Modlar oyun dosyalarını bilgisayarında değiştirir, istediğin zaman kaldırabilirsin.",
+    a_site: "GitHub sayfası", a_issue: "Sorun bildir", a_notes: "Sürüm notları", a_mods: "Bu sürümle gelen modlar", a_thanks: "20 Minutes Till Dawn modu BepInEx ile yüklenir.",
+    install: "Kur", update: "Güncelle", play: "Oyna", uninstall: "Modu kaldır", reinstall: "Yeniden kur",
+    openFolder: "Oyun klasörünü aç", pickFolder: "Klasörü seç", changeFolder: "Klasörü değiştir",
+    notes: "Bu sürümde neler var", hideNotes: "Notları gizle",
+    st_nogame: "Oyun bu bilgisayarda bulunamadı. Steam'den kurduysan klasörünü kendin seçebilirsin.",
+    st_notinstalled: (g) => `${g.modName} ${g.latest} kurulmaya hazır`,
+    st_installed: (g) => `${g.modName} <b>${g.installed}</b> kurulu ve güncel`,
+    st_update: (g) => g.installed ? `Yeni sürüm var: ${g.installed} yerine <b>${g.latest}</b>` : `Mod kurulu ama sürümü bilinmiyor. Güncel sürüm <b>${g.latest}</b>`,
+    st_unsupported: (g) => `Oyunun bu sürümü için mod henüz hazır değil${g.supported && g.supported.length ? ` (desteklenen oyun sürümü: ${g.supported.join(", ")})` : ""}. Oyun dosyalarını elle değiştirdiysen Steam'de dosya bütünlüğünü doğrula.`,
+    ph_download: "İndiriliyor", ph_install: "Kuruluyor", ph_uninstall: "Kaldırılıyor", ph_start: "Hazırlanıyor", ph_restart: "yutakhub yeniden başlatılıyor",
+    done_install: (n) => `${n}: mod kuruldu.`, done_uninstall: (n) => `${n}: mod kaldırıldı.`,
+    updBar: (v) => `yutakhub ${v} yayınlandı.`, updBtn: "Uygulamayı güncelle", updMust: "Bu katalog daha yeni bir yutakhub istiyor. Devam etmek için uygulamayı güncelle.",
+    offline: "Mod listesi alınamadı, en son kaydedilen liste gösteriliyor. İnternet bağlantını kontrol edip Yenile'ye bas.",
+    devbuild: "Test derlemesi: mod listesini internetten değil, yanındaki catalog.json dosyasından okur ve kendini güncellemez.",
+    emptyTitle: "Mod listesi henüz yüklenemedi", emptyBody: "İnternet bağlantını kontrol edip Yenile'ye bas.",
+    version: (v) => `yutakhub ${v}`,
+    foot: "Modlar resmi değildir; oyunların geliştiricileriyle bir bağı yoktur.",
+    e_game_running: (d) => `${d} açık görünüyor. Oyunu kapatıp tekrar dene.`,
+    e_download: (d) => `İndirilemedi. İnternet bağlantını kontrol edip tekrar dene. (${d})`,
+    e_verify: (d) => `İndirilen dosya doğrulanamadı, hiçbir şey değiştirilmedi. Tekrar dene. (${d})`,
+    e_write: (d) => `Dosya yazılamadı: ${d}`,
+    e_unsupported: () => `Oyunun bu sürümü için mod henüz hazır değil.`,
+    e_no_backup: () => `Orijinal dosyanın yedeği bulunamadı. Modu kaldırmak için Steam'de oyuna sağ tıkla, Özellikler, Yüklü Dosyalar, "Dosya bütünlüğünü doğrula".`,
+    e_wrong_folder: (d) => `Bu klasörde ${d} yok. Oyunun kurulu olduğu klasörü seç.`,
+    e_self_write: () => `yutakhub kendi dosyasını değiştiremedi. İndirme sayfası açılıyor; yeni sürümü oradan al.`,
+    e_nogame: (d) => `${d} bulunamadı.`, e_busy: () => `Önce süren işlemin bitmesini bekle.`,
+    e_app_too_old: () => `Bu mod için yutakhub'ın yeni sürümü gerekiyor.`, e_error: (d) => d,
+  },
+  en: {
+    tagline: "Install co-op mods in one click and keep them up to date",
+    refresh: "Refresh", refreshing: "Checking…",
+    nav_mods: "Mods", nav_settings: "Settings", nav_about: "About",
+    nav_publish: "Publish",
+    p_conn: "GitHub connection", p_repo: "Repository (owner/name)", p_token: "Access token", p_tokenSaved: "saved, type a new one to replace it",
+    p_save: "Save", p_test: "Test connection", p_saved: "Saved.", p_testOk: "Connection works: this token can write to the repository.",
+    p_help: "To get a token: GitHub > Settings > Developer settings > Fine-grained tokens > Generate new token. Choose \"Only select repositories\" and pick this repository, then under Repository permissions give Contents \"Read and write\". The token is stored on this PC only.",
+    p_mods: "Mods", p_modsD: "Each mod is taken from the game folder on this PC. Publish sends the package and the updated list to GitHub; every yutakhub shows \"Update\" within a few minutes.",
+    p_version: "Mod version", p_gameVersion: "Game version", p_notesTr: "What's in this version (Türkçe)", p_notesEn: "What's in this version (English)", p_publish: "Publish", p_notesOnly: "Update notes",
+    p_same: (g) => `The mod in the game folder is the published one (${g.published}).`,
+    p_changed: (g) => `There are unpublished changes. Published: ${g.published}` + (g.local ? `, in the folder: ${g.local}.` : "."),
+    p_nogame: () => "This game was not found on this PC.", p_nomod: () => "The mod is not installed in the game on this PC.",
+    p_nospec: () => "The list has no publish settings for this mod.", p_nooriginal: () => "The mod is not installed, or there is no backup of the original file.",
+    p_done: (n, v) => `${n} ${v} published. It reaches users within a few minutes.`,
+    ph_pub_catalog: "Updating the list", ph_pub_package: "Building the package", ph_pub_upload: "Uploading to GitHub",
+    e_pub_repo: () => "The repository must look like owner/name, for example yutku/yutakhub.", e_pub_no_token: () => "Save the repository name and access token first.",
+    e_pub_github: (d) => `GitHub did not complete the request: ${d}`,
+    e_pub_token_perm: (d) => `The access token may not write to ${d}. Open the token on GitHub: this repository must be selected under Repository access, and Contents must be "Read and write" under Repository permissions.`, e_pub_version: () => "The version must look like 1.2.3. Patched mods also need the game version.",
+    e_pub_same_version: (d) => `The mod files changed but the version is still ${d}. Raise the version so users see the update.`,
+    e_pub_nomod: (d) => `${d}: no mod files to publish were found in the game folder.`, e_pub_nooriginal: (d) => `${d}: no backup of the original file was found.`,
+    ov: (n, i, u) => `Mods installed for <b>${i}</b> of <b>${n}</b> games` + (u ? `, <b>${u}</b> ${u > 1 ? "updates" : "update"} available` : ""),
+    ovChecked: (tm) => `Last checked ${tm}`, updateAll: "Update all",
+    rmTitle: (n) => `Remove the ${n} mod?`, rmBody: "The game itself and your saves are not touched. You can install the mod again here at any time.", rmYes: "Remove mod", cancel: "Cancel",
+    s_general: "General", s_lang: "Language", s_langD: "The language of the app.",
+    s_auto: "Install mod updates automatically", s_autoD: "When yutakhub starts, new versions of installed mods are installed without asking.",
+    s_close: "Close yutakhub when I press Play", s_closeD: "This window closes once the game has been started through Steam.",
+    s_short: "Desktop shortcut", s_shortD: "Creates a shortcut for opening yutakhub from the desktop.", s_shortB: "Create shortcut", shortDone: "Shortcut created on the desktop.",
+    s_updates: "App updates", s_chk: "Check for a new version at startup", s_chkD: "You see a notice at the top when a new yutakhub version is out.",
+    s_now: "Check now", s_nowD_ok: (v) => `yutakhub ${v} is up to date.`, s_nowD_new: (v) => `yutakhub ${v} is available.`, s_nowD_idle: (v) => `Installed version ${v}.`, s_nowD_test: "Test builds do not update themselves.",
+    s_folders: "Game folders", s_foldersD: "Games are found in your Steam library automatically. Change a folder here if the wrong one was picked.",
+    s_notfound: "Not found", s_change: "Change", s_auto2: "Detect automatically",
+    s_trouble: "Troubleshooting", s_log: "Log files", s_logD: "If something goes wrong, yutakhub.log in this folder shows what happened.", s_logB: "Open folder",
+    a_body: "yutakhub makes it easy to install mods that add online co-op to single-player games, and to keep them up to date. It finds your games in your Steam library, puts the mod in the right place and tells you when a new version is out.",
+    a_play: "Everyone you play with needs the same version of the mod. The connection goes through Steam; no extra software, port forwarding or IP addresses.",
+    a_legal: "These mods are unofficial. They are not affiliated with the games' developers or publishers; all rights to the games and their names belong to their owners. Mods change game files on your PC and can be removed at any time.",
+    a_site: "GitHub page", a_issue: "Report a problem", a_notes: "Release notes", a_mods: "Mods in this release", a_thanks: "The 20 Minutes Till Dawn mod is loaded with BepInEx.",
+    install: "Install", update: "Update", play: "Play", uninstall: "Remove mod", reinstall: "Reinstall",
+    openFolder: "Open game folder", pickFolder: "Choose folder", changeFolder: "Change folder",
+    notes: "What's in this version", hideNotes: "Hide notes",
+    st_nogame: "This game was not found on this PC. If it is installed, choose its folder yourself.",
+    st_notinstalled: (g) => `${g.modName} ${g.latest} is ready to install`,
+    st_installed: (g) => `${g.modName} <b>${g.installed}</b> is installed and up to date`,
+    st_update: (g) => g.installed ? `New version available: <b>${g.latest}</b> replaces ${g.installed}` : `The mod is installed, but its version is unknown. Latest is <b>${g.latest}</b>`,
+    st_unsupported: (g) => `The mod is not ready for this version of the game${g.supported && g.supported.length ? ` (supported game version: ${g.supported.join(", ")})` : ""}. If you changed game files by hand, verify file integrity in Steam.`,
+    ph_download: "Downloading", ph_install: "Installing", ph_uninstall: "Removing", ph_start: "Preparing", ph_restart: "Restarting yutakhub",
+    done_install: (n) => `${n}: mod installed.`, done_uninstall: (n) => `${n}: mod removed.`,
+    updBar: (v) => `yutakhub ${v} is out.`, updBtn: "Update the app", updMust: "This catalog needs a newer yutakhub. Update the app to continue.",
+    offline: "Could not load the mod list, showing the last saved one. Check your connection and press Refresh.",
+    devbuild: "Test build: reads the mod list from the catalog.json next to it instead of the internet, and does not update itself.",
+    emptyTitle: "The mod list has not loaded yet", emptyBody: "Check your connection and press Refresh.",
+    version: (v) => `yutakhub ${v}`,
+    foot: "These mods are unofficial and not affiliated with the games' developers.",
+    e_game_running: (d) => `${d} seems to be running. Close the game and try again.`,
+    e_download: (d) => `Download failed. Check your connection and try again. (${d})`,
+    e_verify: (d) => `The downloaded file could not be verified, so nothing was changed. Try again. (${d})`,
+    e_write: (d) => `Could not write a file: ${d}`,
+    e_unsupported: () => `The mod is not ready for this version of the game.`,
+    e_no_backup: () => `No backup of the original file was found. To remove the mod, right-click the game in Steam, Properties, Installed Files, "Verify integrity of game files".`,
+    e_wrong_folder: (d) => `${d} is not in that folder. Choose the folder the game is installed in.`,
+    e_self_write: () => `yutakhub could not replace its own file. Opening the download page; get the new version there.`,
+    e_nogame: (d) => `${d} was not found.`, e_busy: () => `Wait for the current task to finish first.`,
+    e_app_too_old: () => `This mod needs a newer version of yutakhub.`, e_error: (d) => d,
+  },
+};
+
+const call = window.yhCall
+  ? async (n, a) => { const r = await window.yhCall(n, JSON.stringify(a || {})); return r ? JSON.parse(r) : null; }
+  : async (n, a) => { const r = await fetch("/api/" + n, { method: "POST", body: JSON.stringify(a || {}) }); if (!r.ok) throw new Error(await r.text()); return r.json(); };
+
+let S = null, lastSeq = -1, openNotes = {}, toastTimer = 0, view = "mods", idleWaiters = [], autoDone = false;
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const t = () => T[S && S.lang === "tr" ? "tr" : "en"];
+const loc = (o) => (o && (o[S.lang] || o.en || o.tr)) || "";
+
+function toast(msg, ok) {
+  const el = $("toast");
+  el.textContent = msg; el.className = ok ? "ok" : ""; el.style.display = "block";
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => (el.style.display = "none"), ok ? 4000 : 12000);
+}
+function errText(code, detail) {
+  const L = t(), f = L["e_" + code] || L.e_error;
+  return f(detail || code);
+}
+
+function coverHTML(g) {
+  const srcs = [g.image, `https://cdn.akamai.steamstatic.com/steam/apps/${g.appId}/header.jpg`,
+    `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${g.appId}/header.jpg`].filter(Boolean);
+  return `<div class="cover"><img alt="" data-srcs="${esc(JSON.stringify(srcs))}" data-i="0" src="${esc(srcs[0])}"><span hidden>${esc(g.name)}</span></div>`;
+}
+function wireCovers() {
+  document.querySelectorAll(".cover img").forEach((img) => {
+    img.onerror = () => {
+      const srcs = JSON.parse(img.dataset.srcs), i = +img.dataset.i + 1;
+      if (i < srcs.length) { img.dataset.i = i; img.src = srcs[i]; }
+      else { img.nextElementSibling.hidden = false; img.remove(); }
+    };
+  });
+}
+
+function gameHTML(g) {
+  const L = t(), op = S.op, busy = op.running;
+  const mine = busy && op.id === g.id && (op.kind === "install" || op.kind === "uninstall");
+  const g2 = Object.assign({}, g, { modName: esc(g.modName), installed: esc(g.installed), latest: esc(g.latest), supported: (g.supported || []).map(esc) });
+  const st = L["st_" + g.status], stText = typeof st === "function" ? st(g2) : st;
+  const dis = busy ? " disabled" : "";
+  let actions = "";
+  if (g.status === "nogame") actions = `<button class="btn second" data-a="pickFolder"${dis}>${L.pickFolder}</button>`;
+  if (g.status === "notinstalled") actions = `<button class="btn primary" data-a="install"${dis}>${L.install}</button>`;
+  if (g.status === "update") actions = `<button class="btn primary" data-a="install"${dis}>${L.update}</button><button class="btn second" data-a="play"${dis}>${L.play}</button>`;
+  if (g.status === "installed") actions = `<button class="btn play" data-a="play"${dis}>${L.play}</button>`;
+  const links = [];
+  const notes = loc(g.notes);
+  if (notes) links.push(`<button data-a="notes">${openNotes[g.id] ? L.hideNotes : L.notes}</button>`);
+  if (g.path) links.push(`<button data-a="openFolder">${L.openFolder}</button>`);
+  if (g.status === "installed") links.push(`<button data-a="install"${dis}>${L.reinstall}</button>`);
+  if (g.status === "installed" || g.status === "update") links.push(`<button data-a="uninstall"${dis}>${L.uninstall}</button>`);
+  if (g.status === "unsupported") links.push(`<button data-a="pickFolder"${dis}>${L.changeFolder}</button>`);
+  return `<section class="game ${g.status}${g.status === "nogame" ? " off" : ""}" data-id="${esc(g.id)}">
+    ${coverHTML(g)}
+    <div>
+      <h2 class="name">${esc(g.name)}</h2>
+      <div class="status"><span class="dot"></span><span>${stText}</span></div>
+      <p class="summary">${esc(loc(g.summary))}</p>
+      <div class="links">${links.join("")}</div>
+    </div>
+    <div class="actions">${actions}</div>
+    ${openNotes[g.id] && notes ? `<div class="notes">${esc(notes)}</div>` : ""}
+    ${mine ? `<div class="progress"><span class="ptext"></span><div class="track"><div class="fill"></div></div></div>` : ""}
+  </section>`;
+}
+
+function sw(key, on) { return `<button class="switch" role="switch" aria-checked="${on ? "true" : "false"}" data-set="${key}"></button>`; }
+function row(title, desc, ctl) { return `<div class="row"><div class="what"><strong>${title}</strong><span>${desc}</span></div><div class="ctl">${ctl}</div></div>`; }
+
+function settingsHTML() {
+  const L = t(), st = S.settings, dis = S.op.running ? " disabled" : "";
+  const updLine = !S.repo ? L.s_nowD_test : S.update ? L.s_nowD_new(esc(S.update)) : S.updChecked ? L.s_nowD_ok(S.appVersion) : L.s_nowD_idle(S.appVersion);
+  return `<h2>${L.s_general}</h2>
+    ${row(L.s_lang, L.s_langD, `<div class="seg"><button data-lang="tr" class="${S.lang === "tr" ? "on" : ""}">Türkçe</button><button data-lang="en" class="${S.lang === "en" ? "on" : ""}">English</button></div>`)}
+    ${row(L.s_auto, L.s_autoD, sw("autoUpdateMods", st.autoUpdateMods))}
+    ${row(L.s_close, L.s_closeD, sw("closeOnPlay", st.closeOnPlay))}
+    ${row(L.s_short, L.s_shortD, `<button class="ghost" data-do="shortcut"${dis}>${L.s_shortB}</button>`)}
+    <h2>${L.s_updates}</h2>
+    ${row(L.s_chk, L.s_chkD, sw("noUpdateCheck", !st.noUpdateCheck))}
+    ${row(L.version(S.appVersion), updLine, S.update ? `<button class="btn primary" data-do="appUpdate"${dis}>${L.updBtn}</button>` : `<button class="ghost" data-do="checkUpdate"${dis || (S.repo ? "" : " disabled")}>${L.s_now}</button>`)}
+    <h2>${L.s_folders}</h2>
+    <div class="row" style="border:0;padding-bottom:0"><div class="what"><span>${L.s_foldersD}</span></div></div>
+    ${S.games.map((g) => row(esc(g.name), g.path ? esc(g.path) : L.s_notfound,
+      `${g.custom ? `<button class="ghost" data-do="resetFolder" data-id="${esc(g.id)}"${dis}>${L.s_auto2}</button>` : ""}<button class="ghost" data-do="pickFolder" data-id="${esc(g.id)}"${dis}>${L.s_change}</button>`)).join("")}
+    <h2>${L.s_trouble}</h2>
+    ${row(L.s_log, L.s_logD + " " + esc(S.dataDir), `<button class="ghost" data-do="openData">${L.s_logB}</button>`)}`;
+}
+
+function aboutHTML() {
+  const L = t(), off = S.repo ? "" : " disabled";
+  return `<div class="about-head"><div class="mark" aria-hidden="true"><i></i><i></i></div>
+      <div><h1>${L.version(S.appVersion)}</h1><p>${L.tagline}</p></div></div>
+    <div class="prose"><p>${L.a_body}</p><p>${L.a_play}</p></div>
+    <div class="buttons"><button class="ghost" data-do="openRepo"${off}>${L.a_site}</button><button class="ghost" data-do="openReleases"${off}>${L.a_notes}</button><button class="ghost" data-do="openIssues"${off}>${L.a_issue}</button></div>
+    <h2>${L.a_mods}</h2>
+    <table class="mods">${S.games.map((g) => `<tr><td>${esc(g.name)}</td><td>${esc(g.modName)} ${esc(g.latest)}</td></tr>`).join("")}</table>
+    <div class="prose" style="margin-top:22px"><p class="dim">${L.a_thanks}</p><p class="dim">${L.a_legal}</p></div>`;
+}
+
+let P = null, pubStale = true;
+async function loadPublish() { P = await call("pubState"); pubStale = false; $("v-publish").innerHTML = publishHTML(); }
+function publishHTML() {
+  const L = t(), dis = S.op.running ? " disabled" : "";
+  const games = P.games.map((g) => {
+    const can = g.state === "same" || g.state === "changed";
+    return `<div class="pub" data-id="${esc(g.id)}"><h3>${esc(g.name)}</h3>
+      <div class="st ${g.state}"><span class="dot"></span><span>${esc(L["p_" + g.state](g))}</span></div>
+      ${can ? `<div class="fields">
+          <label class="field" style="flex:0 0 150px">${L.p_version}<input data-f="version" value="${esc(g.local || g.published)}"></label>
+          ${g.type === "patch" ? `<label class="field" style="flex:0 0 150px">${L.p_gameVersion}<input data-f="gameVersion" value="${esc(g.gameVersion)}"></label>` : ""}
+        </div>
+        <div class="fields"><label class="field">${L.p_notesTr}<textarea rows="3" data-f="notesTr">${esc(g.notesTr)}</textarea></label>
+          <label class="field">${L.p_notesEn}<textarea rows="3" data-f="notesEn">${esc(g.notesEn)}</textarea></label></div>
+        <button class="btn ${g.state === "changed" ? "primary" : "second"}" data-pub="${esc(g.id)}"${dis}>${g.state === "changed" ? L.p_publish : L.p_notesOnly}</button>` : ""}
+    </div>`;
+  }).join("");
+  return `<h2>${L.p_conn}</h2>
+    <div class="fields"><label class="field">${L.p_repo}<input id="p-repo" value="${esc(P.repo)}" placeholder="yutku/yutakhub"></label>
+      <label class="field">${L.p_token}<input id="p-token" type="password" placeholder="${P.hasToken ? L.p_tokenSaved : "github_pat_…"}"></label></div>
+    <div class="buttons" style="margin-top:0"><button class="ghost" id="p-save">${L.p_save}</button><button class="ghost" id="p-test"${dis}>${L.p_test}</button></div>
+    <p class="help">${L.p_help}</p>
+    <h2>${L.p_mods}</h2><p class="help">${L.p_modsD}</p>${games}`;
+}
+
+function fmtTime(unix) {
+  return new Date(unix * 1000).toLocaleTimeString(S.lang === "tr" ? "tr-TR" : "en-GB", { hour: "2-digit", minute: "2-digit" });
+}
+
+function render() {
+  const L = t(), op = S.op;
+  document.documentElement.lang = S.lang;
+  $("refresh").textContent = op.running && op.kind === "refresh" ? L.refreshing : L.refresh;
+  $("refresh").disabled = op.running;
+  const updates = S.games.filter((g) => g.status === "update");
+  document.querySelectorAll("#nav button").forEach((b) => {
+    b.classList.toggle("on", b.dataset.view === view);
+    if (b.dataset.view === "publish") b.hidden = !S.publisher;
+    b.innerHTML = L["nav_" + b.dataset.view] + (b.dataset.view === "mods" && updates.length ? `<span class="badge">${updates.length}</span>` : "");
+  });
+  ["mods", "settings", "about", "publish"].forEach((v) => ($("v-" + v).hidden = v !== view));
+  if (view === "publish" && pubStale && !op.running) loadPublish();
+  document.querySelectorAll("#v-publish button[data-pub], #p-test").forEach((b) => (b.disabled = op.running));
+  $("refresh").style.visibility = view === "mods" ? "visible" : "hidden";
+  const found = S.games.filter((g) => g.status !== "nogame"), inst = S.games.filter((g) => g.status === "installed" || g.status === "update");
+  $("overview").innerHTML = S.games.length ? `<span>${L.ov(found.length, inst.length, updates.length)}</span>
+    ${updates.length > 1 ? `<button class="btn primary" id="updall"${op.running ? " disabled" : ""}>${L.updateAll}</button>` : ""}
+    <span class="spacer"></span>${S.lastCheck ? `<span>${L.ovChecked(fmtTime(S.lastCheck))}</span>` : ""}` : "";
+  const ua = $("updall"); if (ua) ua.onclick = updateAll;
+  if (view === "settings") $("v-settings").innerHTML = settingsHTML();
+  if (view === "about") $("v-about").innerHTML = aboutHTML();
+  $("ver").textContent = L.version(S.appVersion);
+  $("foot").textContent = L.foot;
+
+  let bars = "";
+  if (S.update || S.mustUpdate) {
+    const upd = op.running && op.kind === "appupdate";
+    bars += `<div class="bar update"><span>${S.mustUpdate ? L.updMust : esc(L.updBar(S.update))}</span><span class="spacer"></span>
+      ${upd ? `<span id="updp"></span>` : `<button class="btn primary" id="doupd"${op.running || !S.update ? " disabled" : ""}>${L.updBtn}</button>`}</div>`;
+  }
+  if (!S.repo) bars += `<div class="bar warn">${L.devbuild}</div>`;
+  else if (S.catalogError && S.catalogError !== "app_too_old") bars += `<div class="bar warn">${L.offline}</div>`;
+  $("bars").innerHTML = bars;
+  const du = $("doupd"); if (du) du.onclick = () => act("appUpdate");
+
+  $("list").innerHTML = S.games.length ? S.games.map(gameHTML).join("")
+    : `<div class="empty"><h2>${L.emptyTitle}</h2><p>${L.emptyBody}</p></div>`;
+  wireCovers();
+  paintProgress();
+}
+
+function paintProgress() {
+  const L = t(), op = S.op;
+  const label = (L["ph_" + op.phase] || L.ph_start) + (op.phase === "download" || op.phase === "install" ? ` ${op.pct}%` : "");
+  const p = document.querySelector(".progress");
+  if (p) { p.querySelector(".ptext").textContent = label; p.querySelector(".fill").style.width = op.pct + "%"; }
+  const u = $("updp"); if (u) u.textContent = label;
+  if (op.running && (op.kind === "publish")) { const b = document.querySelector(`button[data-pub="${op.id}"]`); if (b) b.textContent = label; }
+}
+
+async function act(name, id) {
+  try { await call(name, { id }); await poll(true); }
+  catch (e) { const m = String(e.message || e), c = m.split(":")[0]; toast(errText(T.en["e_" + c] ? c : "error", m)); }
+}
+
+async function reload() {
+  S = await call("state"); lastSeq = S.op.seq; render();
+  if (!S.op.running) idleWaiters.splice(0).forEach((f) => f());
+}
+function whenIdle() { return new Promise((res) => (S && !S.op.running && lastSeq === S.op.seq ? res() : idleWaiters.push(res))); }
+async function updateAll() {
+  for (const id of S.games.filter((g) => g.status === "update").map((g) => g.id)) {
+    await whenIdle();
+    try { await call("install", { id }); } catch (e) { break; }
+    await poll(true); await new Promise((res) => idleWaiters.push(res));
+    if (S.op.errCode) break;
+  }
+}
+function confirmRemove(g) {
+  const L = t();
+  $("m-title").textContent = L.rmTitle(g.name); $("m-body").textContent = L.rmBody;
+  $("m-no").textContent = L.cancel; $("m-yes").textContent = L.rmYes;
+  $("modal").style.display = "grid"; $("m-no").focus();
+  const close = () => ($("modal").style.display = "none");
+  $("m-no").onclick = close;
+  $("m-yes").onclick = () => { close(); act("uninstall", g.id); };
+}
+
+async function poll(force) {
+  const op = await call("op");
+  if (!S) return;
+  const finished = S.op.running && !op.running;
+  const changed = op.seq !== lastSeq;
+  S.op = op;
+  if (changed || force) {
+    await reload();
+    if (finished || (changed && !op.running)) {
+      if (op.errCode) {
+        toast(errText(op.errCode, op.err));
+        if (op.kind === "publish" && P) {
+          const b = document.querySelector(`button[data-pub="${op.id}"]`), g = P.games.find((x) => x.id === op.id);
+          if (b && g) b.textContent = g.state === "changed" ? t().p_publish : t().p_notesOnly;
+        }
+        if (op.errCode === "self_write") call("openReleases");
+      } else if (op.kind === "shortcut") { toast(t().shortDone, true);
+      } else if (op.kind === "pubtest") { toast(t().p_testOk, true);
+      } else if (op.kind === "publish") {
+        const g = S.games.find((x) => x.id === op.id); pubStale = true; render();
+        if (g) toast(t().p_done(g.name, g.latest), true);
+      } else if (op.kind === "refresh" && !autoDone) {
+        autoDone = true;
+        if (S.settings.autoUpdateMods && S.games.some((g) => g.status === "update")) updateAll();
+      } else if (op.kind === "install" || op.kind === "uninstall") {
+        const g = S.games.find((x) => x.id === op.id);
+        if (g) toast(t()["done_" + op.kind](g.name), true);
+      }
+    }
+  } else if (op.running) paintProgress();
+}
+
+$("list").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-a]"); if (!b || b.disabled) return;
+  const id = b.closest(".game").dataset.id, a = b.dataset.a;
+  if (a === "notes") { openNotes[id] = !openNotes[id]; render(); return; }
+  if (a === "uninstall") { confirmRemove(S.games.find((g) => g.id === id)); return; }
+  act(a, id);
+});
+$("nav").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (b) { view = b.dataset.view; pubStale = true; render(); document.querySelector("main").scrollTop = 0; } });
+document.querySelector("main").addEventListener("click", async (e) => {
+  const b = e.target.closest("button"); if (!b || b.disabled || b.closest("#list")) return;
+  if (b.dataset.lang) { await call("setLang", { lang: b.dataset.lang }); pubStale = true; reload(); }
+  else if (b.id === "p-save" || b.id === "p-test") {
+    try { await call("pubSave", { repo: $("p-repo").value, token: $("p-token").value }); }
+    catch (e) { const c = String(e.message || e).split(":")[0]; toast(errText(T.en["e_" + c] ? c : "error", String(e.message || e))); return; }
+    if (b.id === "p-test") act("pubTest"); else { toast(t().p_saved, true); pubStale = true; reload(); }
+  } else if (b.dataset.pub) {
+    const box = b.closest(".pub"), v = (f) => { const el = box.querySelector(`[data-f=${f}]`); return el ? el.value : ""; };
+    try { await call("publish", { id: b.dataset.pub, version: v("version"), gameVersion: v("gameVersion"), notesTr: v("notesTr"), notesEn: v("notesEn") }); await poll(true); }
+    catch (e) { toast(errText("busy")); }
+  }
+  else if (b.dataset.set) {
+    const on = b.getAttribute("aria-checked") !== "true", key = b.dataset.set;
+    await call("setSetting", { key, value: key === "noUpdateCheck" ? !on : on }); reload();
+  } else if (b.dataset.do === "resetFolder") { await call("resetFolder", { id: b.dataset.id }); reload(); }
+  else if (b.dataset.do) act(b.dataset.do, b.dataset.id);
+});
+// Developer door: five clicks on the version in About reveal the Publish tab.
+let devClicks = 0;
+$("v-about").addEventListener("click", async (e) => {
+  if (!e.target.closest("h1") || S.publisher) return;
+  if (++devClicks >= 5) { await call("enablePublisher"); await reload(); view = "publish"; pubStale = true; render(); }
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") $("modal").style.display = "none";
+  if (e.key === "F5") { e.preventDefault(); if (!S.op.running) act("refresh"); }
+});
+$("refresh").onclick = () => act("refresh");
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+(async () => {
+  await reload();
+  try { await call("refresh"); } catch (e) {}
+  setInterval(() => poll(false).catch(() => {}), 300);
+})();
+</script>
+</body>
+</html>
