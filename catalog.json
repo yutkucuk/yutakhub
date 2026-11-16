@@ -177,20 +177,20 @@
       "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/sonisik/header.jpg",
       "mod": {
         "name": "Oyun",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D horde defence for one or two players. Guard the lighthouse through 20 waves with auto-firing weapons, level-up cards, items and turrets.",
           "tr": "Kendi oyunumuz: tek ya da iki kişilik, gece geçen pikselli 3D sürü savunması. Kendiliğinden ateş eden silahlar, seviye kartları, eşyalar ve taretlerle feneri 20 dalga boyunca koru."
         },
         "notes": {
-          "en": "Complete game; no other game is needed.\nCo-op: both start the game with Steam running. One picks CO-OP > Host game (Steam invite), the other CO-OP > Join my friend's game (Steam). Steam shows it as \"Spacewar\"; that is expected.\nBoth players need the same version.",
-          "tr": "Oyunun tamamı; başka bir oyun gerekmez.\nCo-op: ikiniz de Steam açıkken oyunu başlatın. Biri CO-OP > Oyun kur (Steam daveti), diğeri CO-OP > Arkadaşımın oyununa katıl (Steam) der. Steam'de \"Spacewar\" olarak görünür; bu normal.\nİki oyuncuda da aynı sürüm olmalı."
+          "en": "1.0.1: fixed the co-op lobby freezing and the Ready button, turrets are now built with [E], the Windows account name is no longer used as the player name.\nComplete game; no other game is needed.\nCo-op: both start the game with Steam running. One picks CO-OP > Host game (Steam invite), the other CO-OP > Join my friend's game (Steam). Steam shows it as \"Spacewar\"; that is expected.\nBoth players need the same version.",
+          "tr": "1.0.1: co-op lobisinde takılma ve \"Hazırım\" düğmesi düzeltildi, taret kurma artık [E] tuşunda, Windows kullanıcı adı oyuncu adı olarak kullanılmıyor.\nOyunun tamamı; başka bir oyun gerekmez.\nCo-op: ikiniz de Steam açıkken oyunu başlatın. Biri CO-OP > Oyun kur (Steam daveti), diğeri CO-OP > Arkadaşımın oyununa katıl (Steam) der. Steam'de \"Spacewar\" olarak görünür; bu normal.\nİki oyuncuda da aynı sürüm olmalı."
         },
         "type": "extract",
         "detect": "SonIsik.exe",
-        "url": "mods/sonisik/sonisik-1.0.0.zip",
-        "sha256": "a9b388f826a4ebc1f507ed147a4c125fb90e481dc56c6f0d0897c94435a8c4da",
-        "content": "e1f04b4ee767a4821cb605c040eb25bd0e1ca57fc35f49d255c03db701efa8be"
+        "url": "mods/sonisik/sonisik-1.0.1.zip",
+        "sha256": "587fe814b06ffa9a17fde309d38113995da77e9aebb5c13f039a4a5a66d3ffd3",
+        "content": "a8f5d54aaecd2d5d5a98dbc471b784edbbe3c16fde8bb917c75427a79c326bfc"
       }
     }
   ]
