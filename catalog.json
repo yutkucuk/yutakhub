@@ -177,20 +177,20 @@
       "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/sonisik/header.jpg",
       "mod": {
         "name": "Oyun",
-        "version": "1.0.1",
+        "version": "1.1.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D horde defence for one or two players. Guard the lighthouse through 20 waves with auto-firing weapons, level-up cards, items and turrets.",
           "tr": "Kendi oyunumuz: tek ya da iki kişilik, gece geçen pikselli 3D sürü savunması. Kendiliğinden ateş eden silahlar, seviye kartları, eşyalar ve taretlerle feneri 20 dalga boyunca koru."
         },
         "notes": {
-          "en": "1.0.1: fixed the co-op lobby freezing and the Ready button, turrets are now built with [E], the Windows account name is no longer used as the player name.\nComplete game; no other game is needed.\nCo-op: both start the game with Steam running. One picks CO-OP > Host game (Steam invite), the other CO-OP > Join my friend's game (Steam). Steam shows it as \"Spacewar\"; that is expected.\nBoth players need the same version.",
-          "tr": "1.0.1: co-op lobisinde takılma ve \"Hazırım\" düğmesi düzeltildi, taret kurma artık [E] tuşunda, Windows kullanıcı adı oyuncu adı olarak kullanılmıyor.\nOyunun tamamı; başka bir oyun gerekmez.\nCo-op: ikiniz de Steam açıkken oyunu başlatın. Biri CO-OP > Oyun kur (Steam daveti), diğeri CO-OP > Arkadaşımın oyununa katıl (Steam) der. Steam'de \"Spacewar\" olarak görünür; bu normal.\nİki oyuncuda da aynı sürüm olmalı."
+          "en": "1.1.0: destroyed turrets stay destroyed, a mortar enemy and boss slams that go for turrets, darkness and street lamps, night events and Dares, 64 items with trade-offs, rising prices, new models and sounds.\nComplete game; no other game is needed.\nCo-op: both start the game with Steam running. One picks CO-OP > Host game (Steam invite), the other CO-OP > Join my friend's game (Steam). Steam shows it as \"Spacewar\"; that is expected.\nBoth players need the same version.",
+          "tr": "1.1.0: yıkılan taretler geri gelmez, taretlere saldıran Havancı ve patron darbeleri, karanlık ve sokak lambaları, gece olayları ve Meydan Oku, artı-eksi etkili 64 eşya, artan fiyatlar, yeni modeller ve sesler.\nOyunun tamamı; başka bir oyun gerekmez.\nCo-op: ikiniz de Steam açıkken oyunu başlatın. Biri CO-OP > Oyun kur (Steam daveti), diğeri CO-OP > Arkadaşımın oyununa katıl (Steam) der. Steam'de \"Spacewar\" olarak görünür; bu normal.\nİki oyuncuda da aynı sürüm olmalı."
         },
         "type": "extract",
         "detect": "SonIsik.exe",
-        "url": "mods/sonisik/sonisik-1.0.1.zip",
-        "sha256": "587fe814b06ffa9a17fde309d38113995da77e9aebb5c13f039a4a5a66d3ffd3",
-        "content": "a8f5d54aaecd2d5d5a98dbc471b784edbbe3c16fde8bb917c75427a79c326bfc"
+        "url": "mods/sonisik/sonisik-1.1.0.zip",
+        "sha256": "b523675223abec7db8fb68ebf533513db312975a975898e00c11c9377f29e4ac",
+        "content": "ac7c95f6fde84c4614bcf792f9d8b3eaf990681ff8a48140398a228d8a37ca0c"
       }
     }
   ]
