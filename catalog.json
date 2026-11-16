@@ -137,20 +137,20 @@
       "exe": "WTCC.exe",
       "mod": {
         "name": "Co-op",
-        "version": "2.1.1",
+        "version": "3.0.0",
         "summary": {
-          "en": "Two-player online co-op for the demo (game version 0.9.9), plus Overtime days after day 5 and a Supply screen for extra turrets. Works solo too.",
-          "tr": "Demo için iki kişilik online co-op (oyun sürümü 0.9.9). 5. günden sonra Mesai günleri ve ek taret için İkmal ekranı da var; tek başına da çalışır."
+          "en": "Two-player online co-op for the demo (game version 0.9.9) with Overtime days, a Supply store, in-game chat and a shotgun. Works solo too.",
+          "tr": "Demo için iki kişilik online co-op (oyun sürümü 0.9.9): Mesai günleri, İkmal mağazası, oyun içi sohbet ve pompalı tüfek. Tek başına da çalışır."
         },
         "notes": {
-          "en": "2.1.1: upgrades that the demo keeps locked are no longer shown in the upgrade tree.\n2.1.0: nine Overtime day rules (two at once from Overtime 11), three new Supply boosts (damage, points, ability cooldown).\n2.0.0: separate turret and wall inventory per player, Overtime days, Supply screen.\nThe mod only uses what the demo already offers; days and upgrades reserved for the full game stay locked.\nBoth players need the same version of the mod.",
-          "tr": "2.1.1: demo'da kilitli olan yükseltmeler artık yükseltme ağacında gösterilmiyor.\n2.1.0: dokuz Mesai günü kuralı (Mesai 11'den sonra ikisi birden), üç yeni İkmal güçlendirmesi (hasar, puan, yetenek bekleme süresi).\n2.0.0: oyuncu başına ayrı taret ve duvar envanteri, Mesai günleri, İkmal ekranı.\nMod yalnızca demo'nun sunduklarını kullanır; tam sürüme ayrılmış günler ve yükseltmeler kilitli kalır.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
+          "en": "3.0.0: each player has their own ability cooldowns, Supply moved into the upgrade screen (T), in-game chat (Enter), new shotgun, far bigger Overtime days, difficulty up to x5 (main menu > CO-OP), day-select screen removed.\nThe mod only uses what the demo already offers.\nBoth players need the same version of the mod.",
+          "tr": "3.0.0: her oyuncunun kendi yetenek bekleme süresi var, İkmal yükseltme ekranının (T) içine taşındı, oyun içi sohbet (Enter), yeni pompalı tüfek, çok daha kalabalık Mesai günleri, x5'e kadar zorluk (ana menü > CO-OP), gün seçme ekranı kaldırıldı.\nMod yalnızca demo'nun sunduklarını kullanır.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
         },
         "type": "extract",
         "detect": "coop/boot.gd",
-        "url": "mods/wtcc/wtcc-coop-2.1.1.zip",
-        "sha256": "dd6315e1c34254d30ea8260617ef27b04b5065ef172a7c12ec1297caebaa626f",
-        "content": "4d29c957e8db62fb1f1a13a5913f5bf808b06d18efdfefe6b67054bac1ff308f",
+        "url": "mods/wtcc/wtcc-coop-3.0.0.zip",
+        "sha256": "05fbb3a1d79c6a43629bd4fa52e5329aa17bcaa41cf58281523fcb7d034d2e7b",
+        "content": "c3674d10a2eb970629d76e9d7f301cbf3c8701875005039eccf1f7f837b21ca8",
         "remove": [
           "override.cfg",
           "coop",
