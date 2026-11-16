@@ -137,20 +137,20 @@
       "exe": "WTCC.exe",
       "mod": {
         "name": "Co-op",
-        "version": "2.1.0",
+        "version": "2.1.1",
         "summary": {
           "en": "Two-player online co-op for the demo (game version 0.9.9), plus Overtime days after day 5 and a Supply screen for extra turrets. Works solo too.",
           "tr": "Demo için iki kişilik online co-op (oyun sürümü 0.9.9). 5. günden sonra Mesai günleri ve ek taret için İkmal ekranı da var; tek başına da çalışır."
         },
         "notes": {
-          "en": "2.1.0: nine Overtime day rules (two at once from Overtime 11), three new Supply boosts (damage, points, ability cooldown).\n2.0.0: separate turret and wall inventory per player, Overtime days, Supply screen.\nThe mod only uses what the demo already offers; days and upgrades reserved for the full game stay locked.\nBoth players need the same version of the mod.",
-          "tr": "2.1.0: dokuz Mesai günü kuralı (Mesai 11'den sonra ikisi birden), üç yeni İkmal güçlendirmesi (hasar, puan, yetenek bekleme süresi).\n2.0.0: oyuncu başına ayrı taret ve duvar envanteri, Mesai günleri, İkmal ekranı.\nMod yalnızca demo'nun sunduklarını kullanır; tam sürüme ayrılmış günler ve yükseltmeler kilitli kalır.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
+          "en": "2.1.1: upgrades that the demo keeps locked are no longer shown in the upgrade tree.\n2.1.0: nine Overtime day rules (two at once from Overtime 11), three new Supply boosts (damage, points, ability cooldown).\n2.0.0: separate turret and wall inventory per player, Overtime days, Supply screen.\nThe mod only uses what the demo already offers; days and upgrades reserved for the full game stay locked.\nBoth players need the same version of the mod.",
+          "tr": "2.1.1: demo'da kilitli olan yükseltmeler artık yükseltme ağacında gösterilmiyor.\n2.1.0: dokuz Mesai günü kuralı (Mesai 11'den sonra ikisi birden), üç yeni İkmal güçlendirmesi (hasar, puan, yetenek bekleme süresi).\n2.0.0: oyuncu başına ayrı taret ve duvar envanteri, Mesai günleri, İkmal ekranı.\nMod yalnızca demo'nun sunduklarını kullanır; tam sürüme ayrılmış günler ve yükseltmeler kilitli kalır.\nİki oyuncuda da modun aynı sürümü kurulu olmalı."
         },
         "type": "extract",
         "detect": "coop/boot.gd",
-        "url": "mods/wtcc/wtcc-coop-2.1.0.zip",
-        "sha256": "ebee645da1e3e9d63cd9576920344a3b607a3d75181fc7ae0e852c754cd43f2d",
-        "content": "d5f59a5831780a7861e22335150e502102f58b0bbdcbd38732ed8675ac46bd65",
+        "url": "mods/wtcc/wtcc-coop-2.1.1.zip",
+        "sha256": "dd6315e1c34254d30ea8260617ef27b04b5065ef172a7c12ec1297caebaa626f",
+        "content": "4d29c957e8db62fb1f1a13a5913f5bf808b06d18efdfefe6b67054bac1ff308f",
         "remove": [
           "override.cfg",
           "coop",
