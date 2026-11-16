@@ -170,27 +170,27 @@
     },
     {
       "id": "sonisik",
-      "name": "Son Işık",
+      "name": "Lampwarden",
       "steamAppId": 0,
-      "exe": "SonIsik.exe",
+      "exe": "Lampwarden.exe",
       "standalone": true,
       "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/sonisik/header.jpg",
       "mod": {
         "name": "Oyun",
-        "version": "1.2.0",
+        "version": "1.3.0",
         "summary": {
-          "en": "Our own game: a night-time, pixelated 3D horde defence for one or two players. Guard the lighthouse through 20 waves with auto-firing weapons, level-up cards, items and turrets.",
-          "tr": "Kendi oyunumuz: tek ya da iki kişilik, gece geçen pikselli 3D sürü savunması. Kendiliğinden ateş eden silahlar, seviye kartları, eşyalar ve taretlerle feneri 20 dalga boyunca koru."
+          "en": "Our own game (formerly Son Işık): a night-time, pixelated 3D horde defence for one or two players. Keep the Beacon lit through 20 waves with auto-firing weapons, level-up cards, items and turrets. English, with Turkish in the settings.",
+          "tr": "Kendi oyunumuz (eski adıyla Son Işık): tek ya da iki kişilik, gece geçen pikselli 3D sürü savunması. Kendiliğinden ateş eden silahlar, seviye kartları, eşyalar ve taretlerle Feneri 20 dalga boyunca yanık tut. Oyun İngilizce; Türkçe ayarlardan seçilir."
         },
         "notes": {
-          "en": "1.2.0: new Sorcerer designed by Beren (walk animation and a lantern that gives light), the other three heroes rebuilt at the same level of detail, slightly sharper image.\n1.1.0: destroyed turrets stay destroyed, a mortar enemy and boss slams that go for turrets, darkness and street lamps, night events and Dares, 64 items with trade-offs, rising prices, new models and sounds.\nComplete game; no other game is needed.\nCo-op: both start the game with Steam running. One picks CO-OP > Host game (Steam invite), the other CO-OP > Join my friend's game (Steam). Steam shows it as \"Spacewar\"; that is expected.\nBoth players need the same version.",
-          "tr": "1.2.0: Beren'in tasarladığı yeni Büyücü (yürüme animasyonu ve ışık veren fener), diğer üç karakter de aynı ayrıntıda yeniden yapıldı, görüntü bir kademe netleşti.\n1.1.0: yıkılan taretler geri gelmez, taretlere saldıran Havancı ve patron darbeleri, karanlık ve sokak lambaları, gece olayları ve Meydan Oku, artı-eksi etkili 64 eşya, artan fiyatlar, yeni modeller ve sesler.\nOyunun tamamı; başka bir oyun gerekmez.\nCo-op: ikiniz de Steam açıkken oyunu başlatın. Biri CO-OP > Oyun kur (Steam daveti), diğeri CO-OP > Arkadaşımın oyununa katıl (Steam) der. Steam'de \"Spacewar\" olarak görünür; bu normal.\nİki oyuncuda da aynı sürüm olmalı."
+          "en": "1.3.0: new name, Lampwarden. The game is now in English, with Turkish under SETTINGS > Language. Level-up cards come at the end of the wave, one pick per level gained, plus a first card before wave 1. Repair a turret by standing next to it and pressing R; selling needs a second click. Lock a shop item to keep it for the next shop. Cleaner Sorcerer with a readable face and hands. New item names and matching icons. Fixed a bug that could make enemies vanish or leave a wave stuck. Your progress carries over.\nComplete game; no other game is needed.\nCo-op: both start the game with Steam running. One picks CO-OP > Host game (Steam invite), the other CO-OP > Join my friend's game (Steam). Steam shows it as \"Spacewar\"; that is expected.\nBoth players need the same version.",
+          "tr": "1.3.0: yeni isim, Lampwarden. Oyun artık İngilizce; Türkçe için SETTINGS > Language > Türkçe. Seviye kartları dalga sonunda gelir, atlanan her seviye için bir seçim yapılır; ilk dalgadan önce de bir kart seçilir. Taret, yanına gidip R'ye basarak onarılır; satmak için iki kez tıklamak gerekir. Mağazada eşya kilitlenip sonraki mağazaya saklanabilir. Büyücü sadeleşti, eli yüzü belli oluyor. Eşya isimleri ve simgeleri yenilendi. Düşmanların kaybolmasına ya da dalganın takılmasına yol açabilen bir hata düzeltildi. İlerlemen korunur.\nOyunun tamamı; başka bir oyun gerekmez.\nCo-op: ikiniz de Steam açıkken oyunu başlatın. Biri CO-OP > Oyun kur (Steam daveti), diğeri CO-OP > Arkadaşımın oyununa katıl (Steam) der. Steam'de \"Spacewar\" olarak görünür; bu normal.\nİki oyuncuda da aynı sürüm olmalı."
         },
         "type": "extract",
-        "detect": "SonIsik.exe",
-        "url": "mods/sonisik/sonisik-1.2.0.zip",
-        "sha256": "c11d88d81f5911b7c12d073202a37cffbfe1705d4b74c294e9536904342f9bea",
-        "content": "6e159bcf772c43049927d55fb8e8c149f7694aeb0408fb899a4a6e72a8482f8d"
+        "detect": "Lampwarden.exe",
+        "url": "mods/sonisik/sonisik-1.3.0.zip",
+        "sha256": "f6c66b5bdd28166d00f0895b830916a29ece91dfec54d566d965619ef6f23342",
+        "content": "7813bec8615a7c6028116ec025001b73d78f0da1c8a63e1876cba268bcffdf13"
       }
     }
   ]
