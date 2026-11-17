@@ -25,7 +25,7 @@ Birlikte oynayacağınız herkeste modun aynı sürümü kurulu olmalı. Modlar 
 
 ## İnceleme (Lampwarden)
 
-Lampwarden'ın altındaki **İnceleme** bağlantısı oyundaki tüm eşyaları, silahları, taretleri, kartları ve düşmanları ikonlarıyla listeler. Her birine etiket ve yorum eklenir; yorumlar bilgisayarda saklanır. **Çıktı al > Masaüstüne kaydet** yorumları tek bir metin dosyası yapar. Sayfa `mods/sonisik/review/index.html` dosyasından okunur ve oyunun her sürümünde yenilenir; yorumlar silinmez.
+Gizli **Yayınla** sekmesindeki **İnceleme** düğmesi oyundaki tüm eşyaları, silahları, taretleri, kartları ve düşmanları ikonlarıyla listeler. Her birine etiket ve yorum eklenir; yorumlar bilgisayarda saklanır. **Çıktı al > Masaüstüne kaydet** yorumları tek bir metin dosyası yapar. Sayfa `mods/sonisik/review/index.html` dosyasından okunur ve oyunun her sürümünde yenilenir; yorumlar silinmez.
 
 ## Nasıl çalışır
 
