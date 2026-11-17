@@ -204,20 +204,20 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.2.0",
+        "version": "3.3.0",
         "summary": {
           "en": "The redesign of Lampwarden, as a test build next to the stable game: skills with support gems, worn equipment with random bonuses, tags that tie everything together. One character so far, the Ranger. Keeps its own save.",
           "tr": "Lampwarden'ın baştan tasarlanan deneme sürümü; kararlı oyunun yanına ayrı kurulur: destek taşı takılan yetenekler, rastgele bonuslu kuşanılan ekipman, her şeyi birbirine bağlayan etiketler. Şimdilik tek karakter: Okçu. Kendi kaydını tutar."
         },
         "notes": {
-          "en": "3.2.0: Tiers now read T1 = best and the good ones are rare. Equipment only comes out of chests. Four new valuable currencies: Ash of Unmaking, Eclipse Shard, Crown Star and the very rare Twin Flame.\n3.1.0: Loot and crafting: enemies drop equipment, crafting currency and support gems; six kinds of currency change pieces at the bench; affixes come in five tiers with value ranges; the vendor sells gems and currency; the shop is rebuilt as three clear pages; more gold, softer enemy health; notification icons no longer stretch.\n3.0.0: First experimental build of the redesign: the Ranger with 8 skills, 19 support gems, worn equipment (10 slots, random bonuses, 12 uniques), Shock, Freeze, Ignite and Poison, new sounds and music.",
-          "tr": "3.2.0: Kademeler artık T1 = en iyi şeklinde okunuyor ve iyi kademeler nadir. Ekipman yalnızca sandıklardan çıkıyor. Dört yeni değerli küre: Unutuş Külü, Tutulma Kırığı, Taç Yıldızı ve çok nadir İkiz Alev.\n3.1.0: Ganimet ve tezgâh: düşmanlardan ekipman, tezgâh küresi ve destek taşı düşüyor; altı çeşit küre tezgâhta parçaları değiştiriyor; ekler beş kademeli ve değer aralıklı; satıcı taş ve küre satıyor; mağaza üç net sayfa olarak baştan yapıldı; daha çok altın, daha yumuşak düşman canı; bildirim ikonları artık uzamıyor.\n3.0.0: Yeniden tasarımın ilk deneme sürümü: 8 yetenekli Okçu, 19 destek taşı, kuşanılan ekipman (10 yuva, rastgele bonuslar, 12 eşsiz parça), Şok, Donma, Tutuşma ve Zehir, yeni sesler ve müzik."
+          "en": "3.3.0: Round, soft visual effects. Solid lamp posts, trees and generators; big enemies no longer get stuck at turrets. Vendor shows what you wear and what a swap would change. A DPS meter. Ranger fixes: Chain, Fork and Pierce now fit her arrows.\n3.2.0: Tiers now read T1 = best and the good ones are rare. Equipment only comes out of chests. Four new valuable currencies: Ash of Unmaking, Eclipse Shard, Crown Star and the very rare Twin Flame.\n3.1.0: Loot and crafting: enemies drop equipment, crafting currency and support gems; six kinds of currency change pieces at the bench; affixes come in five tiers with value ranges; the vendor sells gems and currency; the shop is rebuilt as three clear pages; more gold, softer enemy health; notification icons no longer stretch.\n3.0.0: First experimental build of the redesign: the Ranger with 8 skills, 19 support gems, worn equipment (10 slots, random bonuses, 12 uniques), Shock, Freeze, Ignite and Poison, new sounds and music.",
+          "tr": "3.3.0: Yuvarlak, yumuşak görsel efektler. Lambalar, ağaçlar ve jeneratörler artık katı; iri düşmanlar taretlerin önünde takılmıyor. Satıcıda üzerindekiler ve değişimin ne getireceği görünüyor. DPS ölçer. Okçu düzeltmeleri: Zincir, Çatal ve Delme artık oklarına takılıyor.\n3.2.0: Kademeler artık T1 = en iyi şeklinde okunuyor ve iyi kademeler nadir. Ekipman yalnızca sandıklardan çıkıyor. Dört yeni değerli küre: Unutuş Külü, Tutulma Kırığı, Taç Yıldızı ve çok nadir İkiz Alev.\n3.1.0: Ganimet ve tezgâh: düşmanlardan ekipman, tezgâh küresi ve destek taşı düşüyor; altı çeşit küre tezgâhta parçaları değiştiriyor; ekler beş kademeli ve değer aralıklı; satıcı taş ve küre satıyor; mağaza üç net sayfa olarak baştan yapıldı; daha çok altın, daha yumuşak düşman canı; bildirim ikonları artık uzamıyor.\n3.0.0: Yeniden tasarımın ilk deneme sürümü: 8 yetenekli Okçu, 19 destek taşı, kuşanılan ekipman (10 yuva, rastgele bonuslar, 12 eşsiz parça), Şok, Donma, Tutuşma ve Zehir, yeni sesler ve müzik."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.2.0.zip",
-        "sha256": "0ec7534e04318774ba07cb63b38e02082977646eb0be50a6be72e059e8a77bbe",
-        "content": "685636b58e27e8353b58aaba9d0493ff8f25e61c08ad175d901adf26349fa8c6"
+        "url": "mods/lampwarden-x/lampwarden-x-3.3.0.zip",
+        "sha256": "932efb2af1bdbecb29d2e5eda000b12eefc85a1f02a8d068b1005124851fce10",
+        "content": "07445cb0177475411681846260881c7e44ddb672a16830348f410963a0ed81b2"
       }
     }
   ]
