@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 )
 
@@ -22,6 +23,7 @@ func steamRoots() []string {
 }
 func fileInUse(string) bool          { return os.Getenv("YUTAKHUB_FAKE_RUNNING") != "" }
 func openTarget(string) error        { return nil }
+func desktopDir() string             { h, _ := os.UserHomeDir(); return filepath.Join(h, "Desktop") }
 func pickFolderDialog() string       { return os.Getenv("YUTAKHUB_PICK") }
 func systemLang() string             { return "en" }
 func startDetached(exe string) error { return exec.Command(exe).Start() }

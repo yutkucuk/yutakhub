@@ -90,7 +90,10 @@ type Game struct {
 	// Standalone marks a complete game that yutakhub installs into its own folder
 	// (no Steam game to find): the package is the game, and Exe is started directly.
 	Standalone bool `json:"standalone,omitempty"`
-	Mod        Mod  `json:"mod"`
+	// Review names a page in the repo (an HTML file) where players look over and comment on
+	// the game's items, weapons and so on. The game's release script keeps it current.
+	Review string `json:"review,omitempty"`
+	Mod    Mod    `json:"mod"`
 }
 
 type Catalog struct {
@@ -455,6 +458,7 @@ type GameView struct {
 	Status     string   `json:"status"` // nogame | notinstalled | installed | update | unsupported
 	Path       string   `json:"path"`
 	Supported  []string `json:"supported"`
+	Review     bool     `json:"review"`
 }
 
 func (a *App) fileSha(p string) string {
@@ -510,7 +514,7 @@ func (a *App) patchSource(m *Mod, root string) (string, *Patch) {
 func (a *App) view(g *Game) GameView {
 	m := &g.Mod
 	v := GameView{ID: g.ID, Name: g.Name, AppID: g.SteamAppID, Image: g.Image, ModName: m.Name,
-		Summary: m.Summary, Notes: m.Notes, Latest: m.Version, Status: "nogame"}
+		Summary: m.Summary, Notes: m.Notes, Latest: m.Version, Status: "nogame", Review: g.Review != ""}
 	root := a.gamePath(g)
 	if root == "" {
 		return v
@@ -961,6 +965,7 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 		NotesTr     string `json:"notesTr"`
 		NotesEn     string `json:"notesEn"`
 		Desktop     bool   `json:"desktop"`
+		Text        string `json:"text"`
 	}
 	if argsJSON != "" {
 		json.Unmarshal([]byte(argsJSON), &args)
@@ -1028,6 +1033,41 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 			a.saveState()
 		}
 		return nil, nil
+	case "reviewGet":
+		g, err := game()
+		if err != nil {
+			return nil, err
+		}
+		return a.reviewGet(g)
+	case "reviewSave":
+		g, err := game()
+		if err != nil {
+			return nil, err
+		}
+		if len(args.Text) > 8<<20 {
+			return nil, coded("write", "review notes are too large")
+		}
+		if err := writeFileAtomic(filepath.Join(a.dataDir, "review-"+g.ID+".json"), []byte(args.Text)); err != nil {
+			return nil, coded("write", err)
+		}
+		return nil, nil
+	case "reviewExport":
+		g, err := game()
+		if err != nil {
+			return nil, err
+		}
+		dir := desktopDir()
+		if dir == "" || !exists(dir) {
+			dir = a.dataDir
+		}
+		p := filepath.Join(dir, g.Name+" inceleme "+time.Now().Format("2006-01-02 15.04")+".txt")
+		body := strings.ReplaceAll(args.Text, "\r\n", "\n")
+		body = strings.ReplaceAll(body, "\n", "\r\n")
+		if err := writeFileAtomic(p, append([]byte{0xEF, 0xBB, 0xBF}, []byte(body)...)); err != nil {
+			return nil, coded("write", err)
+		}
+		openTarget(p)
+		return map[string]string{"path": p}, nil
 	case "openData":
 		return nil, openTarget(a.dataDir)
 	case "shortcut":
@@ -1159,4 +1199,33 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 		return nil, nil
 	}
 	return nil, errors.New("unknown call: " + name)
+}
+
+
+// ---------- review page ----------
+
+// reviewGet fetches the game's review page (falling back to the last copy we saved) and the
+// player's notes on this computer.
+func (a *App) reviewGet(g *Game) (any, error) {
+	if g.Review == "" {
+		return nil, errors.New("this game has no review page")
+	}
+	cache := filepath.Join(a.dataDir, "review-"+g.ID+".html")
+	b, err := download(catalogBase(), g.Review, 32<<20, nil)
+	if err == nil {
+		writeFileAtomic(cache, b)
+	} else {
+		a.logf("review %s: %v", g.ID, err)
+		if c, e2 := os.ReadFile(cache); e2 == nil {
+			b, err = c, nil
+		}
+	}
+	if err != nil {
+		return nil, err
+	}
+	saved, _ := os.ReadFile(filepath.Join(a.dataDir, "review-"+g.ID+".json"))
+	a.mu.Lock()
+	lang := a.state.Lang
+	a.mu.Unlock()
+	return map[string]string{"html": string(b), "saved": string(saved), "lang": lang}, nil
 }
