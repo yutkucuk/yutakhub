@@ -251,7 +251,7 @@ const T = {
     install: "Kur", update: "Güncelle", play: "Oyna", uninstall: "Modu kaldır", uninstallGame: "Oyunu kaldır", reinstall: "Yeniden kur",
     openFolder: "Oyun klasörünü aç", pickFolder: "Klasörü seç", changeFolder: "Klasörü değiştir",
     notes: "Bu sürümde neler var", hideNotes: "Notları gizle",
-    review: "İnceleme", rvBack: "← Geri", rvHint: "Yorumların bu bilgisayarda saklanır.", rvLoading: "İnceleme sayfası yükleniyor...",
+    review: "İnceleme", rvPub: "Oyunun eşyalarını, silahlarını ve diğer her şeyini inceleyip yorumla. Yorumlar bu bilgisayarda saklanır.", rvBack: "← Geri", rvHint: "Yorumların bu bilgisayarda saklanır.", rvLoading: "İnceleme sayfası yükleniyor...",
     rvFail: (d) => `İnceleme sayfası açılamadı. İnternet bağlantını kontrol edip yeniden dene.\n${d}`,
     st_nogame: "Oyun bu bilgisayarda bulunamadı. Steam'den kurduysan klasörünü kendin seçebilirsin.",
     st_notinstalled: (g) => `${g.modName} ${g.latest} kurulmaya hazır`,
@@ -317,7 +317,7 @@ const T = {
     install: "Install", update: "Update", play: "Play", uninstall: "Remove mod", uninstallGame: "Remove game", reinstall: "Reinstall",
     openFolder: "Open game folder", pickFolder: "Choose folder", changeFolder: "Change folder",
     notes: "What's in this version", hideNotes: "Hide notes",
-    review: "Review", rvBack: "← Back", rvHint: "Your notes are kept on this computer.", rvLoading: "Loading the review page...",
+    review: "Review", rvPub: "Look over and comment on the game's items, weapons and everything else. Notes are kept on this computer.", rvBack: "← Back", rvHint: "Your notes are kept on this computer.", rvLoading: "Loading the review page...",
     rvFail: (d) => `The review page could not be opened. Check your internet connection and try again.\n${d}`,
     st_nogame: "This game was not found on this PC. If it is installed, choose its folder yourself.",
     st_notinstalled: (g) => `${g.modName} ${g.latest} is ready to install`,
@@ -394,7 +394,6 @@ function gameHTML(g) {
   const links = [];
   const notes = loc(g.notes);
   if (notes) links.push(`<button data-a="notes">${openNotes[g.id] ? L.hideNotes : L.notes}</button>`);
-  if (g.review) links.push(`<button data-a="review">${L.review}</button>`);
   if (g.path) links.push(`<button data-a="openFolder">${L.openFolder}</button>`);
   if (g.status === "installed") links.push(`<button data-a="install"${dis}>${L.reinstall}</button>`);
   if (g.status === "installed" || g.status === "update") links.push(`<button data-a="uninstall"${dis}>${g.standalone ? L.uninstallGame : L.uninstall}</button>`);
@@ -463,7 +462,10 @@ function publishHTML() {
         <button class="btn ${g.state === "changed" ? "primary" : "second"}" data-pub="${esc(g.id)}"${dis}>${g.state === "changed" ? L.p_publish : L.p_notesOnly}</button>` : ""}
     </div>`;
   }).join("");
-  return `<h2>${L.p_conn}</h2>
+  const rv = S.games.filter((g) => g.review);
+  const rvHTML = rv.length ? `<h2>${L.review}</h2><p class="help">${L.rvPub}</p>
+    <div class="buttons">${rv.map((g) => `<button class="ghost" data-rv="${esc(g.id)}">${esc(g.name)} · ${L.review}</button>`).join("")}</div>` : "";
+  return `${rvHTML}<h2>${L.p_conn}</h2>
     <div class="fields"><label class="field">${L.p_repo}<input id="p-repo" value="${esc(P.repo)}" placeholder="yutku/yutakhub"></label>
       <label class="field">${L.p_token}<input id="p-token" type="password" placeholder="${P.hasToken ? L.p_tokenSaved : "github_pat_…"}"></label></div>
     <div class="buttons" style="margin-top:0"><button class="ghost" id="p-save">${L.p_save}</button><button class="ghost" id="p-test"${dis}>${L.p_test}</button></div>
@@ -598,6 +600,7 @@ $("nav").addEventListener("click", (e) => { const b = e.target.closest("button[d
 document.querySelector("main").addEventListener("click", async (e) => {
   const b = e.target.closest("button"); if (!b || b.disabled || b.closest("#list")) return;
   if (b.dataset.lang) { await call("setLang", { lang: b.dataset.lang }); pubStale = true; reload(); }
+  else if (b.dataset.rv) { openReview(b.dataset.rv); }
   else if (b.id === "p-save" || b.id === "p-test") {
     try { await call("pubSave", { repo: $("p-repo").value, token: $("p-token").value }); }
     catch (e) { const c = String(e.message || e).split(":")[0]; toast(errText(T.en["e_" + c] ? c : "error", String(e.message || e))); return; }
