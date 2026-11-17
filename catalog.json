@@ -193,6 +193,32 @@
         "sha256": "9494ed9c348e6c79e60c96ca03576b90eacf19688b7a5a326a862fec585e2aa0",
         "content": "679ff362df4ef036acaba488a57f2f4208e7fd1850f346f49f759db50a4e045b"
       }
+    },
+    {
+      "id": "lampwarden-x",
+      "name": "Lampwarden Deneysel",
+      "steamAppId": 0,
+      "exe": "Lampwarden.exe",
+      "standalone": true,
+      "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/sonisik/header.jpg",
+      "review": "mods/lampwarden-x/review/index.html",
+      "mod": {
+        "name": "Oyun",
+        "version": "3.0.0",
+        "summary": {
+          "en": "The redesign of Lampwarden, as a test build next to the stable game: skills with support gems, worn equipment with random bonuses, tags that tie everything together. One character so far, the Ranger. Keeps its own save.",
+          "tr": "Lampwarden'ın baştan tasarlanan deneme sürümü; kararlı oyunun yanına ayrı kurulur: destek taşı takılan yetenekler, rastgele bonuslu kuşanılan ekipman, her şeyi birbirine bağlayan etiketler. Şimdilik tek karakter: Okçu. Kendi kaydını tutar."
+        },
+        "notes": {
+          "en": "3.0.0: First experimental build of the redesign: the Ranger with 8 skills, 19 support gems, worn equipment (10 slots, random bonuses, 12 uniques), Shock, Freeze, Ignite and Poison, new sounds and music.",
+          "tr": "3.0.0: Yeniden tasarımın ilk deneme sürümü: 8 yetenekli Okçu, 19 destek taşı, kuşanılan ekipman (10 yuva, rastgele bonuslar, 12 eşsiz parça), Şok, Donma, Tutuşma ve Zehir, yeni sesler ve müzik."
+        },
+        "type": "extract",
+        "detect": "Lampwarden.exe",
+        "url": "mods/lampwarden-x/lampwarden-x-3.0.0.zip",
+        "sha256": "dd1c1d60af2cb3ff374bada167dcd31aa8a6134c8e75ed907232381ae4366e92",
+        "content": "49d12f5f398da459b98a4322dc54c1a4c18965f9949d49d2ec9abf78a5844f9a"
+      }
     }
   ]
 }
