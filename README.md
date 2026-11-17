@@ -23,6 +23,10 @@ Birlikte oynayacağınız herkeste modun aynı sürümü kurulu olmalı. Modlar 
 
 **English:** download `yutakhub-setup.exe` from the [latest release](../../releases/latest) and run it. yutakhub finds your Steam games, installs the co-op mods in one click and keeps them (and itself) up to date. The app is in Turkish and English.
 
+## İnceleme (Lampwarden)
+
+Lampwarden'ın altındaki **İnceleme** bağlantısı oyundaki tüm eşyaları, silahları, taretleri, kartları ve düşmanları ikonlarıyla listeler. Her birine etiket ve yorum eklenir; yorumlar bilgisayarda saklanır. **Çıktı al > Masaüstüne kaydet** yorumları tek bir metin dosyası yapar. Sayfa `mods/sonisik/review/index.html` dosyasından okunur ve oyunun her sürümünde yenilenir; yorumlar silinmez.
+
 ## Nasıl çalışır
 
 - Uygulama açılınca bu depodaki `catalog.json` dosyasını okur. Oyun listesi, mod sürümleri ve indirme adresleri oradadır; yeni bir oyun ya da mod sürümü için uygulamayı güncellemek gerekmez.

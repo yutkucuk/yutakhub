@@ -82,6 +82,15 @@ func openTarget(target string) error {
 	return nil
 }
 
+// desktopDir is the user's Desktop folder, wherever Windows keeps it (OneDrive included).
+func desktopDir() string {
+	p, err := windows.KnownFolderPath(windows.FOLDERID_Desktop, 0)
+	if err != nil {
+		return ""
+	}
+	return p
+}
+
 func pickFolderDialog() string {
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()

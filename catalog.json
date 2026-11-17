@@ -175,6 +175,7 @@
       "exe": "Lampwarden.exe",
       "standalone": true,
       "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/sonisik/header.jpg",
+      "review": "mods/sonisik/review/index.html",
       "mod": {
         "name": "Oyun",
         "version": "2.4.0",

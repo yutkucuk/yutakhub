@@ -171,6 +171,14 @@
     padding: 12px 16px; font-size: 14px; display: none; user-select: text;
   }
   #toast.ok { background: #14253a; color: #d3e8ff; border-color: #2f5786; }
+  #review { position: fixed; inset: 0; z-index: 4; background: var(--ink); display: none; flex-direction: column; }
+  #review.on { display: flex; }
+  #review .rv-head { display: flex; align-items: center; gap: 14px; padding: 10px 20px; border-bottom: 1px solid var(--line); }
+  #review .rv-head b { font: 600 19px/1 var(--display); }
+  #review .rv-head span { color: var(--muted); font-size: 13px; }
+  #review iframe { flex: 1; width: 100%; border: 0; background: #0c111d; }
+  #review [hidden] { display: none !important; }
+  #review .rv-msg { flex: 1; display: grid; place-items: center; color: var(--muted); text-align: center; padding: 24px; }
   @media (prefers-reduced-motion: reduce) { .fill, .switch::after { transition: none; } }
 </style>
 </head>
@@ -195,6 +203,11 @@
   <div class="buttons"><button class="btn second" id="m-no"></button><button class="btn danger" id="m-yes"></button></div></div></div>
 <footer><span id="ver"></span><span class="spacer"></span><span id="foot"></span></footer>
 <div id="toast" role="status"></div>
+<div id="review" role="dialog" aria-modal="true" aria-labelledby="rv-title">
+  <div class="rv-head"><button class="ghost" id="rv-back"></button><b id="rv-title"></b><span id="rv-hint"></span></div>
+  <div class="rv-msg" id="rv-msg"></div>
+  <iframe id="rv-frame" title="" hidden></iframe>
+</div>
 
 <script>
 const T = {
@@ -238,6 +251,8 @@ const T = {
     install: "Kur", update: "Güncelle", play: "Oyna", uninstall: "Modu kaldır", uninstallGame: "Oyunu kaldır", reinstall: "Yeniden kur",
     openFolder: "Oyun klasörünü aç", pickFolder: "Klasörü seç", changeFolder: "Klasörü değiştir",
     notes: "Bu sürümde neler var", hideNotes: "Notları gizle",
+    review: "İnceleme", rvBack: "← Geri", rvHint: "Yorumların bu bilgisayarda saklanır.", rvLoading: "İnceleme sayfası yükleniyor...",
+    rvFail: (d) => `İnceleme sayfası açılamadı. İnternet bağlantını kontrol edip yeniden dene.\n${d}`,
     st_nogame: "Oyun bu bilgisayarda bulunamadı. Steam'den kurduysan klasörünü kendin seçebilirsin.",
     st_notinstalled: (g) => `${g.modName} ${g.latest} kurulmaya hazır`,
     st_installed: (g) => `${g.modName} <b>${g.installed}</b> kurulu ve güncel`,
@@ -302,6 +317,8 @@ const T = {
     install: "Install", update: "Update", play: "Play", uninstall: "Remove mod", uninstallGame: "Remove game", reinstall: "Reinstall",
     openFolder: "Open game folder", pickFolder: "Choose folder", changeFolder: "Change folder",
     notes: "What's in this version", hideNotes: "Hide notes",
+    review: "Review", rvBack: "← Back", rvHint: "Your notes are kept on this computer.", rvLoading: "Loading the review page...",
+    rvFail: (d) => `The review page could not be opened. Check your internet connection and try again.\n${d}`,
     st_nogame: "This game was not found on this PC. If it is installed, choose its folder yourself.",
     st_notinstalled: (g) => `${g.modName} ${g.latest} is ready to install`,
     st_installed: (g) => `${g.modName} <b>${g.installed}</b> is installed and up to date`,
@@ -377,6 +394,7 @@ function gameHTML(g) {
   const links = [];
   const notes = loc(g.notes);
   if (notes) links.push(`<button data-a="notes">${openNotes[g.id] ? L.hideNotes : L.notes}</button>`);
+  if (g.review) links.push(`<button data-a="review">${L.review}</button>`);
   if (g.path) links.push(`<button data-a="openFolder">${L.openFolder}</button>`);
   if (g.status === "installed") links.push(`<button data-a="install"${dis}>${L.reinstall}</button>`);
   if (g.status === "installed" || g.status === "update") links.push(`<button data-a="uninstall"${dis}>${g.standalone ? L.uninstallGame : L.uninstall}</button>`);
@@ -572,6 +590,7 @@ $("list").addEventListener("click", (e) => {
   const b = e.target.closest("button[data-a]"); if (!b || b.disabled) return;
   const id = b.closest(".game").dataset.id, a = b.dataset.a;
   if (a === "notes") { openNotes[id] = !openNotes[id]; render(); return; }
+  if (a === "review") { openReview(id); return; }
   if (a === "uninstall") { confirmRemove(S.games.find((g) => g.id === id)); return; }
   act(a, id);
 });
@@ -594,6 +613,36 @@ document.querySelector("main").addEventListener("click", async (e) => {
   } else if (b.dataset.do === "resetFolder") { await call("resetFolder", { id: b.dataset.id }); reload(); }
   else if (b.dataset.do) act(b.dataset.do, b.dataset.id);
 });
+// ---------- review page: a game's items, weapons and so on, to look over and comment on ----------
+let rvGame = "";
+async function openReview(id) {
+  const L = t(), g = S.games.find((x) => x.id === id);
+  rvGame = id;
+  $("rv-back").textContent = L.rvBack; $("rv-title").textContent = (g ? g.name + " · " : "") + L.review; $("rv-hint").textContent = L.rvHint;
+  const fr = $("rv-frame"), msg = $("rv-msg");
+  fr.hidden = true; fr.removeAttribute("srcdoc"); msg.hidden = false; msg.style.whiteSpace = "pre-line"; msg.textContent = L.rvLoading;
+  $("review").classList.add("on"); $("rv-back").focus();
+  try {
+    const r = await call("reviewGet", { id });
+    if (rvGame !== id) return;
+    fr._init = { yh: 1, type: "init", value: r.saved || "{}", lang: r.lang || S.lang };
+    fr.title = L.review; fr.srcdoc = r.html; fr.hidden = false; msg.hidden = true;
+  } catch (e) { msg.textContent = L.rvFail(String(e.message || e)); }
+}
+function closeReview() { rvGame = ""; $("review").classList.remove("on"); const fr = $("rv-frame"); fr.hidden = true; fr.removeAttribute("srcdoc"); }
+$("rv-back").onclick = closeReview;
+window.addEventListener("message", async (e) => {
+  const fr = $("rv-frame"), m = e.data || {};
+  if (!m.yh || !rvGame || e.source !== fr.contentWindow) return;
+  const reply = (x) => fr.contentWindow.postMessage(Object.assign({ yh: 1 }, x), "*");
+  if (m.type === "ready") reply(fr._init || { type: "init", value: "{}" });
+  else if (m.type === "save") { try { await call("reviewSave", { id: rvGame, text: String(m.value || "") }); } catch (err) { toast(errText("error", String(err.message || err))); } }
+  else if (m.type === "export") {
+    try { const r = await call("reviewExport", { id: rvGame, text: String(m.text || "") }); reply({ type: "exported", ok: true, path: r.path }); }
+    catch (err) { reply({ type: "exported", ok: false, err: String(err.message || err) }); }
+  }
+});
+
 // Developer door: five clicks on the version in About reveal the Publish tab.
 let devClicks = 0;
 $("v-about").addEventListener("click", async (e) => {
@@ -601,7 +650,7 @@ $("v-about").addEventListener("click", async (e) => {
   if (++devClicks >= 5) { await call("enablePublisher"); await reload(); view = "publish"; pubStale = true; render(); }
 });
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") $("modal").style.display = "none";
+  if (e.key === "Escape") { $("modal").style.display = "none"; }
   if (e.key === "F5") { e.preventDefault(); if (!S.op.running) act("refresh"); }
 });
 $("refresh").onclick = () => act("refresh");
