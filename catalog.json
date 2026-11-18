@@ -204,20 +204,20 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.14.1",
+        "version": "3.15.0",
         "summary": {
           "en": "The redesign of Lampwarden, as a test build next to the stable game: skills with support gems, worn equipment with random bonuses, tags that tie everything together. Three characters: the Ranger, the Sorceress (a blood mage) and the Monk (melee). Keeps its own save.",
           "tr": "Lampwarden'ın baştan tasarlanan deneme sürümü; kararlı oyunun yanına ayrı kurulur: destek taşı takılan yetenekler, rastgele bonuslu kuşanılan ekipman, her şeyi birbirine bağlayan etiketler. Üç karakter: Okçu, Büyücü (kan büyücüsü) ve Keşiş (yakın dövüş). Kendi kaydını tutar."
         },
         "notes": {
-          "en": "3.14.1: The Witch gets her own animations, sleepers look asleep, balance pass.\n3.14.0: The fourth character: the Witch. Moths, spores, chimes and bubbles; Hush, sleep and chain pops; soft sounds.\n3.13.0: Characters, items and builds gone through again: every skill measured, Monk and Blood Mage up, the lightning Ranger trimmed, six new uniques, a +1 Physical skill level affix.\n3.12.0: The Crossroads and the Pass rebuilt: a village at night and a mountain road in the snow, with wind, water, snow and their own ambience. Fix for enemies caught in fences.\n3.11.0: New sound effects and music, one visual theme, a new main menu with a live hero preview.\n3.10.0: First part of the overhaul: all three heroes redrawn as jointed figures with fluid movement and a clip for every skill (the Monk fights like a fighter; his leap is a real jump with a lightning strike), all 17 enemies redrawn, and on The Breakwater the generators are replaced by the Great Light ([G]).",
-          "tr": "3.14.1: Cadı'nın kendi animasyonları, uyuyan düşmanın kendi görünümü, denge ayarı.\n3.14.0: Dördüncü karakter: Cadı. Güveler, sporlar, çanlar, baloncuklar; Sükût, uyku ve zincirleme patlamalar; yumuşak sesler.\n3.13.0: Karakterler, eşyalar ve build'ler elden geçti: her yetenek ölçüldü, Keşiş ve Kan Büyücüsü güçlendi, şimşek Okçusu biraz kırpıldı, altı yeni eşsiz eşya, +1 Fiziksel yetenek seviyesi eki.\n3.12.0: Kavşak ve Geçit baştan yapıldı: gece vakti bir köy ve karlı bir dağ yolu; rüzgâr, su, kar ve kendi ortam sesleri. Çite sıkışan düşman düzeltildi.\n3.11.0: Bütün ses efektleri ve müzik baştan, tek bir görsel tema, canlı kahraman önizlemeli yeni ana menü.\n3.10.0: Büyük yenilemenin ilk parçası: üç kahraman eklemli modellerle baştan çizildi, her yeteneğin kendi akıcı hareketi var (Keşiş dövüşçü gibi vuruyor; sıçrayışı gerçek bir sıçrayış ve indiği yere yıldırım düşüyor), 17 düşmanın hepsi yeniden çizildi, Mendirek'te jeneratörlerin yerini Büyük Işık aldı ([G])."
+          "en": "3.15.0: Hit feel (recoil, sparks, impact sounds, thrown bodies), a five-step staff combo for the Monk, music per map and per character.\n3.14.1: The Witch gets her own animations, sleepers look asleep, balance pass.\n3.14.0: The fourth character: the Witch. Moths, spores, chimes and bubbles; Hush, sleep and chain pops; soft sounds.\n3.13.0: Characters, items and builds gone through again: every skill measured, Monk and Blood Mage up, the lightning Ranger trimmed, six new uniques, a +1 Physical skill level affix.\n3.12.0: The Crossroads and the Pass rebuilt: a village at night and a mountain road in the snow, with wind, water, snow and their own ambience. Fix for enemies caught in fences.\n3.11.0: New sound effects and music, one visual theme, a new main menu with a live hero preview.",
+          "tr": "3.15.0: Vuruş hissi (sarsılma, kıvılcım, darbe sesleri, savrulan düşmanlar), Keşiş'e beşli asa kombosu, haritaya ve karaktere özel müzik.\n3.14.1: Cadı'nın kendi animasyonları, uyuyan düşmanın kendi görünümü, denge ayarı.\n3.14.0: Dördüncü karakter: Cadı. Güveler, sporlar, çanlar, baloncuklar; Sükût, uyku ve zincirleme patlamalar; yumuşak sesler.\n3.13.0: Karakterler, eşyalar ve build'ler elden geçti: her yetenek ölçüldü, Keşiş ve Kan Büyücüsü güçlendi, şimşek Okçusu biraz kırpıldı, altı yeni eşsiz eşya, +1 Fiziksel yetenek seviyesi eki.\n3.12.0: Kavşak ve Geçit baştan yapıldı: gece vakti bir köy ve karlı bir dağ yolu; rüzgâr, su, kar ve kendi ortam sesleri. Çite sıkışan düşman düzeltildi.\n3.11.0: Bütün ses efektleri ve müzik baştan, tek bir görsel tema, canlı kahraman önizlemeli yeni ana menü."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.14.1.zip",
-        "sha256": "ec1c1e96cda223edfe4282268b8c71f9d898037bd3b51f5f5b3908f3b47ed893",
-        "content": "ca2d64916cc763236c8d218a416b710d0ff71d5e3aa31344b2d1fdc7620fe4b0"
+        "url": "mods/lampwarden-x/lampwarden-x-3.15.0.zip",
+        "sha256": "556d3194a7883fe81f2e04c66b3b170c4c95d1413e922686a6d0c03f5ecd2639",
+        "content": "fc429b21e72c6a408680ea7c2d0c64032813345e84a4122664628a929e229b91"
       }
     }
   ]
