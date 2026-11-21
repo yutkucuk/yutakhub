@@ -268,7 +268,8 @@ const T = {
     lockNeed: "Kilitli: kurmak için erişim kodu gerekir", lockHave: "Kilitli: erişim kodun bu bilgisayarda kayıtlı",
     codeTitle: (n) => `${n}: erişim kodu`, codeBody: "Bu oyun herkese açık değil. Kurmak ve güncellemek için sana verilen erişim kodunu gir. Kod bu bilgisayarda saklanır, güncellemelerde yeniden sorulmaz.",
     codeWrong: "Bu kod uymuyor. Yanlış yazılmış olabilir ya da yeni sürümle birlikte kod değişmiş olabilir: sana verilen güncel kodu gir.", codeOk: "Devam", codeHint: "XXXXX-XXXXX-XXXXX-XXXXX",
-    ph_unlock: "Kilit açılıyor",
+    ph_unlock: "Kilit açılıyor", ph_login: "Tarayıcında Discord ile giriş yap…", ph_access: "Erişim kontrol ediliyor",
+    lockRole: "Kilitli: sunucumuzdaki rol ile açılır (Discord ile giriş)", lockRoleOk: "Kilitli: Discord ile giriş yapıldı",
     ph_download: "İndiriliyor", ph_install: "Kuruluyor", ph_uninstall: "Kaldırılıyor", ph_start: "Hazırlanıyor", ph_restart: "yutakhub yeniden başlatılıyor",
     done_install: (n) => `${n}: mod kuruldu.`, done_uninstall: (n) => `${n}: mod kaldırıldı.`,
     updBar: (v) => `yutakhub ${v} yayınlandı.`, updBtn: "Uygulamayı güncelle", updMust: "Bu katalog daha yeni bir yutakhub istiyor. Devam etmek için uygulamayı güncelle.",
@@ -285,6 +286,8 @@ const T = {
     e_no_backup: () => `Orijinal dosyanın yedeği bulunamadı. Modu kaldırmak için Steam'de oyuna sağ tıkla, Özellikler, Yüklü Dosyalar, "Dosya bütünlüğünü doğrula".`,
     e_wrong_folder: (d) => `Bu klasörde ${d} yok. Oyunun kurulu olduğu klasörü seç.`,
     e_self_write: () => `yutakhub kendi dosyasını değiştiremedi. İndirme sayfası açılıyor; yeni sürümü oradan al.`,
+    e_norole: () => `Discord hesabında bu oyunun rolü yok. Rolü sunucu sahibinden iste, sonra yeniden dene.`, e_nomember: () => `Bu Discord hesabı sunucumuzda değil. Önce sunucuya katıl ve rolü iste.`,
+    e_login: (d) => `Discord girişi tamamlanmadı. Yeniden dene. (${d})`,
     e_locked: (d) => `${d} kilitli: kurmak için erişim kodu gerekir.`, e_badkey: (d) => `${d}: erişim kodu uymuyor.`,
     e_nogame: (d) => `${d} bulunamadı.`, e_busy: () => `Önce süren işlemin bitmesini bekle.`,
     e_app_too_old: () => `Bu mod için yutakhub'ın yeni sürümü gerekiyor.`, e_error: (d) => d,
@@ -339,7 +342,8 @@ const T = {
     lockNeed: "Locked: installing needs an access code", lockHave: "Locked: your access code is stored on this computer",
     codeTitle: (n) => `${n}: access code`, codeBody: "This game is not open to everyone. Enter the access code you were given to install and update it. The code is kept on this computer and updates will not ask for it again.",
     codeWrong: "That code does not fit. It may be mistyped, or the code changed with the new version: enter the current one you were given.", codeOk: "Continue", codeHint: "XXXXX-XXXXX-XXXXX-XXXXX",
-    ph_unlock: "Unlocking",
+    ph_unlock: "Unlocking", ph_login: "Sign in with Discord in your browser…", ph_access: "Checking access",
+    lockRole: "Locked: opens with a role on our server (sign in with Discord)", lockRoleOk: "Locked: signed in with Discord",
     ph_download: "Downloading", ph_install: "Installing", ph_uninstall: "Removing", ph_start: "Preparing", ph_restart: "Restarting yutakhub",
     done_install: (n) => `${n}: mod installed.`, done_uninstall: (n) => `${n}: mod removed.`,
     updBar: (v) => `yutakhub ${v} is out.`, updBtn: "Update the app", updMust: "This catalog needs a newer yutakhub. Update the app to continue.",
@@ -356,6 +360,8 @@ const T = {
     e_no_backup: () => `No backup of the original file was found. To remove the mod, right-click the game in Steam, Properties, Installed Files, "Verify integrity of game files".`,
     e_wrong_folder: (d) => `${d} is not in that folder. Choose the folder the game is installed in.`,
     e_self_write: () => `yutakhub could not replace its own file. Opening the download page; get the new version there.`,
+    e_norole: () => `Your Discord account does not have this game's role. Ask the server owner for it, then try again.`, e_nomember: () => `This Discord account is not on our server. Join it and ask for the role first.`,
+    e_login: (d) => `The Discord sign-in was not completed. Try again. (${d})`,
     e_locked: (d) => `${d} is locked: installing needs an access code.`, e_badkey: (d) => `${d}: the access code does not fit.`,
     e_nogame: (d) => `${d} was not found.`, e_busy: () => `Wait for the current task to finish first.`,
     e_app_too_old: () => `This mod needs a newer version of yutakhub.`, e_error: (d) => d,
@@ -421,7 +427,7 @@ function gameHTML(g) {
       <h2 class="name">${esc(g.name)}</h2>
       <div class="status"><span class="dot"></span><span>${stText}</span></div>
       <p class="summary">${esc(loc(g.summary))}</p>
-      ${g.locked ? `<span class="lock${g.hasKey ? " ok" : ""}">🔒 ${g.hasKey ? L.lockHave : L.lockNeed}</span>` : ""}
+      ${g.locked ? `<span class="lock${g.hasKey ? " ok" : ""}">🔒 ${g.auth === "discord" ? (g.hasKey ? L.lockRoleOk : L.lockRole) : (g.hasKey ? L.lockHave : L.lockNeed)}</span>` : ""}
       <div class="links">${links.join("")}</div>
     </div>
     <div class="actions">${actions}</div>
@@ -605,7 +611,7 @@ async function poll(force) {
       if (op.errCode === "locked" || op.errCode === "badkey") {
         // a locked game without a code that fits: ask for one (again)
         const g = S.games.find((x) => x.id === op.id);
-        if (g && op.kind === "install") askCode(g, op.errCode === "badkey"); else toast(errText(op.errCode, op.err));
+        if (g && op.kind === "install" && g.auth !== "discord") askCode(g, op.errCode === "badkey"); else toast(errText(op.errCode, op.err));
       } else if (op.errCode) {
         toast(errText(op.errCode, op.err));
         if (op.kind === "publish" && P) {
@@ -635,7 +641,7 @@ $("list").addEventListener("click", (e) => {
   if (a === "notes") { openNotes[id] = !openNotes[id]; render(); return; }
   if (a === "review") { openReview(id); return; }
   if (a === "uninstall") { confirmRemove(S.games.find((g) => g.id === id)); return; }
-  if (a === "install") { const g = S.games.find((x) => x.id === id); if (g && g.locked && !g.hasKey) { askCode(g, false); return; } }
+  if (a === "install") { const g = S.games.find((x) => x.id === id); if (g && g.locked && !g.hasKey && g.auth !== "discord") { askCode(g, false); return; } }
   act(a, id);
 });
 $("nav").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (b) { view = b.dataset.view; pubStale = true; render(); document.querySelector("main").scrollTop = 0; } });

@@ -36,6 +36,8 @@ type Lock struct {
 	Salt  string `json:"salt"`
 	Iter  int    `json:"iter"`
 	Check string `json:"check"`
+	// Auth, when set, says the code is not typed by the player but fetched for them (discord.go)
+	Auth *LockAuth `json:"auth,omitempty"`
 }
 
 var errBadKey = errors.New("wrong access code")

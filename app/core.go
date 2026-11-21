@@ -128,6 +128,8 @@ type State struct {
 	Lang     string                `json:"lang"`
 	Settings Settings              `json:"settings"`
 	Games    map[string]*GameState `json:"games"`
+	// Discord is the player's sign-in for games whose access goes by a Discord role (discord.go)
+	Discord *DiscordLogin `json:"discord,omitempty"`
 }
 
 // ---------- errors the UI can translate ----------
@@ -465,6 +467,7 @@ type GameView struct {
 	Path       string   `json:"path"`
 	Supported  []string `json:"supported"`
 	Review     bool     `json:"review"`
+	Auth       string   `json:"auth"`   // "discord": access goes by a role on a Discord server, not by a typed code
 	Locked     bool     `json:"locked"` // installing needs an access code
 	HasKey     bool     `json:"hasKey"` // ... and one that fits this version is already stored here
 }
@@ -525,7 +528,11 @@ func (a *App) view(g *Game) GameView {
 		Summary: m.Summary, Notes: m.Notes, Latest: m.Version, Status: "nogame", Review: g.Review != ""}
 	if m.Lock != nil {
 		v.Locked = true
-		if ks := a.state.Games[g.ID]; ks != nil && ks.Key != "" {
+		if m.Lock.Auth != nil && m.Lock.Auth.Type == "discord" {
+			v.Auth = "discord"
+			// "has a key" here means: signed in, so an update can be tried without opening the browser
+			v.HasKey = a.state.Discord != nil && a.state.Discord.Token != "" && time.Now().Unix() < a.state.Discord.Exp
+		} else if ks := a.state.Games[g.ID]; ks != nil && ks.Key != "" {
 			v.HasKey = a.keyFits(g, ks.Key)
 		}
 	}
@@ -679,6 +686,28 @@ func (a *App) keyFits(g *Game, code string) bool {
 	return ok
 }
 
+// dropOutdatedLocked removes an installed locked game as soon as a newer version is out: the old
+// version must not stay playable for someone whose access was taken away since. The new version is
+// installed like any other, with the access check. Saves live outside the game's folder and stay.
+// (If the game is running right now it is left alone, and removed at the next check.)
+func (a *App) dropOutdatedLocked() {
+	a.mu.Lock()
+	var old []*Game
+	if a.catalog != nil {
+		for i := range a.catalog.Games {
+			g := &a.catalog.Games[i]
+			if g.Mod.Lock != nil && g.Mod.Type == "extract" && a.view(g).Status == "update" {
+				old = append(old, g)
+			}
+		}
+	}
+	a.mu.Unlock()
+	for _, g := range old {
+		err := a.uninstall(g, func(string, int) {})
+		a.logf("locked game %s: newer version out, old one removed: %v", g.ID, err)
+	}
+}
+
 func (a *App) install(g *Game, code string, progress func(phase string, pct int)) error {
 	a.mu.Lock()
 	root := a.gamePath(g)
@@ -690,6 +719,23 @@ func (a *App) install(g *Game, code string, progress func(phase string, pct int)
 		return err
 	}
 	m := &g.Mod
+	if m.Lock != nil && m.Lock.Auth != nil && normCode(code) == "" {
+		// access by Discord role: the code comes from the access service, for this install only
+		if m.Lock.Auth.Type != "discord" || m.Type != "extract" {
+			return coded("app_too_old", "lock "+m.Lock.Auth.Type)
+		}
+		got, err := a.discordKey(g, progress)
+		if err != nil {
+			return err
+		}
+		a.mu.Lock()
+		fits := a.keyFits(g, got)
+		a.mu.Unlock()
+		if !fits {
+			return coded("verify", "the access service's code does not open this version")
+		}
+		return a.installExtract(g, root, normCode(got), progress)
+	}
 	if m.Lock != nil {
 		// a locked game: the code just typed, or the one stored from last time. It is checked against
 		// the catalog before anything is downloaded, and kept once it fits.
@@ -1063,6 +1109,7 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 	case "refresh":
 		return nil, a.run("refresh", "", func(func(string, int)) error {
 			a.loadCatalog()
+			a.dropOutdatedLocked()
 			a.mu.Lock()
 			skip := a.state.Settings.NoUpdateCheck
 			a.mu.Unlock()
