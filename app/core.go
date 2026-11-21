@@ -1110,6 +1110,7 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 		return nil, a.run("refresh", "", func(func(string, int)) error {
 			a.loadCatalog()
 			a.dropOutdatedLocked()
+			a.dropRevoked()
 			a.mu.Lock()
 			skip := a.state.Settings.NoUpdateCheck
 			a.mu.Unlock()
@@ -1255,6 +1256,10 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 		if err != nil {
 			return nil, err
 		}
+		if g.Standalone && g.Mod.Lock != nil && g.Mod.Lock.Auth != nil {
+			// a closed test: the role is checked now, and the game gets the sign-in to check it again itself
+			return nil, a.run("play", g.ID, func(p func(string, int)) error { return a.playLocked(g, p) })
+		}
 		if g.Standalone {
 			a.mu.Lock()
 			exe := filepath.Join(a.gamePath(g), g.Exe)
@@ -1322,7 +1327,6 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 	}
 	return nil, errors.New("unknown call: " + name)
 }
-
 
 // ---------- review page ----------
 

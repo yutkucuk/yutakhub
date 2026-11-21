@@ -405,7 +405,7 @@ function wireCovers() {
 
 function gameHTML(g) {
   const L = t(), op = S.op, busy = op.running;
-  const mine = busy && op.id === g.id && (op.kind === "install" || op.kind === "uninstall");
+  const mine = busy && op.id === g.id && (op.kind === "install" || op.kind === "uninstall" || op.kind === "play");
   const g2 = Object.assign({}, g, { modName: esc(g.modName), installed: esc(g.installed), latest: esc(g.latest), supported: (g.supported || []).map(esc) });
   const st = L["st_" + g.status], stText = typeof st === "function" ? st(g2) : st;
   const dis = busy ? " disabled" : "";

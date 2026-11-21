@@ -23,6 +23,8 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"os/exec"
+	"path/filepath"
 	"strconv"
 	"time"
 )
@@ -202,4 +204,103 @@ func (a *App) discordKey(g *Game, progress func(string, int)) (string, error) {
 		return code, err
 	}
 	return "", coded("login", "the Discord sign-in was not accepted")
+}
+
+// discordToken gives a sign-in that is still valid, asking the player to sign in when there is none.
+func (a *App) discordToken(auth *LockAuth, progress func(string, int)) (string, error) {
+	a.mu.Lock()
+	l := a.state.Discord
+	a.mu.Unlock()
+	if l != nil && l.Token != "" && time.Now().Unix() < l.Exp {
+		return l.Token, nil
+	}
+	progress("login", 0)
+	nl, err := discordSignIn(auth.Client)
+	if err != nil {
+		return "", err
+	}
+	a.mu.Lock()
+	a.state.Discord = nl
+	a.saveState()
+	a.mu.Unlock()
+	return nl.Token, nil
+}
+
+// playLocked starts a closed-test game: the role is asked for first (a player who lost it has the game
+// taken off this computer), then the game is started with the sign-in, which it checks once more itself.
+func (a *App) playLocked(g *Game, progress func(string, int)) error {
+	a.mu.Lock()
+	exe := filepath.Join(a.gamePath(g), g.Exe)
+	a.mu.Unlock()
+	if !exists(exe) {
+		return coded("nogame", g.Name)
+	}
+	auth := g.Mod.Lock.Auth
+	var tok string
+	for try := 0; try < 2; try++ {
+		t, err := a.discordToken(auth, progress)
+		if err != nil {
+			return err
+		}
+		progress("access", 0)
+		_, err = askKey(auth, t, g.ID)
+		if err == errLoginStale {
+			a.mu.Lock()
+			a.state.Discord = nil
+			a.saveState()
+			a.mu.Unlock()
+			continue
+		}
+		if ce, ok := err.(*codedErr); ok && (ce.Code == "norole" || ce.Code == "nomember") {
+			a.uninstall(g, func(string, int) {})
+			return err
+		}
+		if err != nil {
+			return err
+		}
+		tok = t
+		break
+	}
+	if tok == "" {
+		return coded("login", "the Discord sign-in was not accepted")
+	}
+	cmd := exec.Command(exe)
+	cmd.Dir = filepath.Dir(exe)
+	cmd.Env = append(os.Environ(), "YUTAKHUB_TICKET="+tok)
+	if err := cmd.Start(); err != nil {
+		return coded("error", err)
+	}
+	go cmd.Wait()
+	a.mu.Lock()
+	quit := a.state.Settings.CloseOnPlay && a.onQuit != nil
+	a.mu.Unlock()
+	if quit {
+		time.AfterFunc(1500*time.Millisecond, a.onQuit)
+	}
+	return nil
+}
+
+// dropRevoked: when yutakhub starts with a sign-in still valid, the role behind every installed
+// closed-test game is checked quietly; a game whose role is gone is taken off this computer.
+// (Nothing opens in the browser here: without a valid sign-in this waits for the next Play.)
+func (a *App) dropRevoked() {
+	a.mu.Lock()
+	l := a.state.Discord
+	var games []*Game
+	if a.catalog != nil && l != nil && l.Token != "" && time.Now().Unix() < l.Exp {
+		for i := range a.catalog.Games {
+			g := &a.catalog.Games[i]
+			if g.Standalone && g.Mod.Lock != nil && g.Mod.Lock.Auth != nil && a.view(g).Installed != "" {
+				games = append(games, g)
+			}
+		}
+	}
+	a.mu.Unlock()
+	for _, g := range games {
+		_, err := askKey(g.Mod.Lock.Auth, l.Token, g.ID)
+		if ce, ok := err.(*codedErr); ok && (ce.Code == "norole" || ce.Code == "nomember") {
+			e := a.uninstall(g, func(string, int) {})
+			a.logf("closed test %s: no role any more, removed: %v", g.ID, e)
+		}
+	}
 }

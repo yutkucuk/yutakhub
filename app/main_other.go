@@ -82,9 +82,10 @@ func main() {
 }
 
 // The developer's side of locked packages (lock.go):
-//   newcode                         prints a fresh access code
-//   lock   <in.zip> <out.yhx> <code>   encrypts a package; prints what the catalog needs as JSON
-//   unlock <in.yhx> <out.zip> <code>   the way back, to check a package
+//
+//	newcode                         prints a fresh access code
+//	lock   <in.zip> <out.yhx> <code>   encrypts a package; prints what the catalog needs as JSON
+//	unlock <in.yhx> <out.zip> <code>   the way back, to check a package
 func cmdLock(cmd string, args []string) error {
 	if cmd == "newcode" {
 		c, err := newCode()

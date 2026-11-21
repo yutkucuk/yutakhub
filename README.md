@@ -7,7 +7,6 @@ Co-op modlarını tek tıkla kuran ve güncel tutan bir Windows uygulaması.
 | 20 Minutes Till Dawn | Co-op |
 | Noobs Are Coming | Online Co-op |
 | Halls of Torment | Co-op |
-| Wait, They Can Climb?! Demo | Co-op |
 | Lampwarden (eski adıyla Son Işık) | Oyunun tamamı (kendi oyunumuz) |
 | Nabız | Discord mesaj ve etkinlik merkezi (BetterDiscord eklentisi ile; uygulamanın tamamı) |
 
