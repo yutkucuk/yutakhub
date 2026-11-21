@@ -119,6 +119,12 @@
   #modal p { margin: 0 0 22px; color: var(--muted); }
   #modal .buttons { justify-content: flex-end; margin: 0; }
   #modal .btn { font-size: 15px; padding: 10px 18px; }
+  #modal input { width: 100%; box-sizing: border-box; margin: -6px 0 18px; padding: 12px 14px; font: 600 18px/1.2 ui-monospace, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--text, #e9e9f0); background: rgba(0, 0, 0, .28); border: 1px solid var(--line); border-radius: 6px; }
+  #modal input:focus { outline: 2px solid var(--blue); outline-offset: 0; border-color: transparent; }
+  #modal #m-err { margin: -8px 0 18px; color: #ff9a8a; font-size: 14px; }
+  .lock { display: inline-block; margin-top: 8px; font-size: 13px; color: #e8c06a; }
+  .lock.ok { color: var(--muted); }
   .btn.danger { background: var(--red); color: #2a0b07; }
   main::-webkit-scrollbar { width: 10px; }
   main::-webkit-scrollbar-thumb { background: var(--line); border-radius: 5px; }
@@ -200,6 +206,7 @@
   <div class="view page" id="v-publish" hidden></div>
 </main>
 <div id="modal"><div class="box"><h3 id="m-title"></h3><p id="m-body"></p>
+  <input id="m-code" autocomplete="off" spellcheck="false" maxlength="64" hidden><p id="m-err" hidden></p>
   <div class="buttons"><button class="btn second" id="m-no"></button><button class="btn danger" id="m-yes"></button></div></div></div>
 <footer><span id="ver"></span><span class="spacer"></span><span id="foot"></span></footer>
 <div id="toast" role="status"></div>
@@ -258,6 +265,10 @@ const T = {
     st_installed: (g) => `${g.modName} <b>${g.installed}</b> kurulu ve güncel`,
     st_update: (g) => g.installed ? `Yeni sürüm var: ${g.installed} yerine <b>${g.latest}</b>` : `Mod kurulu ama sürümü bilinmiyor. Güncel sürüm <b>${g.latest}</b>`,
     st_unsupported: (g) => `Oyunun bu sürümü için mod henüz hazır değil${g.supported && g.supported.length ? ` (desteklenen oyun sürümü: ${g.supported.join(", ")})` : ""}. Oyun dosyalarını elle değiştirdiysen Steam'de dosya bütünlüğünü doğrula.`,
+    lockNeed: "Kilitli: kurmak için erişim kodu gerekir", lockHave: "Kilitli: erişim kodun bu bilgisayarda kayıtlı",
+    codeTitle: (n) => `${n}: erişim kodu`, codeBody: "Bu oyun herkese açık değil. Kurmak ve güncellemek için sana verilen erişim kodunu gir. Kod bu bilgisayarda saklanır, güncellemelerde yeniden sorulmaz.",
+    codeWrong: "Bu kod uymuyor. Yanlış yazılmış olabilir ya da yeni sürümle birlikte kod değişmiş olabilir: sana verilen güncel kodu gir.", codeOk: "Devam", codeHint: "XXXXX-XXXXX-XXXXX-XXXXX",
+    ph_unlock: "Kilit açılıyor",
     ph_download: "İndiriliyor", ph_install: "Kuruluyor", ph_uninstall: "Kaldırılıyor", ph_start: "Hazırlanıyor", ph_restart: "yutakhub yeniden başlatılıyor",
     done_install: (n) => `${n}: mod kuruldu.`, done_uninstall: (n) => `${n}: mod kaldırıldı.`,
     updBar: (v) => `yutakhub ${v} yayınlandı.`, updBtn: "Uygulamayı güncelle", updMust: "Bu katalog daha yeni bir yutakhub istiyor. Devam etmek için uygulamayı güncelle.",
@@ -274,6 +285,7 @@ const T = {
     e_no_backup: () => `Orijinal dosyanın yedeği bulunamadı. Modu kaldırmak için Steam'de oyuna sağ tıkla, Özellikler, Yüklü Dosyalar, "Dosya bütünlüğünü doğrula".`,
     e_wrong_folder: (d) => `Bu klasörde ${d} yok. Oyunun kurulu olduğu klasörü seç.`,
     e_self_write: () => `yutakhub kendi dosyasını değiştiremedi. İndirme sayfası açılıyor; yeni sürümü oradan al.`,
+    e_locked: (d) => `${d} kilitli: kurmak için erişim kodu gerekir.`, e_badkey: (d) => `${d}: erişim kodu uymuyor.`,
     e_nogame: (d) => `${d} bulunamadı.`, e_busy: () => `Önce süren işlemin bitmesini bekle.`,
     e_app_too_old: () => `Bu mod için yutakhub'ın yeni sürümü gerekiyor.`, e_error: (d) => d,
   },
@@ -324,6 +336,10 @@ const T = {
     st_installed: (g) => `${g.modName} <b>${g.installed}</b> is installed and up to date`,
     st_update: (g) => g.installed ? `New version available: <b>${g.latest}</b> replaces ${g.installed}` : `The mod is installed, but its version is unknown. Latest is <b>${g.latest}</b>`,
     st_unsupported: (g) => `The mod is not ready for this version of the game${g.supported && g.supported.length ? ` (supported game version: ${g.supported.join(", ")})` : ""}. If you changed game files by hand, verify file integrity in Steam.`,
+    lockNeed: "Locked: installing needs an access code", lockHave: "Locked: your access code is stored on this computer",
+    codeTitle: (n) => `${n}: access code`, codeBody: "This game is not open to everyone. Enter the access code you were given to install and update it. The code is kept on this computer and updates will not ask for it again.",
+    codeWrong: "That code does not fit. It may be mistyped, or the code changed with the new version: enter the current one you were given.", codeOk: "Continue", codeHint: "XXXXX-XXXXX-XXXXX-XXXXX",
+    ph_unlock: "Unlocking",
     ph_download: "Downloading", ph_install: "Installing", ph_uninstall: "Removing", ph_start: "Preparing", ph_restart: "Restarting yutakhub",
     done_install: (n) => `${n}: mod installed.`, done_uninstall: (n) => `${n}: mod removed.`,
     updBar: (v) => `yutakhub ${v} is out.`, updBtn: "Update the app", updMust: "This catalog needs a newer yutakhub. Update the app to continue.",
@@ -340,6 +356,7 @@ const T = {
     e_no_backup: () => `No backup of the original file was found. To remove the mod, right-click the game in Steam, Properties, Installed Files, "Verify integrity of game files".`,
     e_wrong_folder: (d) => `${d} is not in that folder. Choose the folder the game is installed in.`,
     e_self_write: () => `yutakhub could not replace its own file. Opening the download page; get the new version there.`,
+    e_locked: (d) => `${d} is locked: installing needs an access code.`, e_badkey: (d) => `${d}: the access code does not fit.`,
     e_nogame: (d) => `${d} was not found.`, e_busy: () => `Wait for the current task to finish first.`,
     e_app_too_old: () => `This mod needs a newer version of yutakhub.`, e_error: (d) => d,
   },
@@ -404,6 +421,7 @@ function gameHTML(g) {
       <h2 class="name">${esc(g.name)}</h2>
       <div class="status"><span class="dot"></span><span>${stText}</span></div>
       <p class="summary">${esc(loc(g.summary))}</p>
+      ${g.locked ? `<span class="lock${g.hasKey ? " ok" : ""}">🔒 ${g.hasKey ? L.lockHave : L.lockNeed}</span>` : ""}
       <div class="links">${links.join("")}</div>
     </div>
     <div class="actions">${actions}</div>
@@ -539,15 +557,34 @@ async function reload() {
 }
 function whenIdle() { return new Promise((res) => (S && !S.op.running && lastSeq === S.op.seq ? res() : idleWaiters.push(res))); }
 async function updateAll() {
-  for (const id of S.games.filter((g) => g.status === "update").map((g) => g.id)) {
+  for (const id of S.games.filter((g) => g.status === "update" && (!g.locked || g.hasKey)).map((g) => g.id)) {
     await whenIdle();
     try { await call("install", { id }); } catch (e) { break; }
     await poll(true); await new Promise((res) => idleWaiters.push(res));
     if (S.op.errCode) break;
   }
 }
+// A locked game: the access code is asked for, then the install goes on with it.
+function askCode(g, wrong) {
+  const L = t(), inp = $("m-code"), err = $("m-err"), yes = $("m-yes");
+  $("m-title").textContent = L.codeTitle(g.name); $("m-body").textContent = L.codeBody;
+  $("m-no").textContent = L.cancel; yes.textContent = L.codeOk; yes.className = "btn primary";
+  inp.hidden = false; inp.value = ""; inp.placeholder = L.codeHint;
+  err.hidden = !wrong; err.textContent = wrong ? L.codeWrong : "";
+  $("modal").style.display = "grid"; inp.focus();
+  const close = () => { $("modal").style.display = "none"; inp.onkeydown = null; };
+  const go = async () => {
+    const code = inp.value.trim(); if (!code) { inp.focus(); return; }
+    close();
+    try { await call("install", { id: g.id, code }); await poll(true); }
+    catch (e) { const m = String(e.message || e), c = m.split(":")[0]; toast(errText(T.en["e_" + c] ? c : "error", m)); }
+  };
+  $("m-no").onclick = close; yes.onclick = go;
+  inp.onkeydown = (e) => { if (e.key === "Enter") go(); else if (e.key === "Escape") close(); };
+}
 function confirmRemove(g) {
   const L = t();
+  $("m-code").hidden = true; $("m-err").hidden = true; $("m-yes").className = "btn danger";
   $("m-title").textContent = L.rmTitle(g.name); $("m-body").textContent = L.rmBody;
   $("m-no").textContent = L.cancel; $("m-yes").textContent = L.rmYes;
   $("modal").style.display = "grid"; $("m-no").focus();
@@ -565,7 +602,11 @@ async function poll(force) {
   if (changed || force) {
     await reload();
     if (finished || (changed && !op.running)) {
-      if (op.errCode) {
+      if (op.errCode === "locked" || op.errCode === "badkey") {
+        // a locked game without a code that fits: ask for one (again)
+        const g = S.games.find((x) => x.id === op.id);
+        if (g && op.kind === "install") askCode(g, op.errCode === "badkey"); else toast(errText(op.errCode, op.err));
+      } else if (op.errCode) {
         toast(errText(op.errCode, op.err));
         if (op.kind === "publish" && P) {
           const b = document.querySelector(`button[data-pub="${op.id}"]`), g = P.games.find((x) => x.id === op.id);
@@ -594,6 +635,7 @@ $("list").addEventListener("click", (e) => {
   if (a === "notes") { openNotes[id] = !openNotes[id]; render(); return; }
   if (a === "review") { openReview(id); return; }
   if (a === "uninstall") { confirmRemove(S.games.find((g) => g.id === id)); return; }
+  if (a === "install") { const g = S.games.find((x) => x.id === id); if (g && g.locked && !g.hasKey) { askCode(g, false); return; } }
   act(a, id);
 });
 $("nav").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (b) { view = b.dataset.view; pubStale = true; render(); document.querySelector("main").scrollTop = 0; } });

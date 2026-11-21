@@ -70,6 +70,9 @@ type Mod struct {
 	Content string   `json:"content,omitempty"` // fingerprint of the packaged files, written by the publisher
 	Keep    []string `json:"keep,omitempty"`
 	Remove  []string `json:"remove,omitempty"`
+	// Lock is set when the package is published encrypted (see lock.go): it is installed only
+	// with the access code its owner hands out.
+	Lock *Lock `json:"lock,omitempty"`
 
 	// patch
 	Target      string   `json:"target,omitempty"`
@@ -111,6 +114,8 @@ type GameState struct {
 	Version   string   `json:"version,omitempty"`
 	Files     []string `json:"files,omitempty"`
 	TargetSha string   `json:"targetSha,omitempty"`
+	// Key is the access code the player entered for a locked game: kept so that updates do not ask again.
+	Key string `json:"key,omitempty"`
 }
 
 type Settings struct {
@@ -169,6 +174,7 @@ type App struct {
 	updChecked bool
 	lastCheck  int64
 	onQuit     func()
+	keyOK      map[string]bool // access codes already tried against the catalog (see keyFits)
 }
 
 func (a *App) logf(format string, args ...any) {
@@ -459,6 +465,8 @@ type GameView struct {
 	Path       string   `json:"path"`
 	Supported  []string `json:"supported"`
 	Review     bool     `json:"review"`
+	Locked     bool     `json:"locked"` // installing needs an access code
+	HasKey     bool     `json:"hasKey"` // ... and one that fits this version is already stored here
 }
 
 func (a *App) fileSha(p string) string {
@@ -515,6 +523,12 @@ func (a *App) view(g *Game) GameView {
 	m := &g.Mod
 	v := GameView{ID: g.ID, Name: g.Name, AppID: g.SteamAppID, Image: g.Image, ModName: m.Name,
 		Summary: m.Summary, Notes: m.Notes, Latest: m.Version, Status: "nogame", Review: g.Review != ""}
+	if m.Lock != nil {
+		v.Locked = true
+		if ks := a.state.Games[g.ID]; ks != nil && ks.Key != "" {
+			v.HasKey = a.keyFits(g, ks.Key)
+		}
+	}
 	root := a.gamePath(g)
 	if root == "" {
 		return v
@@ -645,7 +659,27 @@ func (a *App) checkNotRunning(g *Game, root string) error {
 
 // ---------- install / uninstall ----------
 
-func (a *App) install(g *Game, progress func(phase string, pct int)) error {
+// keyFits says whether code opens the version of g that the catalog offers now. Deriving the key
+// takes a moment, and the UI asks for the state often, so the last answer is remembered.
+// (called with a.mu held)
+func (a *App) keyFits(g *Game, code string) bool {
+	l := g.Mod.Lock
+	if l == nil {
+		return true
+	}
+	id := g.ID + "|" + l.Salt + "|" + l.Check + "|" + normCode(code)
+	if ok, seen := a.keyOK[id]; seen {
+		return ok
+	}
+	ok := l.matches(code)
+	if a.keyOK == nil || len(a.keyOK) > 64 {
+		a.keyOK = map[string]bool{}
+	}
+	a.keyOK[id] = ok
+	return ok
+}
+
+func (a *App) install(g *Game, code string, progress func(phase string, pct int)) error {
 	a.mu.Lock()
 	root := a.gamePath(g)
 	a.mu.Unlock()
@@ -656,16 +690,46 @@ func (a *App) install(g *Game, progress func(phase string, pct int)) error {
 		return err
 	}
 	m := &g.Mod
+	if m.Lock != nil {
+		// a locked game: the code just typed, or the one stored from last time. It is checked against
+		// the catalog before anything is downloaded, and kept once it fits.
+		a.mu.Lock()
+		st := a.gs(g.ID)
+		if normCode(code) == "" {
+			code = st.Key
+		}
+		if normCode(code) == "" {
+			a.mu.Unlock()
+			return coded("locked", g.Name)
+		}
+		if !a.keyFits(g, code) {
+			if normCode(st.Key) == normCode(code) {
+				st.Key = "" // the stored one no longer fits (the code was changed with a new version)
+				a.saveState()
+			}
+			a.mu.Unlock()
+			return coded("badkey", g.Name)
+		}
+		if st.Key != normCode(code) {
+			st.Key = normCode(code)
+			a.saveState()
+		}
+		a.mu.Unlock()
+		if m.Type != "extract" {
+			return coded("app_too_old", "locked "+m.Type)
+		}
+		return a.installExtract(g, root, normCode(code), progress)
+	}
 	switch m.Type {
 	case "extract":
-		return a.installExtract(g, root, progress)
+		return a.installExtract(g, root, "", progress)
 	case "patch":
 		return a.installPatch(g, root, progress)
 	}
 	return coded("app_too_old", m.Type)
 }
 
-func (a *App) installExtract(g *Game, root string, progress func(string, int)) error {
+func (a *App) installExtract(g *Game, root, code string, progress func(string, int)) error {
 	m := &g.Mod
 	data, err := download(catalogBase(), m.URL, 1<<30, func(p int) { progress("download", p) })
 	if err != nil {
@@ -673,6 +737,16 @@ func (a *App) installExtract(g *Game, root string, progress func(string, int)) e
 	}
 	if m.SHA256 != "" && !strings.EqualFold(sha256Hex(data), m.SHA256) {
 		return coded("verify", "downloaded file does not match the catalog")
+	}
+	if m.Lock != nil {
+		progress("unlock", 0)
+		data, err = lockOpen(data, code)
+		if err == errBadKey {
+			return coded("badkey", g.Name)
+		}
+		if err != nil {
+			return coded("verify", err)
+		}
 	}
 	zr, err := zip.NewReader(bytes.NewReader(data), int64(len(data)))
 	if err != nil {
@@ -966,6 +1040,7 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 		NotesEn     string `json:"notesEn"`
 		Desktop     bool   `json:"desktop"`
 		Text        string `json:"text"`
+		Code        string `json:"code"`
 	}
 	if argsJSON != "" {
 		json.Unmarshal([]byte(argsJSON), &args)
@@ -1124,7 +1199,7 @@ func (a *App) Call(name, argsJSON string) (any, error) {
 		}
 		return nil, a.run(name, g.ID, func(p func(string, int)) error {
 			if name == "install" {
-				return a.install(g, p)
+				return a.install(g, args.Code, p)
 			}
 			return a.uninstall(g, p)
 		})

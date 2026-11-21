@@ -42,6 +42,13 @@ func main() {
 		}
 		return
 	}
+	if len(os.Args) > 1 && (os.Args[1] == "lock" || os.Args[1] == "unlock" || os.Args[1] == "newcode") {
+		if err := cmdLock(os.Args[1], os.Args[2:]); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+		return
+	}
 	for _, a := range os.Args[1:] {
 		if a == "--publisher" {
 			publisherFlag = true
@@ -72,4 +79,43 @@ func main() {
 	addr := "127.0.0.1:8777"
 	fmt.Println("dev server on http://" + addr)
 	http.ListenAndServe(addr, nil)
+}
+
+// The developer's side of locked packages (lock.go):
+//   newcode                         prints a fresh access code
+//   lock   <in.zip> <out.yhx> <code>   encrypts a package; prints what the catalog needs as JSON
+//   unlock <in.yhx> <out.zip> <code>   the way back, to check a package
+func cmdLock(cmd string, args []string) error {
+	if cmd == "newcode" {
+		c, err := newCode()
+		if err != nil {
+			return err
+		}
+		fmt.Println(c)
+		return nil
+	}
+	if len(args) != 3 {
+		return fmt.Errorf("usage: %s <in> <out> <code>", cmd)
+	}
+	in, err := os.ReadFile(args[0])
+	if err != nil {
+		return err
+	}
+	if cmd == "unlock" {
+		out, err := lockOpen(in, args[2])
+		if err != nil {
+			return err
+		}
+		return os.WriteFile(args[1], out, 0o644)
+	}
+	out, l, err := lockSeal(in, args[2])
+	if err != nil {
+		return err
+	}
+	if err := os.WriteFile(args[1], out, 0o644); err != nil {
+		return err
+	}
+	b, _ := json.Marshal(map[string]any{"lock": l, "sha256": sha256Hex(out), "size": len(out)})
+	fmt.Println(string(b))
+	return nil
 }
