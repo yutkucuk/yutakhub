@@ -203,19 +203,19 @@
       "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/nabiz/header.jpg",
       "mod": {
         "name": "Uygulama",
-        "version": "2.2.0",
+        "version": "2.3.0",
         "summary": {
           "en": "Discord message and activity hub: shows every message you can see (all servers, DMs, groups) in one AMOLED-black window, including deleted and edited messages, GIFs, stickers and videos, with quick reply, keyword alerts and a friends' activity panel. Needs the BetterDiscord plugin, which Nabız installs for you on first run.",
           "tr": "Discord mesaj ve etkinlik merkezi: görebildiğin tüm mesajları (sunucular, DM'ler, gruplar) tek bir AMOLED siyah pencerede gösterir; silinen ve düzenlenen mesajlar, GIF, çıkartma, video, hızlı yanıt, anahtar kelime bildirimleri ve arkadaş etkinlik paneli. BetterDiscord eklentisi gerekir; Nabız ilk açılışta bunu senin için kurar."
         },
         "notes": {
-          "en": "2.2.0: Activity of people who are not your friends (server members) is hidden by default; there is a setting in the plugin to show everyone again.",
-          "tr": "2.2.0: Arkadaşın olmayan kişilerin (sunucu üyeleri) etkinliği artık varsayılan olarak gizli; herkesi tekrar görmek için eklentide bir ayar var."
+          "en": "2.3.0: New Servers screen (server button in the top bar): choose Show / Quiet / Hide for each server, search, bulk buttons, and a default for newly joined servers. Opens by itself once if you are in many servers.\n2.2.0: Activity of people who are not your friends (server members) is hidden by default; there is a setting in the plugin to show everyone again.",
+          "tr": "2.3.0: Yeni Sunucular ekranı (üst çubuktaki sunucu düğmesi): her sunucu için Göster / Sessiz / Gizle seç, ara, toplu düğmeler ve yeni katılınan sunucular için varsayılan. Çok sunucudaysan bir kez kendiliğinden açılır.\n2.2.0: Arkadaşın olmayan kişilerin (sunucu üyeleri) etkinliği artık varsayılan olarak gizli; herkesi tekrar görmek için eklentide bir ayar var."
         },
         "type": "extract",
         "detect": "Nabiz.exe",
-        "url": "mods/nabiz/nabiz-2.2.0.zip",
-        "sha256": "ee1089e2c2e06da7e52158b2dcf68cb2ddb74ba848e8d89d9ef0897d2f89f32f"
+        "url": "mods/nabiz/nabiz-2.3.0.zip",
+        "sha256": "e0fa9a8fe7ad66fe1d25b0b7cf921140c84e14e8998102588476ce83e3a08d8a"
       }
     }
   ]
