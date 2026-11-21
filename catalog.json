@@ -193,6 +193,30 @@
         "sha256": "a1b1ef5c990f73a93880540177fc2733cb79e4d158e422f02f7f2aa510a8829c",
         "content": "16ce65e0ae7bd0160329fa99f939203b8616dc45174e948a2b603f43528abfbf"
       }
+    },
+    {
+      "id": "nabiz",
+      "name": "Nabız",
+      "steamAppId": 0,
+      "exe": "Nabiz.exe",
+      "standalone": true,
+      "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/nabiz/header.jpg",
+      "mod": {
+        "name": "Uygulama",
+        "version": "2.2.0",
+        "summary": {
+          "en": "Discord message and activity hub: shows every message you can see (all servers, DMs, groups) in one AMOLED-black window, including deleted and edited messages, GIFs, stickers and videos, with quick reply, keyword alerts and a friends' activity panel. Needs the BetterDiscord plugin, which Nabız installs for you on first run.",
+          "tr": "Discord mesaj ve etkinlik merkezi: görebildiğin tüm mesajları (sunucular, DM'ler, gruplar) tek bir AMOLED siyah pencerede gösterir; silinen ve düzenlenen mesajlar, GIF, çıkartma, video, hızlı yanıt, anahtar kelime bildirimleri ve arkadaş etkinlik paneli. BetterDiscord eklentisi gerekir; Nabız ilk açılışta bunu senin için kurar."
+        },
+        "notes": {
+          "en": "2.2.0: Activity of people who are not your friends (server members) is hidden by default; there is a setting in the plugin to show everyone again.",
+          "tr": "2.2.0: Arkadaşın olmayan kişilerin (sunucu üyeleri) etkinliği artık varsayılan olarak gizli; herkesi tekrar görmek için eklentide bir ayar var."
+        },
+        "type": "extract",
+        "detect": "Nabiz.exe",
+        "url": "mods/nabiz/nabiz-2.2.0.zip",
+        "sha256": "ee1089e2c2e06da7e52158b2dcf68cb2ddb74ba848e8d89d9ef0897d2f89f32f"
+      }
     }
   ]
 }
