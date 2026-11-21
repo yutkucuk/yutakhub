@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "minApp": "1.4.0",
+  "minApp": "1.5.0",
   "games": [
     {
       "id": "20mtd",
@@ -190,12 +190,17 @@
         "type": "extract",
         "detect": "Lampwarden.exe",
         "url": "mods/lampwarden-x/lampwarden-x-3.41.0.yhx",
-        "sha256": "d20957e1feb15e169987e0ea887e32defedc1d8dd2d65603f5bae72fb20d4829",
+        "sha256": "fc79d496e93d3f94e2b2bed371f5ece4f6a7ce9a80012d42543e45ccc58c50e6",
         "content": "95ea44c0ec7f46e85a60663e18ffebe732f7c9556ad5a7173427af62f9f88e39",
         "lock": {
-          "salt": "fa3c5dc083057cda941a40dbd72543e5",
+          "salt": "d4e5788bb7efdf4e90a6a7a0c9397d63",
           "iter": 200000,
-          "check": "d0f415128dda1afbbfe48b18deca3bb6"
+          "check": "02e4d95601466165a7d240195582e7c0",
+          "auth": {
+            "type": "discord",
+            "client": "1573771637784973432",
+            "endpoint": "https://erisim.yutkuc.uk/key"
+          }
         }
       }
     },
