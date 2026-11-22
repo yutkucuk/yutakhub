@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.49.1",
+        "version": "3.49.2",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.49.1: The Witch's bubble burst is a real pop now: a snap, a falling plop and a little thump.\n3.49.0: The Beacon's Wrath also blesses: 10 s of 4%/s healing and +40% attack speed. The Witch's bubble pop is a soft new sound.\n3.48.1: The Slime King remade: a smooth slime with a carved face, a clean opening jaw and a crown on top.\n3.48.0: A touch easier: 0.14 s grace after creature blows, armour up to seven tenths, the night presses later and slower; hard-to-dodge boss attacks hit lightly, clear single blows a little less.\n3.47.0: Crowds kill now (0.1 s grace after creature blows, armour blocks at most two thirds of a hit, the night presses on long waves); boss moves take a share of your life; Slime King, Iron Colossus and Hive Mother remade with animations, auras and new attacks.\n3.46.0: The Lord of the Dark remade: a jointed, floating figure with real scythe animations, three stages, new attacks (Grasping Dark, The Harvest, his awakenings) and his own sounds.",
-          "tr": "3.49.1: Cadı'nın baloncuk sesi artık gerçek bir pop: keskin patlama, düşen bir plop ve hafif gümleme.\n3.49.0: Fenerin Gazabı artık kutsuyor: 10 sn boyunca saniyede %4 can ve %40 saldırı hızı. Cadı'nın baloncuk sesi yumuşak yeni bir ses.\n3.48.1: Balçık Kral baştan yapıldı: pürüzsüz balçık, oyulmuş yüz, düzgün açılan çene ve tepesinde tacı.\n3.48.0: Biraz kolaylaştı: yaratık vuruşu sonrası 0,14 sn, zırh en fazla onda yedi, gece daha geç ve yavaş bastırıyor; kaçması zor boss saldırıları az, açık tek darbeler biraz daha az vuruyor.\n3.47.0: Kalabalık artık öldürüyor (yaratık vuruşu sonrası 0,1 sn, zırh en fazla üçte iki keser, uzayan dalgada gece bastırıyor); boss saldırıları canın payını alıyor; Balçık Kral, Demir Dev ve Kovan Ana animasyon, aura ve yeni saldırılarla baştan yapıldı.\n3.46.0: Karanlığın Efendisi baştan yapıldı: süzülen eklemli figür, gerçek tırpan animasyonları, üç aşama, yeni saldırılar (Kavrayan Karanlık, Hasat, uyanışlar) ve kendi sesleri."
+          "en": "3.49.2: Fixed the Witch's pop chain doubling its damage at every pop (one-shotting everything, bosses too).\n3.49.1: The Witch's bubble burst is a real pop now: a snap, a falling plop and a little thump.\n3.49.0: The Beacon's Wrath also blesses: 10 s of 4%/s healing and +40% attack speed. The Witch's bubble pop is a soft new sound.\n3.48.1: The Slime King remade: a smooth slime with a carved face, a clean opening jaw and a crown on top.\n3.48.0: A touch easier: 0.14 s grace after creature blows, armour up to seven tenths, the night presses later and slower; hard-to-dodge boss attacks hit lightly, clear single blows a little less.\n3.47.0: Crowds kill now (0.1 s grace after creature blows, armour blocks at most two thirds of a hit, the night presses on long waves); boss moves take a share of your life; Slime King, Iron Colossus and Hive Mother remade with animations, auras and new attacks.",
+          "tr": "3.49.2: Cadı'nın patlama zincirinin her halkada hasarı ikiye katlaması düzeltildi (bossları bile tek atıyordu).\n3.49.1: Cadı'nın baloncuk sesi artık gerçek bir pop: keskin patlama, düşen bir plop ve hafif gümleme.\n3.49.0: Fenerin Gazabı artık kutsuyor: 10 sn boyunca saniyede %4 can ve %40 saldırı hızı. Cadı'nın baloncuk sesi yumuşak yeni bir ses.\n3.48.1: Balçık Kral baştan yapıldı: pürüzsüz balçık, oyulmuş yüz, düzgün açılan çene ve tepesinde tacı.\n3.48.0: Biraz kolaylaştı: yaratık vuruşu sonrası 0,14 sn, zırh en fazla onda yedi, gece daha geç ve yavaş bastırıyor; kaçması zor boss saldırıları az, açık tek darbeler biraz daha az vuruyor.\n3.47.0: Kalabalık artık öldürüyor (yaratık vuruşu sonrası 0,1 sn, zırh en fazla üçte iki keser, uzayan dalgada gece bastırıyor); boss saldırıları canın payını alıyor; Balçık Kral, Demir Dev ve Kovan Ana animasyon, aura ve yeni saldırılarla baştan yapıldı."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.49.1.yhx",
-        "sha256": "64d92ca248fa06633a0d8375b276af819b7e594df2cd90d4ad9cb2f077ccc5a0",
-        "content": "1ff464f59c8502029c3b50f5710d836e58d2ea80e992b8f5941d0f2365c9e259",
+        "url": "mods/lampwarden-x/lampwarden-x-3.49.2.yhx",
+        "sha256": "ffcb8e086197da9caa5fc8d5e06eb2ca45d0fe7687dae36c1418bdc48f6f6d1e",
+        "content": "578951a8a469030497e984a7010d237e3b567989fc633eed70d26d56273c40cc",
         "lock": {
-          "salt": "9ee125255846818a0b4f34ff9d5fe708",
+          "salt": "156831929c0a89548c5254b53459c8c1",
           "iter": 200000,
-          "check": "71d23e0176545e1130f0bbb9b6953791",
+          "check": "5732f03be5b6806939ac1d65d430b43d",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "abba84925a72afcc71db7094eeec5e5f1b91ac68de487e913d1c7eb0192b41b7"
+        "pck": "c6dff7f2f4f3cff050c86b6cd2861b5fead69dfec604e38d77e79732c7526eee"
       }
     },
     {
