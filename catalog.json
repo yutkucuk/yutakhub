@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.46.0",
+        "version": "3.47.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.46.0: The Lord of the Dark remade: a jointed, floating figure with real scythe animations, three stages, new attacks (Grasping Dark, The Harvest, his awakenings) and his own sounds.\n3.45.0: The Lord of the Dark reaps with his scythe and glides; bosses no longer die all at once; elites are not culled; fire-bowl wording on the Caravan's Rest; instrument and song fixes; the mouse after a win; the Tear's sound.\n3.44.0: Co-op: a dropped player can rejoin during the shop phase with everything they had; joining mid-wave explains when to come back. The Ranger deals less damage and heals 40% less; the Corsair hits harder.\n3.43.0: Co-op guests now see their own defence actions (place, upgrade, sell, pick up, repair) and Beacon repairs at once; the host still decides and a rare refusal is taken back with a refund.\n3.42.2: Simple protection against cheating: guarded values, speed-hack and changed-file checks; doubtful runs are set aside in the statistics pool automatically. Onslaught runs report too.\n3.42.1: Run statistics are anonymous: no name or Discord account is kept, reports only go into a general pool.",
-          "tr": "3.46.0: Karanlığın Efendisi baştan yapıldı: süzülen eklemli figür, gerçek tırpan animasyonları, üç aşama, yeni saldırılar (Kavrayan Karanlık, Hasat, uyanışlar) ve kendi sesleri.\n3.45.0: Karanlığın Efendisi tırpanla biçiyor ve süzülüyor; patronlar birden ölmüyor; elitler infaz edilmiyor; Kervan Konağı'nda ateş çanağı mesajları; çalgı ve şarkı düzeltmeleri; zafer sonrası fare; Gözyaşı sesi.\n3.44.0: Ortak oyun: kopan oyuncu mağaza evresinde her şeyiyle geri dönebiliyor; dalga ortasında katılmaya çalışana ne zaman geleceği söyleniyor. Okçu daha az hasar veriyor ve %40 daha az iyileşiyor; Korsan daha sert vuruyor.\n3.43.0: Ortak oyunda misafirin taret koyma, yükseltme, satma, toplama, onarma ve fener onarımı artık anında; kararı yine ev sahibi verir, nadir bir ret geri alınır ve iade edilir.\n3.42.2: Hileye karşı basit koruma: korunan değerler, hız hilesi ve değiştirilmiş dosya denetimi; şüpheli oyunlar istatistik havuzundan kendiliğinden ayrılır. Akın oyunları da artık raporlanıyor.\n3.42.1: Oyun istatistikleri anonim: ad ya da Discord hesabı saklanmaz, raporlar yalnızca genel bir havuza girer."
+          "en": "3.47.0: Crowds kill now (0.1 s grace after creature blows, armour blocks at most two thirds of a hit, the night presses on long waves); boss moves take a share of your life; Slime King, Iron Colossus and Hive Mother remade with animations, auras and new attacks.\n3.46.0: The Lord of the Dark remade: a jointed, floating figure with real scythe animations, three stages, new attacks (Grasping Dark, The Harvest, his awakenings) and his own sounds.\n3.45.0: The Lord of the Dark reaps with his scythe and glides; bosses no longer die all at once; elites are not culled; fire-bowl wording on the Caravan's Rest; instrument and song fixes; the mouse after a win; the Tear's sound.\n3.44.0: Co-op: a dropped player can rejoin during the shop phase with everything they had; joining mid-wave explains when to come back. The Ranger deals less damage and heals 40% less; the Corsair hits harder.\n3.43.0: Co-op guests now see their own defence actions (place, upgrade, sell, pick up, repair) and Beacon repairs at once; the host still decides and a rare refusal is taken back with a refund.\n3.42.2: Simple protection against cheating: guarded values, speed-hack and changed-file checks; doubtful runs are set aside in the statistics pool automatically. Onslaught runs report too.",
+          "tr": "3.47.0: Kalabalık artık öldürüyor (yaratık vuruşu sonrası 0,1 sn, zırh en fazla üçte iki keser, uzayan dalgada gece bastırıyor); boss saldırıları canın payını alıyor; Balçık Kral, Demir Dev ve Kovan Ana animasyon, aura ve yeni saldırılarla baştan yapıldı.\n3.46.0: Karanlığın Efendisi baştan yapıldı: süzülen eklemli figür, gerçek tırpan animasyonları, üç aşama, yeni saldırılar (Kavrayan Karanlık, Hasat, uyanışlar) ve kendi sesleri.\n3.45.0: Karanlığın Efendisi tırpanla biçiyor ve süzülüyor; patronlar birden ölmüyor; elitler infaz edilmiyor; Kervan Konağı'nda ateş çanağı mesajları; çalgı ve şarkı düzeltmeleri; zafer sonrası fare; Gözyaşı sesi.\n3.44.0: Ortak oyun: kopan oyuncu mağaza evresinde her şeyiyle geri dönebiliyor; dalga ortasında katılmaya çalışana ne zaman geleceği söyleniyor. Okçu daha az hasar veriyor ve %40 daha az iyileşiyor; Korsan daha sert vuruyor.\n3.43.0: Ortak oyunda misafirin taret koyma, yükseltme, satma, toplama, onarma ve fener onarımı artık anında; kararı yine ev sahibi verir, nadir bir ret geri alınır ve iade edilir.\n3.42.2: Hileye karşı basit koruma: korunan değerler, hız hilesi ve değiştirilmiş dosya denetimi; şüpheli oyunlar istatistik havuzundan kendiliğinden ayrılır. Akın oyunları da artık raporlanıyor."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.46.0.yhx",
-        "sha256": "f440bc746de3082a386bd1042836148421ced88670184faeb602b1f0a233f79e",
-        "content": "ec9f0b4ef5ef06619fc43fbf55c6945f661b503a67ac2cb3b3c78f89161b813e",
+        "url": "mods/lampwarden-x/lampwarden-x-3.47.0.yhx",
+        "sha256": "8daa02a91b140dfefb90b25fea281aa894b82331045d22b9c34590e730e54d49",
+        "content": "c41236010606ae41915102cd3e0fe0c2ed82a98dc63aae6aca8e271fe2921a3e",
         "lock": {
-          "salt": "bc7a85c9a0aac5565869c5d3b4a4940d",
+          "salt": "a347102387195f2ce0d848ddea2064f1",
           "iter": 200000,
-          "check": "b6c7d97549d4a4f14822d60d1c8663e2",
+          "check": "5d6f5b711dff86659ea23c49d5112560",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "485612e8952c867a1e870db7fbcbed86384efe4e4cfbf961f18798f48b319353"
+        "pck": "7521982262518e6e9592e87c593ebe23b10ef54306d9e684b35ec1f50fe35107"
       }
     },
     {
