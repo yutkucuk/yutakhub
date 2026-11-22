@@ -190,6 +190,35 @@
         "url": "mods/nabiz/nabiz-2.3.0.zip",
         "sha256": "e0fa9a8fe7ad66fe1d25b0b7cf921140c84e14e8998102588476ce83e3a08d8a"
       }
+    },
+    {
+      "id": "emanet",
+      "name": "Emanet",
+      "steamAppId": 0,
+      "exe": "Emanet.exe",
+      "standalone": true,
+      "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/emanet/header.jpg",
+      "mod": {
+        "name": "Oyun",
+        "version": "0.1.0",
+        "summary": {
+          "en": "Our own puzzle game: Sokoban where every push moves time forward. Seasons change the map: rivers freeze and thaw, wheat grows into walls, snowballs melt. A life told in five stages, 51 puzzles. Turkish. Closed test: installing needs an access code.",
+          "tr": "Kendi bulmaca oyunumuz: her itişin zamanı ilerlettiği bir Sokoban. Mevsimler haritayı değiştirir: dere donar ve çözülür, başak duvar olur, kartopu erir. Beş evrede anlatılan bir ömür, 51 bölüm. Türkçe. Kapalı test: kurmak için erişim kodu gerekir."
+        },
+        "notes": {
+          "en": "0.1.0: first closed test. Two players can share one keyboard (main menu > Player).",
+          "tr": "0.1.0: ilk kapalı test. İki kişi aynı klavyede oynayabilir (ana menü > Oyuncu)."
+        },
+        "type": "extract",
+        "detect": "Emanet.exe",
+        "url": "mods/emanet/emanet-0.1.0.yhx",
+        "sha256": "37ff7eb67ca3236b407fd56df76141d007afe5e9d89384ea82a427f153b9a07e",
+        "lock": {
+          "salt": "6746faafb4be52a13b9d2925520ac050",
+          "iter": 200000,
+          "check": "60f536f334d44eec6771ee08a17f96ad"
+        }
+      }
     }
   ]
 }
