@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.63.0",
+        "version": "3.64.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.63.0: The heroes' story lines rewritten; new lines for the Beacon leaving, the Vigil, Orien.\n3.62.2: F10 no longer clears the weather with the interface.\n3.62.1: Fixes 3.62.0, which did not start.\n3.62.0: The Vigil's own music, fading changes, Orien's ending and a score.\n3.61.0: Orien's own score in three settings, and its own sounds.\n3.60.0: Orien's last life: the duel, and it reads the way you roll.",
-          "tr": "3.63.0: Kahramanların hikâye sözleri yeniden yazıldı; Fener'in gidişi, Nöbet ve Orien için yeni sözler.\n3.62.2: F10 artık arayüzle birlikte havayı silmiyor.\n3.62.1: Açılmayan 3.62.0'ı düzeltir.\n3.62.0: Nöbet'in müziği, yumuşak geçişler, Orien'in sonu ve puan.\n3.61.0: Orien'in kendi müziği (üç düzenleme) ve kendi sesleri.\n3.60.0: Orien'in son canı: düello; hangi yöne yuvarlandığını okur."
+          "en": "3.64.0: More of the heroes' lines rewritten; a new exchange for every pair.\n3.63.0: The heroes' story lines rewritten; new lines for the Beacon leaving, the Vigil, Orien.\n3.62.2: F10 no longer clears the weather with the interface.\n3.62.1: Fixes 3.62.0, which did not start.\n3.62.0: The Vigil's own music, fading changes, Orien's ending and a score.\n3.61.0: Orien's own score in three settings, and its own sounds.",
+          "tr": "3.64.0: Kahramanların sözlerinin devamı; her çifte yeni bir karşılıklı konuşma.\n3.63.0: Kahramanların hikâye sözleri yeniden yazıldı; Fener'in gidişi, Nöbet ve Orien için yeni sözler.\n3.62.2: F10 artık arayüzle birlikte havayı silmiyor.\n3.62.1: Açılmayan 3.62.0'ı düzeltir.\n3.62.0: Nöbet'in müziği, yumuşak geçişler, Orien'in sonu ve puan.\n3.61.0: Orien'in kendi müziği (üç düzenleme) ve kendi sesleri."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.63.0.yhx",
-        "sha256": "258d88451c8f66169d1da7951ec9053d2a2a55cc8622ecfdcb3845836d7d62ce",
-        "content": "c6a9754a5833192aa049b2487af6bcc00aa421e5af1e54a9242f8432ed6c9046",
+        "url": "mods/lampwarden-x/lampwarden-x-3.64.0.yhx",
+        "sha256": "2f0f3a0c804c597337d4a67fb64dc0abf8a37e91c70a71a77eb3f792b3abed6b",
+        "content": "7b9e56e22d68f8bc1107dc5d33af9378ef4f1ec28cd9767b5c640901ec91fd4f",
         "lock": {
-          "salt": "bbb9e6ad2b32ab462a8341ceab466d3f",
+          "salt": "d8abb413982163be91bede5b8eaee4b1",
           "iter": 200000,
-          "check": "1b5f530721a453807a05866759c4dd6e",
+          "check": "956b0856e129efce093c9755d1db8937",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "59605a8627a53a2826d55ea158a0679b16c5b1203f63f8cf102b5cddb67e6d9a"
+        "pck": "95a4cbb776a17ea19202f920ce84bc221c3fa559915fbc3098642ae3fb866a32"
       }
     },
     {
