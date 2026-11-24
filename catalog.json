@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.67.5",
+        "version": "3.67.6",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.67.5: Developer mode: F5 toggles invulnerability.\n3.67.4: A harder Orien: quicker moves, a burning dial, the Hours instead of the sundial, two new moves in its last life; quicker Keepers; quieter thunder, Brannoch's own bell.\n3.67.3: Orien no longer sticks when a burn or poison ends a life; quicker Keepers; the pistol marks moved to the life bar.\n3.67.2: Co-op fix for Orien (the guest's error when it puts the Keepers out); the heroes walk off in the last scene.\n3.67.1: The rarely heard lines gone over, the Turkish interface corrected, Roll instead of Dash in the hints.\n3.66.0: The short lines heard most in a fight, rewritten for all six heroes.",
-          "tr": "3.67.5: Geliştirici modu: F5 ölümsüzlüğü açıp kapatır.\n3.67.4: Orien zorlaştı: hızlı hamleler, yanan kadran, güneş saati yerine Saatler, son canda iki yeni hamle; Bekçiler hızlandı; gök gürültüsü kısıldı, Brannoch'un kendi çanı.\n3.67.3: Orien bir canı yanma ya da zehirle bitince takılmıyor; Bekçiler hızlandı; kurşun göstergesi can çubuğunun yanında.\n3.67.2: Orien'de co-op düzeltmesi (Bekçiler sönerken misafirde çıkan hata); son sahnede kahramanlar yürüyor.\n3.67.1: Seyrek duyulan sözler elden geçti, arayüzün Türkçesi düzeltildi, ipuçlarında atılma yerine yuvarlanma.\n3.66.0: Dövüşte en çok duyulan kısa sözler altı kahraman için baştan yazıldı."
+          "en": "3.67.6: Orien: the hero holds fire during its scenes, a composed musical ending at its death, and a triple rush in place of the hours attack.\n3.67.5: Developer mode: F5 toggles invulnerability.\n3.67.4: A harder Orien: quicker moves, a burning dial, the Hours instead of the sundial, two new moves in its last life; quicker Keepers; quieter thunder, Brannoch's own bell.\n3.67.3: Orien no longer sticks when a burn or poison ends a life; quicker Keepers; the pistol marks moved to the life bar.\n3.67.2: Co-op fix for Orien (the guest's error when it puts the Keepers out); the heroes walk off in the last scene.\n3.67.1: The rarely heard lines gone over, the Turkish interface corrected, Roll instead of Dash in the hints.",
+          "tr": "3.67.6: Orien: sahnelerinde kahraman ateşi kesiyor, ölümünde bestelenmiş bir müzik bitişi, saatler saldırısının yerine üçlü atılma.\n3.67.5: Geliştirici modu: F5 ölümsüzlüğü açıp kapatır.\n3.67.4: Orien zorlaştı: hızlı hamleler, yanan kadran, güneş saati yerine Saatler, son canda iki yeni hamle; Bekçiler hızlandı; gök gürültüsü kısıldı, Brannoch'un kendi çanı.\n3.67.3: Orien bir canı yanma ya da zehirle bitince takılmıyor; Bekçiler hızlandı; kurşun göstergesi can çubuğunun yanında.\n3.67.2: Orien'de co-op düzeltmesi (Bekçiler sönerken misafirde çıkan hata); son sahnede kahramanlar yürüyor.\n3.67.1: Seyrek duyulan sözler elden geçti, arayüzün Türkçesi düzeltildi, ipuçlarında atılma yerine yuvarlanma."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.67.5.yhx",
-        "sha256": "f1e77727f2329828e06fb93f60bb3c923e8c7e555ec266498cb718ffa4c541cb",
-        "content": "2a361a9a249dc835fd039f8cdbc98de9102d9071370d370df1ca1a14b9d974f1",
+        "url": "mods/lampwarden-x/lampwarden-x-3.67.6.yhx",
+        "sha256": "191158798d228c5551fc27670ad95f2f2f86154a86faf08cce44aeb15e3aed6d",
+        "content": "c2f245f027e49259889f2cee65a23cdf137c0dbca19d672dd1041bfb5af874c5",
         "lock": {
-          "salt": "a7474527379f26de8211beff4e2e865d",
+          "salt": "3d6a551dafc158e5eaa6761783c6bcf6",
           "iter": 200000,
-          "check": "041fae0be0763962a21630849fcd35fb",
+          "check": "256626c7983e25ccb96b96c857821c6b",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "6017b8ace6f126a64453215f4cf771d5229ceb66a1088eff68fa0c117d519e8e"
+        "pck": "86fc3ae62943ad5887c3913029cc39f3b9aeb0894d946f74c75476fc23786261"
       }
     },
     {
