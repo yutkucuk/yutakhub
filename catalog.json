@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.51.3",
+        "version": "3.52.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.51.3: Bench: the bonus you pick on an enchanted piece is the one that changes. One of each support gem (no duplicates). Fathom's Broadside is fired from a deck gun beside him. Smarter sound voices: a different sound is heard among many copies of one. Attack animation has a ceiling at very high attack speed.\n3.51.2: Hemlock fights with fists and kicks while its sickles are thrown\n3.51.1: Hemlock survives better: +30 max health, +1 armour, 10% less damage taken in its own cloud, enemies with 4+ Venom hit 15% softer\n3.51.0: New hero Hemlock, enchantments, new hero names, mass-pop stutter fixed\n3.50.0: Pick who you watch when down in co-op; Witch pops weaker\n3.49.3: The Witch's pops have their own line in the damage breakdown.",
-          "tr": "3.51.3: Tezgâh: büyülü parçada seçtiğin bonus değişir. Her destek taşından bir tane (çift taş yok). Fathom'un Borda Ateşi yanına çıkan bir güverte topundan atılır. Akıllı ses kanalları: çok tekrarlanan seslerin arasında farklı ses duyulur. Çok yüksek saldırı hızında animasyonun üst sınırı var.\n3.51.2: Hemlock orakları havadayken yumruk ve tekmeyle savaşır\n3.51.1: Hemlock daha dayanıklı: +30 can, +1 zırh, kendi bulutunda %10 daha az hasar, 4+ Ağu taşıyan düşman %15 daha yumuşak vurur\n3.51.0: Yeni karakter Hemlock, büyüler, yeni karakter isimleri, toplu patlama takılması düzeldi\n3.50.0: Ortak oyunda ölünce kimi izleyeceğini seç; Cadı patlamaları zayıfladı\n3.49.3: Cadı'nın patlamaları hasar dökümünde ayrı satırda."
+          "en": "3.52.0: The roll and stamina replace the dash (three rolls, only the middle is safe); the boss damage cap is gone.\n3.51.3: Bench: the bonus you pick on an enchanted piece is the one that changes. One of each support gem (no duplicates). Fathom's Broadside is fired from a deck gun beside him. Smarter sound voices: a different sound is heard among many copies of one. Attack animation has a ceiling at very high attack speed.\n3.51.2: Hemlock fights with fists and kicks while its sickles are thrown\n3.51.1: Hemlock survives better: +30 max health, +1 armour, 10% less damage taken in its own cloud, enemies with 4+ Venom hit 15% softer\n3.51.0: New hero Hemlock, enchantments, new hero names, mass-pop stutter fixed\n3.50.0: Pick who you watch when down in co-op; Witch pops weaker",
+          "tr": "3.52.0: Atılmanın yerine yuvarlanma ve dayanıklılık geldi (üç yuvarlanma, yalnızca ortası güvenli); patron hasar sınırı kalktı.\n3.51.3: Tezgâh: büyülü parçada seçtiğin bonus değişir. Her destek taşından bir tane (çift taş yok). Fathom'un Borda Ateşi yanına çıkan bir güverte topundan atılır. Akıllı ses kanalları: çok tekrarlanan seslerin arasında farklı ses duyulur. Çok yüksek saldırı hızında animasyonun üst sınırı var.\n3.51.2: Hemlock orakları havadayken yumruk ve tekmeyle savaşır\n3.51.1: Hemlock daha dayanıklı: +30 can, +1 zırh, kendi bulutunda %10 daha az hasar, 4+ Ağu taşıyan düşman %15 daha yumuşak vurur\n3.51.0: Yeni karakter Hemlock, büyüler, yeni karakter isimleri, toplu patlama takılması düzeldi\n3.50.0: Ortak oyunda ölünce kimi izleyeceğini seç; Cadı patlamaları zayıfladı"
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.51.3.yhx",
-        "sha256": "a8ceb8e89e1fe7164871ac42f9ab502ca94e92380e6f15712a9404c0efa66cfc",
-        "content": "5c3a880f0c81c8715e5d51df56bcc2009500e9810d6fdd81ffa6cc42cea0cd1f",
+        "url": "mods/lampwarden-x/lampwarden-x-3.52.0.yhx",
+        "sha256": "f112f2c12487690c7aabb2569f2a93ab1e311b4fe3e87564d572a31a0d6625ad",
+        "content": "ea689690d4e3d838bcc0625b1f5080906ce08a16fff0bccdbcd2a6fdeeb0686c",
         "lock": {
-          "salt": "990538c0210fd53d947d49bbed5dd7a3",
+          "salt": "4620db494661ed9dcf36ab3c311809b0",
           "iter": 200000,
-          "check": "5927579da3b893e1844c3678e3057733",
+          "check": "9f11bab5787ff63ecefbbda3769e0be0",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "529d721be04db53f7389c4ec855742f36b5f6b36d8a2f39160a753c370429f29"
+        "pck": "798914cce1c2e4facbd3797af434c7366ba60bf7503888222808f76226e47654"
       }
     },
     {
