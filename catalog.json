@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.53.1",
+        "version": "3.53.2",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.53.1: A small internal change; nothing differs in play.\n3.53.0: A trial of the Vigil: after wave 20, stay; a clock instead of waves, the first two Old Keepers, the Last Spark. Stamina fills a little slower.\n3.52.0: The roll and stamina replace the dash (three rolls, only the middle is safe); the boss damage cap is gone.\n3.51.3: Bench: the bonus you pick on an enchanted piece is the one that changes. One of each support gem (no duplicates). Fathom's Broadside is fired from a deck gun beside him. Smarter sound voices: a different sound is heard among many copies of one. Attack animation has a ceiling at very high attack speed.\n3.51.2: Hemlock fights with fists and kicks while its sickles are thrown\n3.51.1: Hemlock survives better: +30 max health, +1 armour, 10% less damage taken in its own cloud, enemies with 4+ Venom hit 15% softer",
-          "tr": "3.53.1: Küçük bir iç değişiklik; oynanışta fark yok.\n3.53.0: Nöbet denemesi: 20. dalgadan sonra kal; dalga yerine saat, ilk iki Eski Bekçi, Son Kıvılcım. Dayanıklılık biraz daha yavaş doluyor.\n3.52.0: Atılmanın yerine yuvarlanma ve dayanıklılık geldi (üç yuvarlanma, yalnızca ortası güvenli); patron hasar sınırı kalktı.\n3.51.3: Tezgâh: büyülü parçada seçtiğin bonus değişir. Her destek taşından bir tane (çift taş yok). Fathom'un Borda Ateşi yanına çıkan bir güverte topundan atılır. Akıllı ses kanalları: çok tekrarlanan seslerin arasında farklı ses duyulur. Çok yüksek saldırı hızında animasyonun üst sınırı var.\n3.51.2: Hemlock orakları havadayken yumruk ve tekmeyle savaşır\n3.51.1: Hemlock daha dayanıklı: +30 can, +1 zırh, kendi bulutunda %10 daha az hasar, 4+ Ağu taşıyan düşman %15 daha yumuşak vurur"
+          "en": "3.53.2: A small internal change; nothing differs in play.\n3.53.1: A small internal change; nothing differs in play.\n3.53.0: A trial of the Vigil: after wave 20, stay; a clock instead of waves, the first two Old Keepers, the Last Spark. Stamina fills a little slower.\n3.52.0: The roll and stamina replace the dash (three rolls, only the middle is safe); the boss damage cap is gone.\n3.51.3: Bench: the bonus you pick on an enchanted piece is the one that changes. One of each support gem (no duplicates). Fathom's Broadside is fired from a deck gun beside him. Smarter sound voices: a different sound is heard among many copies of one. Attack animation has a ceiling at very high attack speed.\n3.51.2: Hemlock fights with fists and kicks while its sickles are thrown",
+          "tr": "3.53.2: Küçük bir iç değişiklik; oynanışta fark yok.\n3.53.1: Küçük bir iç değişiklik; oynanışta fark yok.\n3.53.0: Nöbet denemesi: 20. dalgadan sonra kal; dalga yerine saat, ilk iki Eski Bekçi, Son Kıvılcım. Dayanıklılık biraz daha yavaş doluyor.\n3.52.0: Atılmanın yerine yuvarlanma ve dayanıklılık geldi (üç yuvarlanma, yalnızca ortası güvenli); patron hasar sınırı kalktı.\n3.51.3: Tezgâh: büyülü parçada seçtiğin bonus değişir. Her destek taşından bir tane (çift taş yok). Fathom'un Borda Ateşi yanına çıkan bir güverte topundan atılır. Akıllı ses kanalları: çok tekrarlanan seslerin arasında farklı ses duyulur. Çok yüksek saldırı hızında animasyonun üst sınırı var.\n3.51.2: Hemlock orakları havadayken yumruk ve tekmeyle savaşır"
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.53.1.yhx",
-        "sha256": "f0aa2740ac5751951994d999eb652634654c100545efb2f33b412c47275a74de",
-        "content": "4fb0193c056ac3f58740529fdecc6a33da7a8b919fdc7f2701fa38e64eb81f55",
+        "url": "mods/lampwarden-x/lampwarden-x-3.53.2.yhx",
+        "sha256": "0c83a6357ffb419e64a2bf0c186b5d29d8e9cd4db0d539f76321ea9001bc16e8",
+        "content": "4c788b6c0fd32addb09f783345d5bfc42af1c2ea2f70d959f27f06ffe3dddc69",
         "lock": {
-          "salt": "39cb14458ac9a8964dd503d543093756",
+          "salt": "4b814769d7729b071381b1c4dc82e7a4",
           "iter": 200000,
-          "check": "388193f30ae4a83f3744474201360cbf",
+          "check": "17a2295b0d61286068510199b8b5cc6e",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "453c2ed73988b9498d0dad812da696902bf3a9669484ccf07ab0490fd477b4ec"
+        "pck": "0d041d9e335445f96d7efbf60d40e8299358b13fec471ee169b3324a7882ab9c"
       }
     },
     {
