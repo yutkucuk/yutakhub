@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.57.0",
+        "version": "3.57.1",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.57.0: The Vigil: the last four Old Keepers; all Keepers twice as tough and faster by tier; a flask now and then instead of chests.\n3.56.0: The Vigil: four more Old Keepers (Chain-Warden, Mirror-Keeper, Kindler, Drowned Keeper) with bodies and moves; new faces for the first four.\n3.55.1: Stamina recovers a little slower; leech is tightly capped in the Vigil; each mark adds kinds of Keeper on top of the earlier ones.\n3.55.0: The first four Old Keepers get jointed bodies and moves of their own; a blow lands where it was drawn; long blows go for the furthest hero.\n3.54.0: The Vigil: no light but the moon, the Oil-Bearer and the Lamplighter, marks every 2 minutes, a cap on blows at once.\n3.53.2: A small internal change; nothing differs in play.",
-          "tr": "3.57.0: Nöbet: son dört Eski Bekçi; bütün Bekçiler iki kat dayanıklı ve sırasına göre daha hızlı; sandık yerine ara sıra iksir.\n3.56.0: Nöbet: dört yeni Eski Bekçi (Zincirci, Aynacı, Tutuşturucu, Boğulmuş Bekçi) bedenleri ve hareketleriyle; ilk dördün yüzleri yenilendi.\n3.55.1: Dayanıklılık biraz daha yavaş toparlanıyor; Nöbet'te can çalma sıkı sınırlı; her eşik öncekilerin üstüne yeni Bekçi çeşidi ekliyor.\n3.55.0: İlk dört Eski Bekçi eklemli beden ve kendi hareketlerine kavuştu; darbe çizildiği yere iner; uzun darbeler en uzaktaki kahramanı seçer.\n3.54.0: Nöbet: ay ışığından başka ışık yok, Yağcı ve Çıracı, 2 dakikalık eşikler, aynı anda gelen darbelere sınır.\n3.53.2: Küçük bir iç değişiklik; oynanışta fark yok."
+          "en": "3.57.1: The Old Keepers have names; the marks tell the story; past minute 8 the Keepers grow quicker.\n3.57.0: The Vigil: the last four Old Keepers; all Keepers twice as tough and faster by tier; a flask now and then instead of chests.\n3.56.0: The Vigil: four more Old Keepers (Chain-Warden, Mirror-Keeper, Kindler, Drowned Keeper) with bodies and moves; new faces for the first four.\n3.55.1: Stamina recovers a little slower; leech is tightly capped in the Vigil; each mark adds kinds of Keeper on top of the earlier ones.\n3.55.0: The first four Old Keepers get jointed bodies and moves of their own; a blow lands where it was drawn; long blows go for the furthest hero.\n3.54.0: The Vigil: no light but the moon, the Oil-Bearer and the Lamplighter, marks every 2 minutes, a cap on blows at once.",
+          "tr": "3.57.1: Eski Bekçilerin adları var; eşikler hikâyeyi söylüyor; 8. dakikadan sonra Bekçiler hızlanıyor.\n3.57.0: Nöbet: son dört Eski Bekçi; bütün Bekçiler iki kat dayanıklı ve sırasına göre daha hızlı; sandık yerine ara sıra iksir.\n3.56.0: Nöbet: dört yeni Eski Bekçi (Zincirci, Aynacı, Tutuşturucu, Boğulmuş Bekçi) bedenleri ve hareketleriyle; ilk dördün yüzleri yenilendi.\n3.55.1: Dayanıklılık biraz daha yavaş toparlanıyor; Nöbet'te can çalma sıkı sınırlı; her eşik öncekilerin üstüne yeni Bekçi çeşidi ekliyor.\n3.55.0: İlk dört Eski Bekçi eklemli beden ve kendi hareketlerine kavuştu; darbe çizildiği yere iner; uzun darbeler en uzaktaki kahramanı seçer.\n3.54.0: Nöbet: ay ışığından başka ışık yok, Yağcı ve Çıracı, 2 dakikalık eşikler, aynı anda gelen darbelere sınır."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.57.0.yhx",
-        "sha256": "962e1161a1da097d2c73fa7c0b3ffaa91be9604eb0a7d06cd70c256e44824ee2",
-        "content": "ee57938e0d3476faa6df09f49c60426b1c3544b6c60efc72944d4894c7791f57",
+        "url": "mods/lampwarden-x/lampwarden-x-3.57.1.yhx",
+        "sha256": "1981591f6b67f327de2013495765a97c642e310d7b1605cda0e947f1be59ce03",
+        "content": "c39577ba2e15936d8cad6e63817e4c01848d6a940edeaa471b9e9d30a00e8688",
         "lock": {
-          "salt": "8a95c7210ddcd0b5bc74008e54a3d099",
+          "salt": "e034c7051e94d4b1288dd50b319ae3bd",
           "iter": 200000,
-          "check": "79fd5d359c40b66d76292c7c137fab41",
+          "check": "78e539077f5a0b7bf8cf99a1502a4601",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "07d4782d6416bce19c00602452e8b2dd33123a92599db194a0063703e6d75d45"
+        "pck": "998565848b532d42eb409b30ebb3d92d72111b41187bc6ba323512ee878bc69e"
       }
     },
     {
