@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.57.1",
+        "version": "3.58.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.57.1: The Old Keepers have names; the marks tell the story; past minute 8 the Keepers grow quicker.\n3.57.0: The Vigil: the last four Old Keepers; all Keepers twice as tough and faster by tier; a flask now and then instead of chests.\n3.56.0: The Vigil: four more Old Keepers (Chain-Warden, Mirror-Keeper, Kindler, Drowned Keeper) with bodies and moves; new faces for the first four.\n3.55.1: Stamina recovers a little slower; leech is tightly capped in the Vigil; each mark adds kinds of Keeper on top of the earlier ones.\n3.55.0: The first four Old Keepers get jointed bodies and moves of their own; a blow lands where it was drawn; long blows go for the furthest hero.\n3.54.0: The Vigil: no light but the moon, the Oil-Bearer and the Lamplighter, marks every 2 minutes, a cap on blows at once.",
-          "tr": "3.57.1: Eski Bekçilerin adları var; eşikler hikâyeyi söylüyor; 8. dakikadan sonra Bekçiler hızlanıyor.\n3.57.0: Nöbet: son dört Eski Bekçi; bütün Bekçiler iki kat dayanıklı ve sırasına göre daha hızlı; sandık yerine ara sıra iksir.\n3.56.0: Nöbet: dört yeni Eski Bekçi (Zincirci, Aynacı, Tutuşturucu, Boğulmuş Bekçi) bedenleri ve hareketleriyle; ilk dördün yüzleri yenilendi.\n3.55.1: Dayanıklılık biraz daha yavaş toparlanıyor; Nöbet'te can çalma sıkı sınırlı; her eşik öncekilerin üstüne yeni Bekçi çeşidi ekliyor.\n3.55.0: İlk dört Eski Bekçi eklemli beden ve kendi hareketlerine kavuştu; darbe çizildiği yere iner; uzun darbeler en uzaktaki kahramanı seçer.\n3.54.0: Nöbet: ay ışığından başka ışık yok, Yağcı ve Çıracı, 2 dakikalık eşikler, aynı anda gelen darbelere sınır."
+          "en": "3.58.0: Something comes at the twelfth minute of the Vigil.\n3.57.1: The Old Keepers have names; the marks tell the story; past minute 8 the Keepers grow quicker.\n3.57.0: The Vigil: the last four Old Keepers; all Keepers twice as tough and faster by tier; a flask now and then instead of chests.\n3.56.0: The Vigil: four more Old Keepers (Chain-Warden, Mirror-Keeper, Kindler, Drowned Keeper) with bodies and moves; new faces for the first four.\n3.55.1: Stamina recovers a little slower; leech is tightly capped in the Vigil; each mark adds kinds of Keeper on top of the earlier ones.\n3.55.0: The first four Old Keepers get jointed bodies and moves of their own; a blow lands where it was drawn; long blows go for the furthest hero.",
+          "tr": "3.58.0: Nöbet'in on ikinci dakikasında bir şey geliyor.\n3.57.1: Eski Bekçilerin adları var; eşikler hikâyeyi söylüyor; 8. dakikadan sonra Bekçiler hızlanıyor.\n3.57.0: Nöbet: son dört Eski Bekçi; bütün Bekçiler iki kat dayanıklı ve sırasına göre daha hızlı; sandık yerine ara sıra iksir.\n3.56.0: Nöbet: dört yeni Eski Bekçi (Zincirci, Aynacı, Tutuşturucu, Boğulmuş Bekçi) bedenleri ve hareketleriyle; ilk dördün yüzleri yenilendi.\n3.55.1: Dayanıklılık biraz daha yavaş toparlanıyor; Nöbet'te can çalma sıkı sınırlı; her eşik öncekilerin üstüne yeni Bekçi çeşidi ekliyor.\n3.55.0: İlk dört Eski Bekçi eklemli beden ve kendi hareketlerine kavuştu; darbe çizildiği yere iner; uzun darbeler en uzaktaki kahramanı seçer."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.57.1.yhx",
-        "sha256": "1981591f6b67f327de2013495765a97c642e310d7b1605cda0e947f1be59ce03",
-        "content": "c39577ba2e15936d8cad6e63817e4c01848d6a940edeaa471b9e9d30a00e8688",
+        "url": "mods/lampwarden-x/lampwarden-x-3.58.0.yhx",
+        "sha256": "ff5e17aa79f85f305a11d3f96bea4ff250b91ab761b5c52837ae1494294bda9b",
+        "content": "b4cbc56db28c4e599fd70b27f6a7d49e43a7fe9320cc638354e6fd5db277dcdb",
         "lock": {
-          "salt": "e034c7051e94d4b1288dd50b319ae3bd",
+          "salt": "acfc3495c8ab7dd5072d17f6c86a79da",
           "iter": 200000,
-          "check": "78e539077f5a0b7bf8cf99a1502a4601",
+          "check": "414e913310fb3bc08fc93ab02182a842",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "998565848b532d42eb409b30ebb3d92d72111b41187bc6ba323512ee878bc69e"
+        "pck": "18722b08ab607ffcbc652ce5b70b58b60ac9f39358069496155dbcd848eed5ba"
       }
     },
     {
