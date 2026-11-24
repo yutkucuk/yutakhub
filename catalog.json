@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.67.7",
+        "version": "3.68.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.67.7: The two skill-effect sliders now reach everything a skill leaves behind, not only its first flash.\n3.67.6: Orien: the hero holds fire during its scenes, a composed musical ending at its death, and a triple rush in place of the hours attack.\n3.67.5: Developer mode: F5 toggles invulnerability.\n3.67.4: A harder Orien: quicker moves, a burning dial, the Hours instead of the sundial, two new moves in its last life; quicker Keepers; quieter thunder, Brannoch's own bell.\n3.67.3: Orien no longer sticks when a burn or poison ends a life; quicker Keepers; the pistol marks moved to the life bar.\n3.67.2: Co-op fix for Orien (the guest's error when it puts the Keepers out); the heroes walk off in the last scene.",
-          "tr": "3.67.7: İki beceri efekti kaydırıcısı artık becerinin geride bıraktığı her şeye ulaşıyor, yalnızca ilk parlamaya değil.\n3.67.6: Orien: sahnelerinde kahraman ateşi kesiyor, ölümünde bestelenmiş bir müzik bitişi, saatler saldırısının yerine üçlü atılma.\n3.67.5: Geliştirici modu: F5 ölümsüzlüğü açıp kapatır.\n3.67.4: Orien zorlaştı: hızlı hamleler, yanan kadran, güneş saati yerine Saatler, son canda iki yeni hamle; Bekçiler hızlandı; gök gürültüsü kısıldı, Brannoch'un kendi çanı.\n3.67.3: Orien bir canı yanma ya da zehirle bitince takılmıyor; Bekçiler hızlandı; kurşun göstergesi can çubuğunun yanında.\n3.67.2: Orien'de co-op düzeltmesi (Bekçiler sönerken misafirde çıkan hata); son sahnede kahramanlar yürüyor."
+          "en": "3.68.0: A new lord of the fifth night: Sirocco, the Wick-Thief, in the Slime King's place. The first of four new bosses.\n3.67.7: The two skill-effect sliders now reach everything a skill leaves behind, not only its first flash.\n3.67.6: Orien: the hero holds fire during its scenes, a composed musical ending at its death, and a triple rush in place of the hours attack.\n3.67.5: Developer mode: F5 toggles invulnerability.\n3.67.4: A harder Orien: quicker moves, a burning dial, the Hours instead of the sundial, two new moves in its last life; quicker Keepers; quieter thunder, Brannoch's own bell.\n3.67.3: Orien no longer sticks when a burn or poison ends a life; quicker Keepers; the pistol marks moved to the life bar.",
+          "tr": "3.68.0: 5. gecenin yeni efendisi: Balçık Kralı'nın yerine Sirocco, the Wick-Thief. Dört yeni boss'un ilki.\n3.67.7: İki beceri efekti kaydırıcısı artık becerinin geride bıraktığı her şeye ulaşıyor, yalnızca ilk parlamaya değil.\n3.67.6: Orien: sahnelerinde kahraman ateşi kesiyor, ölümünde bestelenmiş bir müzik bitişi, saatler saldırısının yerine üçlü atılma.\n3.67.5: Geliştirici modu: F5 ölümsüzlüğü açıp kapatır.\n3.67.4: Orien zorlaştı: hızlı hamleler, yanan kadran, güneş saati yerine Saatler, son canda iki yeni hamle; Bekçiler hızlandı; gök gürültüsü kısıldı, Brannoch'un kendi çanı.\n3.67.3: Orien bir canı yanma ya da zehirle bitince takılmıyor; Bekçiler hızlandı; kurşun göstergesi can çubuğunun yanında."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.67.7.yhx",
-        "sha256": "2d871f495e40a4f0ee38e5a71b2db9cfd29d9caa400feb4620a335ead84c94b1",
-        "content": "a753e2961d8f1624ac849c43504e6eb769d78f27ae86d6e058320abb3343b903",
+        "url": "mods/lampwarden-x/lampwarden-x-3.68.0.yhx",
+        "sha256": "45312bd3e3e520c29dac1621a3ec7d499eca235994f4411b622916d4141145f6",
+        "content": "29244925f994e6641fda42136b5213eb5e01384ee707311aeee9c9026daa4ed8",
         "lock": {
-          "salt": "e739fe83a43f95f06582a32244e244a2",
+          "salt": "2fb8f9db0f8a85a541cceefb79783411",
           "iter": 200000,
-          "check": "ddffecc5c87cf63cc83bd79c39a1df1f",
+          "check": "fa2004b9f36aa9c2869fac5d3c69dad2",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "e09f8666fd388758fed9bd48a8f956248b300ff624fca792031b3fa7cdb1af98"
+        "pck": "d0350f6f1ae8bdeb4fada2b9128015d18f07228a5ea67f10a9acf8ab3f530a06"
       }
     },
     {
