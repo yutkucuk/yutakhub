@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.65.1",
+        "version": "3.66.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.65.1: Twenty more exchanges between Hemlock and the others.\n3.65.0: Hemlock has a voice: his lines, and exchanges with the others.\n3.64.0: More of the heroes' lines rewritten; a new exchange for every pair.\n3.63.0: The heroes' story lines rewritten; new lines for the Beacon leaving, the Vigil, Orien.\n3.62.2: F10 no longer clears the weather with the interface.\n3.62.1: Fixes 3.62.0, which did not start.",
-          "tr": "3.65.1: Hemlock ile ötekiler arasında yirmi konuşma daha.\n3.65.0: Hemlock'un artık sesi var: kendi sözleri ve ötekilerle konuşmaları.\n3.64.0: Kahramanların sözlerinin devamı; her çifte yeni bir karşılıklı konuşma.\n3.63.0: Kahramanların hikâye sözleri yeniden yazıldı; Fener'in gidişi, Nöbet ve Orien için yeni sözler.\n3.62.2: F10 artık arayüzle birlikte havayı silmiyor.\n3.62.1: Açılmayan 3.62.0'ı düzeltir."
+          "en": "3.66.0: The short lines heard most in a fight, rewritten for all six heroes.\n3.65.1: Twenty more exchanges between Hemlock and the others.\n3.65.0: Hemlock has a voice: his lines, and exchanges with the others.\n3.64.0: More of the heroes' lines rewritten; a new exchange for every pair.\n3.63.0: The heroes' story lines rewritten; new lines for the Beacon leaving, the Vigil, Orien.\n3.62.2: F10 no longer clears the weather with the interface.",
+          "tr": "3.66.0: Dövüşte en çok duyulan kısa sözler altı kahraman için baştan yazıldı.\n3.65.1: Hemlock ile ötekiler arasında yirmi konuşma daha.\n3.65.0: Hemlock'un artık sesi var: kendi sözleri ve ötekilerle konuşmaları.\n3.64.0: Kahramanların sözlerinin devamı; her çifte yeni bir karşılıklı konuşma.\n3.63.0: Kahramanların hikâye sözleri yeniden yazıldı; Fener'in gidişi, Nöbet ve Orien için yeni sözler.\n3.62.2: F10 artık arayüzle birlikte havayı silmiyor."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.65.1.yhx",
-        "sha256": "42b4d2566af0803fb7b16191704778783db142f4f40e0f413b9adee866f37ec1",
-        "content": "4fe7ae2943ed658ff1eb0465b0c404dc869494c0bda6754a103647984b51b278",
+        "url": "mods/lampwarden-x/lampwarden-x-3.66.0.yhx",
+        "sha256": "6048b39075fda2f445ea392ee243010bbfd8322ba3527c6e2d6d41e4da454755",
+        "content": "16cfc6d013eaa95187dfd3344cd4a831f1ab577593fa46d8af7abd8f358ee8e6",
         "lock": {
-          "salt": "4970aeef4c400c8d72bb33072550f07b",
+          "salt": "e036216be0aa0237b2e7b156d68a04af",
           "iter": 200000,
-          "check": "fdfa7700f6ebfa8c0ea9dd5566d11086",
+          "check": "5ba33a99aa32d24f1a41bf300e966e50",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "fe091af0601a68fc0ef681896ff550ebc5e5ea4acc90948a82a6b51aab8199b6"
+        "pck": "0694a65a4aef198f935556f1b60b73a6b63eb24fe9886fec6c9819c0a58803de"
       }
     },
     {
