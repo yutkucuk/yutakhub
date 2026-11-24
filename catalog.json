@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.55.1",
+        "version": "3.56.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.55.1: Stamina recovers a little slower; leech is tightly capped in the Vigil; each mark adds kinds of Keeper on top of the earlier ones.\n3.55.0: The first four Old Keepers get jointed bodies and moves of their own; a blow lands where it was drawn; long blows go for the furthest hero.\n3.54.0: The Vigil: no light but the moon, the Oil-Bearer and the Lamplighter, marks every 2 minutes, a cap on blows at once.\n3.53.2: A small internal change; nothing differs in play.\n3.53.1: A small internal change; nothing differs in play.\n3.53.0: A trial of the Vigil: after wave 20, stay; a clock instead of waves, the first two Old Keepers, the Last Spark. Stamina fills a little slower.",
-          "tr": "3.55.1: Dayanıklılık biraz daha yavaş toparlanıyor; Nöbet'te can çalma sıkı sınırlı; her eşik öncekilerin üstüne yeni Bekçi çeşidi ekliyor.\n3.55.0: İlk dört Eski Bekçi eklemli beden ve kendi hareketlerine kavuştu; darbe çizildiği yere iner; uzun darbeler en uzaktaki kahramanı seçer.\n3.54.0: Nöbet: ay ışığından başka ışık yok, Yağcı ve Çıracı, 2 dakikalık eşikler, aynı anda gelen darbelere sınır.\n3.53.2: Küçük bir iç değişiklik; oynanışta fark yok.\n3.53.1: Küçük bir iç değişiklik; oynanışta fark yok.\n3.53.0: Nöbet denemesi: 20. dalgadan sonra kal; dalga yerine saat, ilk iki Eski Bekçi, Son Kıvılcım. Dayanıklılık biraz daha yavaş doluyor."
+          "en": "3.56.0: The Vigil: four more Old Keepers (Chain-Warden, Mirror-Keeper, Kindler, Drowned Keeper) with bodies and moves; new faces for the first four.\n3.55.1: Stamina recovers a little slower; leech is tightly capped in the Vigil; each mark adds kinds of Keeper on top of the earlier ones.\n3.55.0: The first four Old Keepers get jointed bodies and moves of their own; a blow lands where it was drawn; long blows go for the furthest hero.\n3.54.0: The Vigil: no light but the moon, the Oil-Bearer and the Lamplighter, marks every 2 minutes, a cap on blows at once.\n3.53.2: A small internal change; nothing differs in play.\n3.53.1: A small internal change; nothing differs in play.",
+          "tr": "3.56.0: Nöbet: dört yeni Eski Bekçi (Zincirci, Aynacı, Tutuşturucu, Boğulmuş Bekçi) bedenleri ve hareketleriyle; ilk dördün yüzleri yenilendi.\n3.55.1: Dayanıklılık biraz daha yavaş toparlanıyor; Nöbet'te can çalma sıkı sınırlı; her eşik öncekilerin üstüne yeni Bekçi çeşidi ekliyor.\n3.55.0: İlk dört Eski Bekçi eklemli beden ve kendi hareketlerine kavuştu; darbe çizildiği yere iner; uzun darbeler en uzaktaki kahramanı seçer.\n3.54.0: Nöbet: ay ışığından başka ışık yok, Yağcı ve Çıracı, 2 dakikalık eşikler, aynı anda gelen darbelere sınır.\n3.53.2: Küçük bir iç değişiklik; oynanışta fark yok.\n3.53.1: Küçük bir iç değişiklik; oynanışta fark yok."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.55.1.yhx",
-        "sha256": "0c5158e0e0674a3cce9a9cf629df642979e5f86555b11d30ddb79c0be473a995",
-        "content": "a29c7ad20b8007df356cdec683b7416d2ac3dde04211be756bc69edca7af97f9",
+        "url": "mods/lampwarden-x/lampwarden-x-3.56.0.yhx",
+        "sha256": "5f83a85f1792dfa5f7620375225dde47930bfe65d2a240e8d3c889de878bc32c",
+        "content": "a323bc1dad351e7297d504ddaaf64dca6a6e32f632b794e4ab03d36d587ed2d8",
         "lock": {
-          "salt": "2ff2a41a19665950fe3be1602a2e8fcf",
+          "salt": "eb7a9508225f2c61ca421f5a418046c6",
           "iter": 200000,
-          "check": "8e70d905d77ab29195407a3e6f382103",
+          "check": "a7e09c1635707c35085e592af8d4d1c0",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "bac568cab2ea0197977dff844d75a73772135f8d12cdcd3fe57202ed2ca107e4"
+        "pck": "b000ef997fd191e7faf45efafdb966ca34ae9c97b8794c7322c664cae4d8cfb3"
       }
     },
     {
