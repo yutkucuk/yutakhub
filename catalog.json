@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.67.2",
+        "version": "3.67.3",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.67.2: Co-op fix for Orien (the guest's error when it puts the Keepers out); the heroes walk off in the last scene.\n3.67.1: The rarely heard lines gone over, the Turkish interface corrected, Roll instead of Dash in the hints.\n3.66.0: The short lines heard most in a fight, rewritten for all six heroes.\n3.65.1: Twenty more exchanges between Hemlock and the others.\n3.65.0: Hemlock has a voice: his lines, and exchanges with the others.\n3.64.0: More of the heroes' lines rewritten; a new exchange for every pair.",
-          "tr": "3.67.2: Orien'de co-op düzeltmesi (Bekçiler sönerken misafirde çıkan hata); son sahnede kahramanlar yürüyor.\n3.67.1: Seyrek duyulan sözler elden geçti, arayüzün Türkçesi düzeltildi, ipuçlarında atılma yerine yuvarlanma.\n3.66.0: Dövüşte en çok duyulan kısa sözler altı kahraman için baştan yazıldı.\n3.65.1: Hemlock ile ötekiler arasında yirmi konuşma daha.\n3.65.0: Hemlock'un artık sesi var: kendi sözleri ve ötekilerle konuşmaları.\n3.64.0: Kahramanların sözlerinin devamı; her çifte yeni bir karşılıklı konuşma."
+          "en": "3.67.3: Orien no longer sticks when a burn or poison ends a life; quicker Keepers; the pistol marks moved to the life bar.\n3.67.2: Co-op fix for Orien (the guest's error when it puts the Keepers out); the heroes walk off in the last scene.\n3.67.1: The rarely heard lines gone over, the Turkish interface corrected, Roll instead of Dash in the hints.\n3.66.0: The short lines heard most in a fight, rewritten for all six heroes.\n3.65.1: Twenty more exchanges between Hemlock and the others.\n3.65.0: Hemlock has a voice: his lines, and exchanges with the others.",
+          "tr": "3.67.3: Orien bir canı yanma ya da zehirle bitince takılmıyor; Bekçiler hızlandı; kurşun göstergesi can çubuğunun yanında.\n3.67.2: Orien'de co-op düzeltmesi (Bekçiler sönerken misafirde çıkan hata); son sahnede kahramanlar yürüyor.\n3.67.1: Seyrek duyulan sözler elden geçti, arayüzün Türkçesi düzeltildi, ipuçlarında atılma yerine yuvarlanma.\n3.66.0: Dövüşte en çok duyulan kısa sözler altı kahraman için baştan yazıldı.\n3.65.1: Hemlock ile ötekiler arasında yirmi konuşma daha.\n3.65.0: Hemlock'un artık sesi var: kendi sözleri ve ötekilerle konuşmaları."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.67.2.yhx",
-        "sha256": "dce79c020a5a03de81ce2bcce324a69bb0c3c427de88dfecb4ea3213d8cb725c",
-        "content": "f2e79c7e98eb261ed6309e2347aa6d439f927f6510400dbae708d740c1e803fa",
+        "url": "mods/lampwarden-x/lampwarden-x-3.67.3.yhx",
+        "sha256": "0cc2bc3e58d7653b3a22f8a27ec27d148bf99868b8856099325bc4c79f2916cf",
+        "content": "7515baea2886b4d81607b53e0e5c9f556c14adf54c227cf086e020c00825affe",
         "lock": {
-          "salt": "418917530d878b798c17b2c1ec6c8019",
+          "salt": "4ff4076d13ea8dc79a69fb15b58eafee",
           "iter": 200000,
-          "check": "5f8f1dcc691a0b4acaee403828c1f056",
+          "check": "4c99a0ac36e5a6fc47d626f0a04b230c",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "bb2a8bbd779a1f9f0afd9702ac8a85edc57fe05d2b6259bbf7496093b44978cf"
+        "pck": "8b2040fb0a54a1851cae0ba87328514fcbd790194d6291dc14215b08d8b982e2"
       }
     },
     {
