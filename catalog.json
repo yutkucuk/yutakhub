@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.66.0",
+        "version": "3.67.1",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.66.0: The short lines heard most in a fight, rewritten for all six heroes.\n3.65.1: Twenty more exchanges between Hemlock and the others.\n3.65.0: Hemlock has a voice: his lines, and exchanges with the others.\n3.64.0: More of the heroes' lines rewritten; a new exchange for every pair.\n3.63.0: The heroes' story lines rewritten; new lines for the Beacon leaving, the Vigil, Orien.\n3.62.2: F10 no longer clears the weather with the interface.",
-          "tr": "3.66.0: Dövüşte en çok duyulan kısa sözler altı kahraman için baştan yazıldı.\n3.65.1: Hemlock ile ötekiler arasında yirmi konuşma daha.\n3.65.0: Hemlock'un artık sesi var: kendi sözleri ve ötekilerle konuşmaları.\n3.64.0: Kahramanların sözlerinin devamı; her çifte yeni bir karşılıklı konuşma.\n3.63.0: Kahramanların hikâye sözleri yeniden yazıldı; Fener'in gidişi, Nöbet ve Orien için yeni sözler.\n3.62.2: F10 artık arayüzle birlikte havayı silmiyor."
+          "en": "3.67.1: The rarely heard lines gone over, the Turkish interface corrected, Roll instead of Dash in the hints.\n3.66.0: The short lines heard most in a fight, rewritten for all six heroes.\n3.65.1: Twenty more exchanges between Hemlock and the others.\n3.65.0: Hemlock has a voice: his lines, and exchanges with the others.\n3.64.0: More of the heroes' lines rewritten; a new exchange for every pair.\n3.63.0: The heroes' story lines rewritten; new lines for the Beacon leaving, the Vigil, Orien.",
+          "tr": "3.67.1: Seyrek duyulan sözler elden geçti, arayüzün Türkçesi düzeltildi, ipuçlarında atılma yerine yuvarlanma.\n3.66.0: Dövüşte en çok duyulan kısa sözler altı kahraman için baştan yazıldı.\n3.65.1: Hemlock ile ötekiler arasında yirmi konuşma daha.\n3.65.0: Hemlock'un artık sesi var: kendi sözleri ve ötekilerle konuşmaları.\n3.64.0: Kahramanların sözlerinin devamı; her çifte yeni bir karşılıklı konuşma.\n3.63.0: Kahramanların hikâye sözleri yeniden yazıldı; Fener'in gidişi, Nöbet ve Orien için yeni sözler."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.66.0.yhx",
-        "sha256": "6048b39075fda2f445ea392ee243010bbfd8322ba3527c6e2d6d41e4da454755",
-        "content": "16cfc6d013eaa95187dfd3344cd4a831f1ab577593fa46d8af7abd8f358ee8e6",
+        "url": "mods/lampwarden-x/lampwarden-x-3.67.1.yhx",
+        "sha256": "492dd9538d4d19dc6bf0f317a2e2ec597ca91bb3617094f20428d6d01d699a21",
+        "content": "f9dc367432001db01a90faa84c3aa05a882abe751df008eade656dd059afe571",
         "lock": {
-          "salt": "e036216be0aa0237b2e7b156d68a04af",
+          "salt": "eb78c1e4fc8c38623414e293af25cbe6",
           "iter": 200000,
-          "check": "5ba33a99aa32d24f1a41bf300e966e50",
+          "check": "dd38551ffb80150622e156481e80846f",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "0694a65a4aef198f935556f1b60b73a6b63eb24fe9886fec6c9819c0a58803de"
+        "pck": "eb7baaa9c1aa98428c0489b9491c10a71961398745c1aa6299ecc0c57bb1622a"
       }
     },
     {
