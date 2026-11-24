@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.69.0",
+        "version": "3.70.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.69.0: A new lord of the tenth night: Garrand, the Doorwarden, in the Iron Colossus's place. Get behind his door, make him run into a wall, stand still when the hour strikes.\n3.68.0: A new lord of the fifth night: Sirocco, the Wick-Thief, in the Slime King's place. The first of four new bosses.\n3.67.7: The two skill-effect sliders now reach everything a skill leaves behind, not only its first flash.\n3.67.6: Orien: the hero holds fire during its scenes, a composed musical ending at its death, and a triple rush in place of the hours attack.\n3.67.5: Developer mode: F5 toggles invulnerability.\n3.67.4: A harder Orien: quicker moves, a burning dial, the Hours instead of the sundial, two new moves in its last life; quicker Keepers; quieter thunder, Brannoch's own bell.",
-          "tr": "3.69.0: 10. gecenin yeni efendisi: Demir Dev'in yerine Garrand, the Doorwarden. Kapısının arkasına geç, onu duvara çarptır, saat vurduğunda kıpırdama.\n3.68.0: 5. gecenin yeni efendisi: Balçık Kralı'nın yerine Sirocco, the Wick-Thief. Dört yeni boss'un ilki.\n3.67.7: İki beceri efekti kaydırıcısı artık becerinin geride bıraktığı her şeye ulaşıyor, yalnızca ilk parlamaya değil.\n3.67.6: Orien: sahnelerinde kahraman ateşi kesiyor, ölümünde bestelenmiş bir müzik bitişi, saatler saldırısının yerine üçlü atılma.\n3.67.5: Geliştirici modu: F5 ölümsüzlüğü açıp kapatır.\n3.67.4: Orien zorlaştı: hızlı hamleler, yanan kadran, güneş saati yerine Saatler, son canda iki yeni hamle; Bekçiler hızlandı; gök gürültüsü kısıldı, Brannoch'un kendi çanı."
+          "en": "3.70.0: A new lord of the fifteenth night: Maren, the Tide-Bride, in the Hive Mother's place. Get to a light when the tide comes in, catch the bouquet, stay close on the ribbon.\n3.69.0: A new lord of the tenth night: Garrand, the Doorwarden, in the Iron Colossus's place. Get behind his door, make him run into a wall, stand still when the hour strikes.\n3.68.0: A new lord of the fifth night: Sirocco, the Wick-Thief, in the Slime King's place. The first of four new bosses.\n3.67.7: The two skill-effect sliders now reach everything a skill leaves behind, not only its first flash.\n3.67.6: Orien: the hero holds fire during its scenes, a composed musical ending at its death, and a triple rush in place of the hours attack.\n3.67.5: Developer mode: F5 toggles invulnerability.",
+          "tr": "3.70.0: 15. gecenin yeni efendisi: Kovan Ana'nın yerine Maren, the Tide-Bride. Gelgitte ışığa sığın, buketi yakala, kurdeleye bağlıyken yakın dur.\n3.69.0: 10. gecenin yeni efendisi: Demir Dev'in yerine Garrand, the Doorwarden. Kapısının arkasına geç, onu duvara çarptır, saat vurduğunda kıpırdama.\n3.68.0: 5. gecenin yeni efendisi: Balçık Kralı'nın yerine Sirocco, the Wick-Thief. Dört yeni boss'un ilki.\n3.67.7: İki beceri efekti kaydırıcısı artık becerinin geride bıraktığı her şeye ulaşıyor, yalnızca ilk parlamaya değil.\n3.67.6: Orien: sahnelerinde kahraman ateşi kesiyor, ölümünde bestelenmiş bir müzik bitişi, saatler saldırısının yerine üçlü atılma.\n3.67.5: Geliştirici modu: F5 ölümsüzlüğü açıp kapatır."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.69.0.yhx",
-        "sha256": "ada979befef4920f83f8ebc6ce5a1ba2fa2e5eb4f83f39528ec2661bf2a9c935",
-        "content": "efc52fdefcc97a05e63a188ea4166e26f57854e2d3867166732e94dc786cd05d",
+        "url": "mods/lampwarden-x/lampwarden-x-3.70.0.yhx",
+        "sha256": "3ef157c0efd6b1a33744c8363ae6eb0b2dea43d6904530ec65d086b37694f320",
+        "content": "436dbc097f5ee47dffcd33080ab0f1973ca18942f656f0b942cd3b508cb80aaa",
         "lock": {
-          "salt": "bd8dc6d3f60dd7a42e4208184181c3b3",
+          "salt": "883ee9f671c05ec6128ec069df200bb6",
           "iter": 200000,
-          "check": "874302ccd5621f909217fdf309467483",
+          "check": "6366e285188f2c53bbc55a8fa4031eda",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "6212a0abc4c414bfb54c255d922dcd0b8e6ff9cb7ec3cc9e46ba7163aaa4b8f2"
+        "pck": "b193a5ed3fde25184b0d8b8fcb3972b794c286c1d268273ab5d56fdb976e9f4e"
       }
     },
     {
