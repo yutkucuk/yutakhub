@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.59.0",
+        "version": "3.60.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.59.0: Orien's second life: three decrees, the dial, the board, the sundial.\n3.58.1: The Vigil's Turkish text was gone over.\n3.58.0: Something comes at the twelfth minute of the Vigil.\n3.57.1: The Old Keepers have names; the marks tell the story; past minute 8 the Keepers grow quicker.\n3.57.0: The Vigil: the last four Old Keepers; all Keepers twice as tough and faster by tier; a flask now and then instead of chests.\n3.56.0: The Vigil: four more Old Keepers (Chain-Warden, Mirror-Keeper, Kindler, Drowned Keeper) with bodies and moves; new faces for the first four.",
-          "tr": "3.59.0: Orien'in ikinci canı: üç ferman, saat kolları, dama tahtası, güneş saati.\n3.58.1: Nöbet'in Türkçe metinleri elden geçirildi.\n3.58.0: Nöbet'in on ikinci dakikasında bir şey geliyor.\n3.57.1: Eski Bekçilerin adları var; eşikler hikâyeyi söylüyor; 8. dakikadan sonra Bekçiler hızlanıyor.\n3.57.0: Nöbet: son dört Eski Bekçi; bütün Bekçiler iki kat dayanıklı ve sırasına göre daha hızlı; sandık yerine ara sıra iksir.\n3.56.0: Nöbet: dört yeni Eski Bekçi (Zincirci, Aynacı, Tutuşturucu, Boğulmuş Bekçi) bedenleri ve hareketleriyle; ilk dördün yüzleri yenilendi."
+          "en": "3.60.0: Orien's last life: the duel, and it reads the way you roll.\n3.59.0: Orien's second life: three decrees, the dial, the board, the sundial.\n3.58.1: The Vigil's Turkish text was gone over.\n3.58.0: Something comes at the twelfth minute of the Vigil.\n3.57.1: The Old Keepers have names; the marks tell the story; past minute 8 the Keepers grow quicker.\n3.57.0: The Vigil: the last four Old Keepers; all Keepers twice as tough and faster by tier; a flask now and then instead of chests.",
+          "tr": "3.60.0: Orien'in son canı: düello; hangi yöne yuvarlandığını okur.\n3.59.0: Orien'in ikinci canı: üç ferman, saat kolları, dama tahtası, güneş saati.\n3.58.1: Nöbet'in Türkçe metinleri elden geçirildi.\n3.58.0: Nöbet'in on ikinci dakikasında bir şey geliyor.\n3.57.1: Eski Bekçilerin adları var; eşikler hikâyeyi söylüyor; 8. dakikadan sonra Bekçiler hızlanıyor.\n3.57.0: Nöbet: son dört Eski Bekçi; bütün Bekçiler iki kat dayanıklı ve sırasına göre daha hızlı; sandık yerine ara sıra iksir."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.59.0.yhx",
-        "sha256": "28baad1ed2d8a9cc7932e8ad61de24ad17cfb1a7ff5ac2812a298336f95a4775",
-        "content": "2baea6f2af398ca5ecd33a3d00a7298a951200c41191cac6767291fe54be0dc1",
+        "url": "mods/lampwarden-x/lampwarden-x-3.60.0.yhx",
+        "sha256": "0eaeb7b025c717caa93ad115a98c2c0bbe48d7f4bdd4d81dc6f38087651bf471",
+        "content": "ade64fc078780c4aad82044b2b53d490d1eafbc97c46935d6d597fd14bccc4f3",
         "lock": {
-          "salt": "2c584927af3c528b8700169eec6a55d6",
+          "salt": "fd049dcc8b8e82bce97c743e69afc043",
           "iter": 200000,
-          "check": "dfcd16ef1f1f9852f0da1c5fb2c32816",
+          "check": "765c14ef5d8b7d2fafbabe03f57c4a2c",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "b681832973900258c5e9071394b19c975fc296624765bf7cc9d51d09a378c3d9"
+        "pck": "33d2550d11d59d143753c0320d8471eceb135592508bb3534c9a52087005d034"
       }
     },
     {
