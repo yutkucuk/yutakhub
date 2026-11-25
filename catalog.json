@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.75.0",
+        "version": "3.76.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.75.0: Elites are small bosses now: the Stalker, the Crusher and the Hooksman, each with a move to answer. Maren and the Unlit King fight differently, Orien becomes an untouchable star, Nightmare punishes mistakes.\n3.74.0: Fewer and readable: thinner nights with tougher creatures whose blows can be seen coming, sturdier bosses and elites, slower shooters, Orien's last body reworked with a new attack, and a dozen fixes.\n3.73.0: Surviving the twentieth night no longer says you won: the run goes straight on into the Vigil, which is what the twenty nights prepare you for.\n3.72.0: The ordinary creatures of the first twenty nights are drawn again as one people, the Unlit King's, each with its own gait. Nothing they can do has changed.\n3.71.0: A new lord of the twentieth night: the Unlit King, in the Lord of the Dark's place. Give his crown back, watch for his light, relight his candles in the dark. All four lords are new now.\n3.70.0: A new lord of the fifteenth night: Maren, the Tide-Bride, in the Hive Mother's place. Get to a light when the tide comes in, catch the bouquet, stay close on the ribbon.",
-          "tr": "3.75.0: Seçkinler artık küçük birer boss: Atılgan, Ezici ve Kancacı, her birinin cevap verilmesi gereken bir saldırısı var. Maren ve Unlit King'in dövüşü değişti, Orien dokunulmaz bir yıldıza dönüşüyor, Kâbus hatayı cezalandırıyor.\n3.74.0: Daha az, daha okunur: ilk yirmi gecede daha az ama dayanıklı yaratık ve görülen vuruşlar, dayanıklı boss ve elitler, yavaşlayan uzakçılar, elden geçen Orien ve yeni saldırısı, bir düzine düzeltme.\n3.73.0: Yirminci geceyi geçince artık 'kazandın' demiyor: oyun durmadan Nöbet'e geçiyor. Yirmi gece hazırlık, asıl mesele Nöbet.\n3.72.0: İlk yirmi gecenin sıradan yaratıkları tek bir halk olarak baştan çizildi: Unlit King'in insanları. Her türün kendi yürüyüşü var. Yapabildikleri değişmedi.\n3.71.0: 20. gecenin yeni efendisi: Karanlığın Efendisi'nin yerine The Unlit King. Tacını geri ver, ışığını kolla, karanlıkta mumlarını yak. Dört efendi de artık yeni.\n3.70.0: 15. gecenin yeni efendisi: Kovan Ana'nın yerine Maren, the Tide-Bride. Gelgitte ışığa sığın, buketi yakala, kurdeleye bağlıyken yakın dur."
+          "en": "3.76.0: The Crusher leaps, Garrand's door comes down and throws you into the air, elites come early, a Keeper kept at a distance comes to you, untouched time scores, and effect opacity reaches lightning and sparks.\n3.75.0: Elites are small bosses now: the Stalker, the Crusher and the Hooksman, each with a move to answer. Maren and the Unlit King fight differently, Orien becomes an untouchable star, Nightmare punishes mistakes.\n3.74.0: Fewer and readable: thinner nights with tougher creatures whose blows can be seen coming, sturdier bosses and elites, slower shooters, Orien's last body reworked with a new attack, and a dozen fixes.\n3.73.0: Surviving the twentieth night no longer says you won: the run goes straight on into the Vigil, which is what the twenty nights prepare you for.\n3.72.0: The ordinary creatures of the first twenty nights are drawn again as one people, the Unlit King's, each with its own gait. Nothing they can do has changed.\n3.71.0: A new lord of the twentieth night: the Unlit King, in the Lord of the Dark's place. Give his crown back, watch for his light, relight his candles in the dark. All four lords are new now.",
+          "tr": "3.76.0: Ezici sıçrıyor, Garrand'ın kapısı inip havaya fırlatıyor, seçkinler erken geliyor, uzakta bırakılan Bekçi yanına geliyor, dokunulmadan geçen süre puan veriyor, efekt saydamlığı şimşek ve kıvılcımlara işliyor.\n3.75.0: Seçkinler artık küçük birer boss: Atılgan, Ezici ve Kancacı, her birinin cevap verilmesi gereken bir saldırısı var. Maren ve Unlit King'in dövüşü değişti, Orien dokunulmaz bir yıldıza dönüşüyor, Kâbus hatayı cezalandırıyor.\n3.74.0: Daha az, daha okunur: ilk yirmi gecede daha az ama dayanıklı yaratık ve görülen vuruşlar, dayanıklı boss ve elitler, yavaşlayan uzakçılar, elden geçen Orien ve yeni saldırısı, bir düzine düzeltme.\n3.73.0: Yirminci geceyi geçince artık 'kazandın' demiyor: oyun durmadan Nöbet'e geçiyor. Yirmi gece hazırlık, asıl mesele Nöbet.\n3.72.0: İlk yirmi gecenin sıradan yaratıkları tek bir halk olarak baştan çizildi: Unlit King'in insanları. Her türün kendi yürüyüşü var. Yapabildikleri değişmedi.\n3.71.0: 20. gecenin yeni efendisi: Karanlığın Efendisi'nin yerine The Unlit King. Tacını geri ver, ışığını kolla, karanlıkta mumlarını yak. Dört efendi de artık yeni."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.75.0.yhx",
-        "sha256": "378996ab0f0788e57d10d955ac2c777b638ff8c3a3074ac8b673a3155083db07",
-        "content": "d1a8f7abfe3b78d9520425fec34ba8198bb685acf4636ca0ff66ac51601b6d1d",
+        "url": "mods/lampwarden-x/lampwarden-x-3.76.0.yhx",
+        "sha256": "2ebc53a1e2bf2331194ca410e75c8545a8f9908b5f5abadf7465e9d5b371cba5",
+        "content": "d82d51b6690a48ee10f2ef49bc8c0d8efbad796d4a595720bc6bd220df7368a8",
         "lock": {
-          "salt": "54799f470899559fe18936c18900084b",
+          "salt": "406a3b0ee5f1e68d749934dffb1a7647",
           "iter": 200000,
-          "check": "a7b7259aa468d737e62d7042dc0cb5a5",
+          "check": "26b6a2e92cfb6baa1b9916b90e81b178",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "0d193b26c3f633a09d5587edfb35fb7bd3356a34b9ebfce24b1a9875733c4f39"
+        "pck": "197c5e08604e4cef7ef709c53ccd3d81068265542d8e707e326029eea7cb8ce1"
       }
     },
     {
