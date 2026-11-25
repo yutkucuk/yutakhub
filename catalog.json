@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.72.0",
+        "version": "3.73.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.72.0: The ordinary creatures of the first twenty nights are drawn again as one people, the Unlit King's, each with its own gait. Nothing they can do has changed.\n3.71.0: A new lord of the twentieth night: the Unlit King, in the Lord of the Dark's place. Give his crown back, watch for his light, relight his candles in the dark. All four lords are new now.\n3.70.0: A new lord of the fifteenth night: Maren, the Tide-Bride, in the Hive Mother's place. Get to a light when the tide comes in, catch the bouquet, stay close on the ribbon.\n3.69.0: A new lord of the tenth night: Garrand, the Doorwarden, in the Iron Colossus's place. Get behind his door, make him run into a wall, stand still when the hour strikes.\n3.68.0: A new lord of the fifth night: Sirocco, the Wick-Thief, in the Slime King's place. The first of four new bosses.\n3.67.7: The two skill-effect sliders now reach everything a skill leaves behind, not only its first flash.",
-          "tr": "3.72.0: İlk yirmi gecenin sıradan yaratıkları tek bir halk olarak baştan çizildi: Unlit King'in insanları. Her türün kendi yürüyüşü var. Yapabildikleri değişmedi.\n3.71.0: 20. gecenin yeni efendisi: Karanlığın Efendisi'nin yerine The Unlit King. Tacını geri ver, ışığını kolla, karanlıkta mumlarını yak. Dört efendi de artık yeni.\n3.70.0: 15. gecenin yeni efendisi: Kovan Ana'nın yerine Maren, the Tide-Bride. Gelgitte ışığa sığın, buketi yakala, kurdeleye bağlıyken yakın dur.\n3.69.0: 10. gecenin yeni efendisi: Demir Dev'in yerine Garrand, the Doorwarden. Kapısının arkasına geç, onu duvara çarptır, saat vurduğunda kıpırdama.\n3.68.0: 5. gecenin yeni efendisi: Balçık Kralı'nın yerine Sirocco, the Wick-Thief. Dört yeni boss'un ilki.\n3.67.7: İki beceri efekti kaydırıcısı artık becerinin geride bıraktığı her şeye ulaşıyor, yalnızca ilk parlamaya değil."
+          "en": "3.73.0: Surviving the twentieth night no longer says you won: the run goes straight on into the Vigil, which is what the twenty nights prepare you for.\n3.72.0: The ordinary creatures of the first twenty nights are drawn again as one people, the Unlit King's, each with its own gait. Nothing they can do has changed.\n3.71.0: A new lord of the twentieth night: the Unlit King, in the Lord of the Dark's place. Give his crown back, watch for his light, relight his candles in the dark. All four lords are new now.\n3.70.0: A new lord of the fifteenth night: Maren, the Tide-Bride, in the Hive Mother's place. Get to a light when the tide comes in, catch the bouquet, stay close on the ribbon.\n3.69.0: A new lord of the tenth night: Garrand, the Doorwarden, in the Iron Colossus's place. Get behind his door, make him run into a wall, stand still when the hour strikes.\n3.68.0: A new lord of the fifth night: Sirocco, the Wick-Thief, in the Slime King's place. The first of four new bosses.",
+          "tr": "3.73.0: Yirminci geceyi geçince artık 'kazandın' demiyor: oyun durmadan Nöbet'e geçiyor. Yirmi gece hazırlık, asıl mesele Nöbet.\n3.72.0: İlk yirmi gecenin sıradan yaratıkları tek bir halk olarak baştan çizildi: Unlit King'in insanları. Her türün kendi yürüyüşü var. Yapabildikleri değişmedi.\n3.71.0: 20. gecenin yeni efendisi: Karanlığın Efendisi'nin yerine The Unlit King. Tacını geri ver, ışığını kolla, karanlıkta mumlarını yak. Dört efendi de artık yeni.\n3.70.0: 15. gecenin yeni efendisi: Kovan Ana'nın yerine Maren, the Tide-Bride. Gelgitte ışığa sığın, buketi yakala, kurdeleye bağlıyken yakın dur.\n3.69.0: 10. gecenin yeni efendisi: Demir Dev'in yerine Garrand, the Doorwarden. Kapısının arkasına geç, onu duvara çarptır, saat vurduğunda kıpırdama.\n3.68.0: 5. gecenin yeni efendisi: Balçık Kralı'nın yerine Sirocco, the Wick-Thief. Dört yeni boss'un ilki."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.72.0.yhx",
-        "sha256": "34d412eb5d6a5698e83ef1ee0443bd1fbac743a0be3133988dda9977c8c9f269",
-        "content": "3d3dc9ad315e2df226ff92d7f42334fe3fe6342e71900aec2b5653511a6288d9",
+        "url": "mods/lampwarden-x/lampwarden-x-3.73.0.yhx",
+        "sha256": "5ebc2a24aadbd003aa91e56a6b3d702b74a71788eafbc7f754175c0888813519",
+        "content": "b5d9f643c7d5d9b31f10d2d79e0e87fcfdef7117b148ac16b9780aee505f51a1",
         "lock": {
-          "salt": "06533bc75971cd4f2872086b86479b05",
+          "salt": "29f2933c0f6f8125084750050def5428",
           "iter": 200000,
-          "check": "9da85799f35677cf31951b696fbe8dfe",
+          "check": "552a46ee8e25a8dce37998b7619b4efa",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "cd2d2a06bad7afb9df848f6f36a80451707ac3678aa5d815c897127afa8a93ab"
+        "pck": "0bd8cc011bb468b5b56541eafb830bb0b118b8257d7b09e9905bef1bc4fc52d0"
       }
     },
     {
