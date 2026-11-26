@@ -176,24 +176,24 @@
       "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/palesilt/header.jpg",
       "mod": {
         "name": "Oyun",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "summary": {
           "tr": "Kendi oyunumuz: iki ile dört kişilik co-op kozmik korku. Yabancı bir gezegenin ışığa dayanamayan siyah okyanusunda, dalış çanından hortumla bağlı inip karanlığı yalnızca siyah-beyaz sonar noktalarıyla görürsün. Oksijen ekipçe paylaşılır, bir kişi Çan'da operatör olabilir. Kapalı test: kurmak ve açmak için Discord sunucumuzdaki Testçi rolü gerekir.",
           "en": "Our own game: two-to-four player co-op cosmic horror. Tethered to a diving bell, you descend into the black, light-hating ocean of an alien planet and see only through black-and-white sonar points. Oxygen is shared by the crew, and one player can run the bell as operator. Closed test: installing and playing needs the Playtester role on our Discord server."
         },
         "notes": {
-          "tr": "0.1.0: İlk kapalı test sürümü. Sektör 1, Ters Heykel, hortum ve sonar, co-op ve Çan operatörü.\nBirlikte oynamak için ikinizde de Steam açık olsun: oda kur, arkadaşını Steam'den davet et. Steam'de \"Spacewar\" oynuyor görünürsün; bu normal.\nSteam olmadan: Radmin VPN ile aynı ağa girin, katılan kişi host'un Radmin IP'sini yazsın.",
-          "en": "0.1.0: First closed-test build. Sector 1, the Inverted Statue, the hose and sonar, co-op and the bell operator.\nTo play together, keep Steam open on both computers: host a lobby and invite your friend through Steam. Steam will show you as playing \"Spacewar\"; that is expected.\nWithout Steam: join the same Radmin VPN network and type the host's Radmin IP."
+          "tr": "0.2.0: Oyun baştan tasarlandı.\n- Yeni öğretici ilk dalış (ANNE telsizi) ve dört dalış noktalı yeni Sektör 1.\n- Ses artık her şey: yavaş yüzmek sessiz, genel ping uzaktan duyulur. [Q] ile dinle, ses çubuğu kaskta.\n- Ters Heykel yeniden yazıldı: duyduğu yere gider, saldırmadan önce uyarır, öldürmez yakalar; dondurarak, yemle ya da susarak kurtulursun.\n- Katalizör topla, Çan'daki damıtıcıda oksijene çevir, günlük kotayı tut. Tezgahta 6 yükseltme, kalıcı harita masası, dalış raporu.\n- Bayılan arkadaşını 3 sn'de ayağa kaldır; 90 sn içinde kimse gelmezse Çan'da yardımcı operatör olarak devam edersin.\n- Oyun içi Steam arkadaş listesinden davet (Steam'in Shift+Tab penceresi gerekmez).",
+          "en": "0.2.0: The game was redesigned from scratch.\n- New tutorial first dive (ANNE radio) and a new Sector 1 with four dive sites.\n- Sound is everything now: swimming slowly is silent, a wide ping is heard far away. Hold [Q] to listen; a noise bar sits in the helmet.\n- The Inverted Statue was rewritten: it goes where it hears, warns before it strikes, grabs instead of killing; freeze it, lure it or stay silent.\n- Collect catalyst, turn it into oxygen at the bell's distiller, meet the daily quota. Six workbench upgrades, a persistent map table, a dive report.\n- Revive a downed friend in 3 s; if no one comes within 90 s you carry on as assistant operator in the bell.\n- Invite friends from an in-game Steam friends list (no Shift+Tab overlay needed)."
         },
         "type": "extract",
         "detect": "PaleSilt.exe",
-        "url": "mods/palesilt/palesilt-0.1.0.yhx",
-        "sha256": "2a5a16ef9109e4645a6223552516c1b694f510ea143588d851079b1f6a2b6b09",
-        "content": "1f9ef157011a4e5cfc19a25355fc3f9bc12eb14d4911087a65f337dca563da83",
+        "url": "mods/palesilt/palesilt-0.2.0.yhx",
+        "sha256": "9a7b6b4fd61ad91db383cb8e60ea975e5d3ffee29b0479e8f19c5b775bf0003b",
+        "content": "88b13892fce9b5020b4571a1f0a0decc5c6d7084d1dd5eeec41bb144ebc485a8",
         "lock": {
-          "salt": "b46cbb6f340e6fc7603e946fb58a12b5",
+          "salt": "f5ab04800b5db912696ee3987984fc44",
           "iter": 200000,
-          "check": "25912350635e89a80e6f6247a4f8048a",
+          "check": "f44f3c1fd01d2be905e9e4d7f113029d",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
