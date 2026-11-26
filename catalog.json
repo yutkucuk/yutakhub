@@ -168,6 +168,41 @@
       }
     },
     {
+      "id": "palesilt",
+      "name": "PALE SILT",
+      "steamAppId": 0,
+      "exe": "PaleSilt.exe",
+      "standalone": true,
+      "image": "https://raw.githubusercontent.com/yutkucuk/yutakhub/main/mods/palesilt/header.jpg",
+      "mod": {
+        "name": "Oyun",
+        "version": "0.1.0",
+        "summary": {
+          "tr": "Kendi oyunumuz: iki ile dört kişilik co-op kozmik korku. Yabancı bir gezegenin ışığa dayanamayan siyah okyanusunda, dalış çanından hortumla bağlı inip karanlığı yalnızca siyah-beyaz sonar noktalarıyla görürsün. Oksijen ekipçe paylaşılır, bir kişi Çan'da operatör olabilir. Kapalı test: kurmak ve açmak için Discord sunucumuzdaki Testçi rolü gerekir.",
+          "en": "Our own game: two-to-four player co-op cosmic horror. Tethered to a diving bell, you descend into the black, light-hating ocean of an alien planet and see only through black-and-white sonar points. Oxygen is shared by the crew, and one player can run the bell as operator. Closed test: installing and playing needs the Playtester role on our Discord server."
+        },
+        "notes": {
+          "tr": "0.1.0: İlk kapalı test sürümü. Sektör 1, Ters Heykel, hortum ve sonar, co-op ve Çan operatörü.\nBirlikte oynamak için ikinizde de Steam açık olsun: oda kur, arkadaşını Steam'den davet et. Steam'de \"Spacewar\" oynuyor görünürsün; bu normal.\nSteam olmadan: Radmin VPN ile aynı ağa girin, katılan kişi host'un Radmin IP'sini yazsın.",
+          "en": "0.1.0: First closed-test build. Sector 1, the Inverted Statue, the hose and sonar, co-op and the bell operator.\nTo play together, keep Steam open on both computers: host a lobby and invite your friend through Steam. Steam will show you as playing \"Spacewar\"; that is expected.\nWithout Steam: join the same Radmin VPN network and type the host's Radmin IP."
+        },
+        "type": "extract",
+        "detect": "PaleSilt.exe",
+        "url": "mods/palesilt/palesilt-0.1.0.yhx",
+        "sha256": "2a5a16ef9109e4645a6223552516c1b694f510ea143588d851079b1f6a2b6b09",
+        "content": "1f9ef157011a4e5cfc19a25355fc3f9bc12eb14d4911087a65f337dca563da83",
+        "lock": {
+          "salt": "b46cbb6f340e6fc7603e946fb58a12b5",
+          "iter": 200000,
+          "check": "25912350635e89a80e6f6247a4f8048a",
+          "auth": {
+            "type": "discord",
+            "client": "1573771637784973432",
+            "endpoint": "https://erisim.yutkuc.uk/key"
+          }
+        }
+      }
+    },
+    {
       "id": "nabiz",
       "name": "Nabız",
       "steamAppId": 0,
