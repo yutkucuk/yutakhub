@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.78.0",
+        "version": "3.79.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.78.0: Developer mode: damage multiplier (F9)\n3.77.0: Co-op fixes: bosses and Keepers no longer sleep or freeze, elites rarely; out of revives means out; no lifting a friend in the Vigil; the last screen reaches every player; Garrand's ring is drawn under everyone.\n3.76.0: The Crusher leaps, Garrand's door comes down and throws you into the air, elites come early, a Keeper kept at a distance comes to you, untouched time scores, and effect opacity reaches lightning and sparks.\n3.75.0: Elites are small bosses now: the Stalker, the Crusher and the Hooksman, each with a move to answer. Maren and the Unlit King fight differently, Orien becomes an untouchable star, Nightmare punishes mistakes.\n3.74.0: Fewer and readable: thinner nights with tougher creatures whose blows can be seen coming, sturdier bosses and elites, slower shooters, Orien's last body reworked with a new attack, and a dozen fixes.\n3.73.0: Surviving the twentieth night no longer says you won: the run goes straight on into the Vigil, which is what the twenty nights prepare you for.",
-          "tr": "3.78.0: Geliştirici modu: hasar çarpanı (F9)\n3.77.0: Co-op düzeltmeleri: boss'lar ve Bekçiler artık uyumuyor ve donmuyor, seçkinler nadiren; hakkı biten oyun dışı; Nöbet'te arkadaş kaldırma yok; son ekran herkese geliyor; Garrand'ın halkası herkesin altında.\n3.76.0: Ezici sıçrıyor, Garrand'ın kapısı inip havaya fırlatıyor, seçkinler erken geliyor, uzakta bırakılan Bekçi yanına geliyor, dokunulmadan geçen süre puan veriyor, efekt saydamlığı şimşek ve kıvılcımlara işliyor.\n3.75.0: Seçkinler artık küçük birer boss: Atılgan, Ezici ve Kancacı, her birinin cevap verilmesi gereken bir saldırısı var. Maren ve Unlit King'in dövüşü değişti, Orien dokunulmaz bir yıldıza dönüşüyor, Kâbus hatayı cezalandırıyor.\n3.74.0: Daha az, daha okunur: ilk yirmi gecede daha az ama dayanıklı yaratık ve görülen vuruşlar, dayanıklı boss ve elitler, yavaşlayan uzakçılar, elden geçen Orien ve yeni saldırısı, bir düzine düzeltme.\n3.73.0: Yirminci geceyi geçince artık 'kazandın' demiyor: oyun durmadan Nöbet'e geçiyor. Yirmi gece hazırlık, asıl mesele Nöbet."
+          "en": "3.79.0: New dark orchestral score (13 pieces); new life bars, boss bar and skill slots; fixed boss moves copied once per player in co-op, split screen, safe saving and keyboard hints; the hit freeze holds only the fight; Frame limit, Vertical sync and Reduce flashing settings.\n3.78.0: Developer mode: damage multiplier (F9)\n3.77.0: Co-op fixes: bosses and Keepers no longer sleep or freeze, elites rarely; out of revives means out; no lifting a friend in the Vigil; the last screen reaches every player; Garrand's ring is drawn under everyone.\n3.76.0: The Crusher leaps, Garrand's door comes down and throws you into the air, elites come early, a Keeper kept at a distance comes to you, untouched time scores, and effect opacity reaches lightning and sparks.\n3.75.0: Elites are small bosses now: the Stalker, the Crusher and the Hooksman, each with a move to answer. Maren and the Unlit King fight differently, Orien becomes an untouchable star, Nightmare punishes mistakes.\n3.74.0: Fewer and readable: thinner nights with tougher creatures whose blows can be seen coming, sturdier bosses and elites, slower shooters, Orien's last body reworked with a new attack, and a dozen fixes.",
+          "tr": "3.79.0: Yeni karanlık orkestra müzikleri (13 parça); yeni can barları, boss barı ve yetenek yuvaları; co-op'ta boss saldırılarının oyuncu sayısı kadar kopyalanması, bölünmüş ekran, kayıt güvenliği ve klavye ipuçları düzeltildi; vuruş donması yalnız dövüşü durduruyor; Kare sınırı, Dikey senkron ve Yanıp sönmeyi azalt ayarları.\n3.78.0: Geliştirici modu: hasar çarpanı (F9)\n3.77.0: Co-op düzeltmeleri: boss'lar ve Bekçiler artık uyumuyor ve donmuyor, seçkinler nadiren; hakkı biten oyun dışı; Nöbet'te arkadaş kaldırma yok; son ekran herkese geliyor; Garrand'ın halkası herkesin altında.\n3.76.0: Ezici sıçrıyor, Garrand'ın kapısı inip havaya fırlatıyor, seçkinler erken geliyor, uzakta bırakılan Bekçi yanına geliyor, dokunulmadan geçen süre puan veriyor, efekt saydamlığı şimşek ve kıvılcımlara işliyor.\n3.75.0: Seçkinler artık küçük birer boss: Atılgan, Ezici ve Kancacı, her birinin cevap verilmesi gereken bir saldırısı var. Maren ve Unlit King'in dövüşü değişti, Orien dokunulmaz bir yıldıza dönüşüyor, Kâbus hatayı cezalandırıyor.\n3.74.0: Daha az, daha okunur: ilk yirmi gecede daha az ama dayanıklı yaratık ve görülen vuruşlar, dayanıklı boss ve elitler, yavaşlayan uzakçılar, elden geçen Orien ve yeni saldırısı, bir düzine düzeltme."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "mods/lampwarden-x/lampwarden-x-3.78.0.yhx",
-        "sha256": "d0195816923df27fadd6e81dc9eada9b3944604043e350f29511125be6d3aa3c",
-        "content": "a360e5a2e7ffeb2525cfe0f94f7cfe1098ae4cf095352bb83cee01db850ce49e",
+        "url": "https://github.com/yutkucuk/yutakhub/releases/download/lampwarden-x-3.79.0/lampwarden-x-3.79.0.yhx",
+        "sha256": "7aa55ace5c921e721479c0fa8b83cfda17811bbe6dfcdb63a07874b4bd0521c2",
+        "content": "79e38c2737fc477fa30f90075e80ad9340e79605a84e76476573d5ef7e70b90a",
         "lock": {
-          "salt": "807178ef074e8cad1131180929d3d532",
+          "salt": "85faca06caa97806efe89c5bbc5a96c6",
           "iter": 200000,
-          "check": "f0e87c5d8e48538ac3c660700bb4d554",
+          "check": "9a5f3d810ffca8c67e9547e6025689f7",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "e796f3a9101dd4b06d6b27645e6e5327753d1174f92cc1658b928a4c22ce47e0"
+        "pck": "01d21bdf240a679a372a4ae327aba7fab252258cfea90d8a8eba81a5b0640814"
       }
     },
     {
