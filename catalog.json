@@ -140,31 +140,31 @@
       "review": "mods/lampwarden-x/review/index.html",
       "mod": {
         "name": "Oyun",
-        "version": "3.79.0",
+        "version": "3.80.0",
         "summary": {
           "en": "Our own game: a night-time, pixelated 3D co-op tower defence for one to four players (online, or two at one computer on a split screen). Keep the Beacon lit through 20 waves. Five heroes, skills that take support gems, worn equipment with random bonuses, twelve defences to build. Gamepad support. English, with Turkish in the settings. Closed test: installing needs the Playtester role on our Discord server.",
           "tr": "Kendi oyunumuz: bir ile dört kişilik (çevrim içi ya da aynı bilgisayarda bölünmüş ekranda iki kişi), gece geçen pikselli 3D co-op kule savunması. Feneri 20 dalga boyunca yanık tut. Beş kahraman, destek taşı takılan yetenekler, rastgele bonuslu ekipman, kurulacak on iki savunma. Gamepad desteği. Oyun İngilizce; Türkçe ayarlardan seçilir. Kapalı test: kurmak için Discord sunucumuzdaki Testçi rolü gerekir."
         },
         "notes": {
-          "en": "3.79.0: New dark orchestral score (13 pieces); new life bars, boss bar and skill slots; fixed boss moves copied once per player in co-op, split screen, safe saving and keyboard hints; the hit freeze holds only the fight; Frame limit, Vertical sync and Reduce flashing settings.\n3.78.0: Developer mode: damage multiplier (F9)\n3.77.0: Co-op fixes: bosses and Keepers no longer sleep or freeze, elites rarely; out of revives means out; no lifting a friend in the Vigil; the last screen reaches every player; Garrand's ring is drawn under everyone.\n3.76.0: The Crusher leaps, Garrand's door comes down and throws you into the air, elites come early, a Keeper kept at a distance comes to you, untouched time scores, and effect opacity reaches lightning and sparks.\n3.75.0: Elites are small bosses now: the Stalker, the Crusher and the Hooksman, each with a move to answer. Maren and the Unlit King fight differently, Orien becomes an untouchable star, Nightmare punishes mistakes.\n3.74.0: Fewer and readable: thinner nights with tougher creatures whose blows can be seen coming, sturdier bosses and elites, slower shooters, Orien's last body reworked with a new attack, and a dozen fixes.",
-          "tr": "3.79.0: Yeni karanlık orkestra müzikleri (13 parça); yeni can barları, boss barı ve yetenek yuvaları; co-op'ta boss saldırılarının oyuncu sayısı kadar kopyalanması, bölünmüş ekran, kayıt güvenliği ve klavye ipuçları düzeltildi; vuruş donması yalnız dövüşü durduruyor; Kare sınırı, Dikey senkron ve Yanıp sönmeyi azalt ayarları.\n3.78.0: Geliştirici modu: hasar çarpanı (F9)\n3.77.0: Co-op düzeltmeleri: boss'lar ve Bekçiler artık uyumuyor ve donmuyor, seçkinler nadiren; hakkı biten oyun dışı; Nöbet'te arkadaş kaldırma yok; son ekran herkese geliyor; Garrand'ın halkası herkesin altında.\n3.76.0: Ezici sıçrıyor, Garrand'ın kapısı inip havaya fırlatıyor, seçkinler erken geliyor, uzakta bırakılan Bekçi yanına geliyor, dokunulmadan geçen süre puan veriyor, efekt saydamlığı şimşek ve kıvılcımlara işliyor.\n3.75.0: Seçkinler artık küçük birer boss: Atılgan, Ezici ve Kancacı, her birinin cevap verilmesi gereken bir saldırısı var. Maren ve Unlit King'in dövüşü değişti, Orien dokunulmaz bir yıldıza dönüşüyor, Kâbus hatayı cezalandırıyor.\n3.74.0: Daha az, daha okunur: ilk yirmi gecede daha az ama dayanıklı yaratık ve görülen vuruşlar, dayanıklı boss ve elitler, yavaşlayan uzakçılar, elden geçen Orien ve yeni saldırısı, bir düzine düzeltme."
+          "en": "3.80.0: A much darker night; no more white hit flashes, the dead burn to ash; new boss warnings and impact shockwaves; new skill effects; new settings screen, level-up cards and end screen; directional sound, distance and echo; muffled sound on pause, low life and boss kills.\n3.79.0: New dark orchestral score (13 pieces); new life bars, boss bar and skill slots; fixed boss moves copied once per player in co-op, split screen, safe saving and keyboard hints; the hit freeze holds only the fight; Frame limit, Vertical sync and Reduce flashing settings.\n3.78.0: Developer mode: damage multiplier (F9)\n3.77.0: Co-op fixes: bosses and Keepers no longer sleep or freeze, elites rarely; out of revives means out; no lifting a friend in the Vigil; the last screen reaches every player; Garrand's ring is drawn under everyone.\n3.76.0: The Crusher leaps, Garrand's door comes down and throws you into the air, elites come early, a Keeper kept at a distance comes to you, untouched time scores, and effect opacity reaches lightning and sparks.\n3.75.0: Elites are small bosses now: the Stalker, the Crusher and the Hooksman, each with a move to answer. Maren and the Unlit King fight differently, Orien becomes an untouchable star, Nightmare punishes mistakes.",
+          "tr": "3.80.0: Çok daha karanlık gece; vurulan düşman beyaz parlamıyor, ölenler kor olup küle dönüyor; yeni boss uyarıları ve darbe şok halkaları; yeni yetenek efektleri; yeni ayarlar ekranı, seviye kartları ve bitiş ekranı; yönlü ses, uzaklık ve yankı; duraklatmada, düşük canda ve boss ölümünde ses filtresi.\n3.79.0: Yeni karanlık orkestra müzikleri (13 parça); yeni can barları, boss barı ve yetenek yuvaları; co-op'ta boss saldırılarının oyuncu sayısı kadar kopyalanması, bölünmüş ekran, kayıt güvenliği ve klavye ipuçları düzeltildi; vuruş donması yalnız dövüşü durduruyor; Kare sınırı, Dikey senkron ve Yanıp sönmeyi azalt ayarları.\n3.78.0: Geliştirici modu: hasar çarpanı (F9)\n3.77.0: Co-op düzeltmeleri: boss'lar ve Bekçiler artık uyumuyor ve donmuyor, seçkinler nadiren; hakkı biten oyun dışı; Nöbet'te arkadaş kaldırma yok; son ekran herkese geliyor; Garrand'ın halkası herkesin altında.\n3.76.0: Ezici sıçrıyor, Garrand'ın kapısı inip havaya fırlatıyor, seçkinler erken geliyor, uzakta bırakılan Bekçi yanına geliyor, dokunulmadan geçen süre puan veriyor, efekt saydamlığı şimşek ve kıvılcımlara işliyor.\n3.75.0: Seçkinler artık küçük birer boss: Atılgan, Ezici ve Kancacı, her birinin cevap verilmesi gereken bir saldırısı var. Maren ve Unlit King'in dövüşü değişti, Orien dokunulmaz bir yıldıza dönüşüyor, Kâbus hatayı cezalandırıyor."
         },
         "type": "extract",
         "detect": "Lampwarden.exe",
-        "url": "https://github.com/yutkucuk/yutakhub/releases/download/lampwarden-x-3.79.0/lampwarden-x-3.79.0.yhx",
-        "sha256": "7aa55ace5c921e721479c0fa8b83cfda17811bbe6dfcdb63a07874b4bd0521c2",
-        "content": "79e38c2737fc477fa30f90075e80ad9340e79605a84e76476573d5ef7e70b90a",
+        "url": "https://github.com/yutkucuk/yutakhub/releases/download/lampwarden-x-3.80.0/lampwarden-x-3.80.0.yhx",
+        "sha256": "8b351a4d001157780538232aba496165fe1787de5f3254e95eaad832d7812feb",
+        "content": "4a7a1c6b5a7b093b393814e13820915b8e820325bd89d67bcb4e822fab921628",
         "lock": {
-          "salt": "85faca06caa97806efe89c5bbc5a96c6",
+          "salt": "a3ddc3666041bb39b41a6faaf24e3045",
           "iter": 200000,
-          "check": "9a5f3d810ffca8c67e9547e6025689f7",
+          "check": "be23c9682ad55c1463d72773447bdfc3",
           "auth": {
             "type": "discord",
             "client": "1573771637784973432",
             "endpoint": "https://erisim.yutkuc.uk/key"
           }
         },
-        "pck": "01d21bdf240a679a372a4ae327aba7fab252258cfea90d8a8eba81a5b0640814"
+        "pck": "8206fa0b4ef823e5d53ad5c21501567be59505b60b5ae0d2ee2ce4ceaba8283b"
       }
     },
     {
